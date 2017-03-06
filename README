@@ -1,0 +1,33 @@
+Supercomputer Log Analysis Framework (SLAF)
+SLAF is a set of Python scripts meant for analyzing MOAB logs, and failure databases from Titan supercomputer.
+Original developers: Esteban Meneses (esteban.meneses@acm.org) and Xiang Ni (xiangni2@illinois.edu)
+
+Here is a short description of each file in this directory:
+
+
+
+-> correlate.py: determines what percentage of job ids in the failure log can be traced back to the MOAB logs.
+failjobs.py: creates a report that correlates failures with job information.
+-> mtbf.py: computes a histogram for the MTBF in the failure database.
+-> stats.py: creates a report from a particular column in the failure log.
+
+RUNNING
+
+-> FAILURE STATISTICS
+* Generating a distribution of the mean-time-between-failures (MTBF) from a failure database:
+python mtbf.py dir/Titan.2014.failures.txt mtbf.pdf 300 50
+* Creating a distribution for failures according to the a particular variable: 
+python stats.py dir/Titan.2014.failures.txt 5
+(an output file category.pdf will be generated)
+
+-> WORKLOAD AND FAILURE CORRELATION
+* Checking how reliably failure information can be track down to workload records:
+python correlate.py dir/Titan.2014.failures.january.txt dir/2014_january/
+
+-> IMPACT 
+* Enriching a list of filtered failures with the features on the failure database:
+python extract.py dir/Titan.2014.failures.txt filterFailures_advanced filtered_failures.txt
+* Generating job dataset:
+python failjobs.py filtered_failures.txt dir/2014/ 2014.txt
+* Generating plots:
+python generate_impact.py 2014.txt 2014_failures 50
