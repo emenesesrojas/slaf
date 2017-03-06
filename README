@@ -15,9 +15,9 @@ RUNNING
 
 -> FAILURE STATISTICS
 * Generating a distribution of the mean-time-between-failures (MTBF) from a failure database:
-python mtbf.py dir/Titan.2014.failures.txt mtbf.pdf 300 50
+python mtbf.py data/failures/titan_failures_2015.txt mtbf_2015.pdf 300 50
 * Creating a distribution for failures according to the a particular variable: 
-python stats.py dir/Titan.2014.failures.txt 5
+python stats.py data/failures/titan_failures_2015.txt 5
 (an output file category.pdf will be generated)
 
 -> WORKLOAD AND FAILURE CORRELATION
