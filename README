@@ -7,7 +7,7 @@ Here is a short description of each file in this directory:
 
 
 -> correlate.py: determines what percentage of job ids in the failure log can be traced back to the MOAB logs.
-failjobs.py: creates a report that correlates failures with job information.
+-> failjobs.py: creates a report that correlates failures with job information.
 -> mtbf.py: computes a histogram for the MTBF in the failure database.
 -> stats.py: creates a report from a particular column in the failure log.
 
@@ -21,7 +21,7 @@ python stats.py data/failures/titan_failures_2015.txt 5
 (an output file category.pdf will be generated)
 
 -> WORKLOAD AND FAILURE CORRELATION
-* Checking how reliably failure information can be track down to workload records:
+* Checking how reliably failure information can be tracked down to workload records:
 python correlate.py dir/Titan.2014.failures.january.txt dir/2014_january/
 
 -> IMPACT 
