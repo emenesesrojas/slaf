@@ -22,7 +22,7 @@ python stats.py data/failures/titan_failures_2015.txt 5
 
 -> WORKLOAD AND FAILURE CORRELATION
 * Checking how reliably failure information can be tracked down to workload records:
-python correlate.py dir/Titan.2014.failures.january.txt dir/2014_january/
+python correlate.py data/failures/titan_failures_january_2015.txt data/workload/january_2015/
 
 -> IMPACT 
 * Enriching a list of filtered failures with the features on the failure database:

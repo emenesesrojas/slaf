@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-# University of Pittsburgh
-# Center for Simulation and Modeling
-# Esteban Meneses
+# Costa Rica High Technology Center (CeNAT)
+# Advanced Computing Laboratory
+# Esteban Meneses, PhD (esteban.meneses@acm.org)
 # Extracts information about jobs from MOAB logs.
-# Date: 03/20/15
 
 import sys
 import re
@@ -45,7 +44,7 @@ def generate_jobs(dir_name, outputFileName):
 	for file_name in os.listdir(dir_name):
 		file_count = file_count + 1
 
-		print "\rAnalyzing file %s" % file_name,
+		print("\rAnalyzing file %s" % file_name)
 		sys.stdout.flush()
 
 		job_file_name = dir_name + '/' + file_name
@@ -93,12 +92,12 @@ def generate_jobs(dir_name, outputFileName):
 					else:
 						execution_time = (completion_time - start_time)/60.0			# transforming execution time into minutes
 					if(execution_time > EXECUTION_LIMIT):
-						print "--->JOB WITH LONG EXECUTION TIME"
-						print "File: %s, job id: %s, execution time: %f minutes" % (job_file_name, objid, execution_time)
+						print("--->JOB WITH LONG EXECUTION TIME")
+						print("File: %s, job id: %s, execution time: %f minutes" % (job_file_name, objid, execution_time))
 						execution_time = wallclock_req
 					parts = file_name.split('.')
 					jobs[objid] = Job(parts[1], nodes_req, tasks_req, wallclock_req, wait_time, execution_time)
-	print "\r                                                           ", 
+	print("\r                                                           ",) 
 	
 	# creating output file
 	outputFile = open(outputFileName, 'w')
@@ -111,13 +110,13 @@ def generate_jobs(dir_name, outputFileName):
 	finishTime = time.clock()
 
 	# printing summary
-	print "\nSUMMARY:                                          \n \
+	print("\nSUMMARY:                                          \n \
 	%d files analyzed \n \
 	%d jobs analyzed \n \
 	%d cancelled jobs \n \
 	%.3f seconds execution time" \
-	% (file_count, job_count, cancelled_jobs, finishTime-startTime)
-	
+	% (file_count, job_count, cancelled_jobs, finishTime-startTime))
+
 	return
 
 ### MAIN CODE ###
@@ -126,8 +125,8 @@ if len(sys.argv) >= 3:
 	outputFileName = sys.argv[2]
 	generate_jobs(dirName, outputFileName)
 else:
-	print "ERROR, usage: %s <directory> <output file>" % sys.argv[0]
-	print "<directory>: MOAB logs directory"
-	print "<output file>: file name to output job information"
+	print("ERROR, usage: %s <directory> <output file>" % sys.argv[0])
+	print("<directory>: MOAB logs directory")
+	print("<output file>: file name to output job information")
 	sys.exit(0)
 
