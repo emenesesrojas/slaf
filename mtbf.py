@@ -8,6 +8,8 @@
 import sys
 import re
 import datetime
+import matplotlib as mtl
+mtl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
