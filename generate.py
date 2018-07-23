@@ -177,8 +177,8 @@ def distributions(fileName, dirName, bins):
 		plot_weight_histogram(nodes, titan_bins, sus, 'Requested Nodes', 'Cumulative Fraction of Total Node Service Units', dirName, 'workload_cum_sus_nodes_titan')	
 
 	# computing totals
-	print "Total jobs: %d" % total_jobs
-	print "Total sus: %f" % total_sus	
+	print ("Total jobs: %d" % total_jobs)
+	print ("Total sus: %f" % total_sus)	
 
 	# computing correlation coefficient between nodes and wallclock
 	if(COMPUTE_CORRELATION):
@@ -186,19 +186,19 @@ def distributions(fileName, dirName, bins):
 		wallclock_array = array(wallclock)
 		wait_array = array(wait)
 		coefficient = corrcoef(nodes_array,wallclock_array)[1,0]	
-		print "Correlation coefficient (nodes vs wallclock): %f" % coefficient
+		print ("Correlation coefficient (nodes vs wallclock): %f" % coefficient)
 		coefficient = corrcoef(nodes_array,wait_array)[1,0]	
-		print "Correlation coefficient (nodes vs wait time): %f" % coefficient
+		print ("Correlation coefficient (nodes vs wait time): %f" % coefficient)
 
 	# printing small job statistics
 	if(FILTER_SMALL):
-		print "Fraction of small jobs: %f" % (small_jobs/float(total_jobs))
-		print "Fraction of small sus: %f" % (small_sus/float(total_sus))
+		print ("Fraction of small jobs: %f" % (small_jobs/float(total_jobs)))
+		print ("Fraction of small sus: %f" % (small_sus/float(total_sus)))
 
 	# stop timer
 	finishTime = time.clock()
 
-	print "%d jobs analyzed in %.3f seconds" % (count, finishTime-startTime)
+	print ("%d jobs analyzed in %.3f seconds" % (count, finishTime-startTime))
 	
 	return
 
@@ -209,9 +209,9 @@ if len(sys.argv) >= 4:
 	bins = int(sys.argv[3])
 	distributions(fileName, dirName, bins)
 else:
-	print "ERROR, usage: %s <file> <directory> <bins>" % sys.argv[0]
-	print "<file>: failed-job file"
-	print "<directory>: output directory"
-	print "<bins>: number of bins for histograms"
+	print ("ERROR, usage: %s <file> <directory> <bins>" % sys.argv[0])
+	print ("<file>: failed-job file")
+	print ("<directory>: output directory")
+	print ("<bins>: number of bins for histograms")
 	sys.exit(0)
 
