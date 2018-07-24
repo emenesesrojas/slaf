@@ -64,11 +64,12 @@ def failureJob(fileName, dirName, outputFileName):
 					print ("ERROR with date ", dateAndTime)
 					sys.exit(0)
 
-			print "\r%d failures analyzed" % (count),
+			print ("\r%d failures analyzed" % (count),)
 			sys.stdout.flush()
 
 			# looking for the corresponding log file in the MOAB directory
-			jobFileName = dirName + "/events." + currentDate.strftime(dayFormat) 
+			jobFileName = dirName + "01"#"/events." + currentDate.strftime(dayFormat) 
+			#ORIGINAL jobFileName = dirName + "/events." + currentDate.strftime(dayFormat)
 			with open(jobFileName) as log:
 				flag = False
 				next(log)
@@ -111,13 +112,14 @@ def failureJob(fileName, dirName, outputFileName):
 						else:
 							execution_time = (completion_time - start_time)/60.0			# transforming execution time into minutes
 						if(execution_time > EXECUTION_LIMIT):
-							print "--->JOB WITH LONG EXECUTION TIME"
-							print "File: %s, job id: %s, execution time: %f minutes" % (jobFileName, objid, execution_time)
+							print ("--->JOB WITH LONG EXECUTION TIME")
+							print ("File: %s, job id: %s, execution time: %f minutes" % (jobFileName, objid, execution_time))
 							execution_time = wallclock_req
 						parts = jobFileName.split('.')
 						flag = True
 						if not jobid in jobs:
-							jobs[objid] = Job(parts[1], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
+						    #ORIGINAL jobs[objid] = Job(parts[1], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
+							jobs[objid] = Job(parts[0], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
 						break	
 
 				if not flag:
@@ -134,7 +136,7 @@ def failureJob(fileName, dirName, outputFileName):
 		outputFile.close()
 	
 		# printing summary
-		print "\nSUMMARY:\n\t%d failures analyzed \n\t%d job ids missing \n\t%.2f %% correlation reliability\n\t%.3f seconds execution time" % (count, missing, (count-missing)/float(count)*100.0, finishTime-startTime)
+		print ("\nSUMMARY:\n\t%d failures analyzed \n\t%d job ids missing \n\t%.2f %% correlation reliability\n\t%.3f seconds execution time" % (count, missing, (count-missing)/float(count)*100.0, finishTime-startTime))
 	
 	return
 
@@ -145,9 +147,9 @@ if len(sys.argv) >= 4:
 	outputFileName = sys.argv[3]
 	failureJob(fileName, dirName, outputFileName)
 else:
-	print "ERROR, usage: %s <file> <directory> <output file>" % sys.argv[0]
-	print "<file>: failure log file"
-	print "<directory>: MOAB logs directory"
-	print "<output file>: file name to output failed-job information"
+	print ("ERROR, usage: %s <file> <directory> <output file>" % sys.argv[0])
+	print ("<file>: failure log file")
+	print ("<directory>: MOAB logs directory")
+	print ("<output file>: file name to output failed-job information")
 	sys.exit(0)
 

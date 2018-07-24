@@ -9,7 +9,6 @@ import sys
 import re
 import datetime
 import time
-import os
 
 ### FUNCTIONS ###
 
@@ -50,7 +49,8 @@ def correlateFailureJob(fileName, dirName, reportName):
 			sys.stdout.flush()
 
 			# looking for the corresponding log file in the MOAB directory
-			jobFileName = dirName + "/events." + currentDate.strftime(dayFormat) 
+			#jobFileName = dirName + "/events." + currentDate.strftime(dayFormat) 
+			jobFileName = dirName + "01" #+ "/events." + currentDate.strftime(dayFormat)
 			with open(jobFileName) as log:
 				flag = False
 				next(log)
