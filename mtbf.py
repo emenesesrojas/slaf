@@ -16,16 +16,26 @@ import numpy as np
 
 ### FUNCTIONS ###
 
-def readFile(fileName, delta, column=0, value=0):
+def readFile(fileName,outputFailureFile, delta, column=0, value=0):
 	""" Reads a file and returns a list with the MTBF """
 	mtbf = []
 	formatAlt = '%m/%d/%y %H:%M %p'
 	date_format = '%Y-%m-%d %H:%M:%S'
 	previousDate = 0
 	count = 0
+	
+	with open(fileName) as f:
+		lines = len(f.readlines())
+	
+	file = open(outputFailureFile, 'w')
+	
 	with open(fileName) as f:
 		for line in f:
 			count += 1
+			
+			print ("Progress: %d"% (count/lines*100),end="\r") 
+			sys.stdout.flush()	
+			
 			if count == 1:
 				continue
 			fields = line.split('|')
@@ -52,33 +62,38 @@ def readFile(fileName, delta, column=0, value=0):
 			if diff_seconds < delta:
 				continue
 			mtbf.append(diff_seconds)
-			previousDate = currentDate	
+			file.write(line)
+			previousDate = currentDate
+		file.close()			
 	return mtbf
 
 ### MAIN CODE ###
 #DEBUG print 'Number of arguments:', len(sys.argv), 'arguments.'
 #DEBUG print 'Argument List:', str(sys.argv)
 
-if len(sys.argv) == 5:
+if len(sys.argv) == 6:
 	fileName = sys.argv[1]
 	outputFile = sys.argv[2]
 	delta = int(sys.argv[3])
 	bins = int(sys.argv[4])
-	mtbf = readFile(fileName,delta)
-elif len(sys.argv) == 7:
+	outputFailureFile = sys.argv[5]
+	mtbf = readFile(fileName,outputFailureFile, delta)
+elif len(sys.argv) == 8:
 	fileName = sys.argv[1]
 	outputFile = sys.argv[2]
 	delta = int(sys.argv[3])
 	bins = int(sys.argv[4])
-	column = int(sys.argv[5]) - 1
-	value = sys.argv[6]
-	mtbf = readFile(fileName,delta,column,value)
+	outputFailureFile = sys.argv[5]
+	column = int(sys.argv[6]) - 1
+	value = sys.argv[7]
+	mtbf = readFile(fileName,outputFailureFile,delta,column,value)
 else:
-	print("ERROR, usage: %s <input file> <output file> <delta> <bins> [<column> <value>]" % sys.argv[0])
+	print("ERROR, usage: %s <input file> <output file> <delta> <bins> <output file> [<column> <value>] " % sys.argv[0])
 	print("<input file>: failure log file")
 	print("<output file>: PDF file name for figure")
 	print("<delta>: minimum difference in seconds between failures")
 	print("<bins>: number of bins in the histogram")
+	print("<output file>: output text file for filtered failures")
 	print("<column>: field in the failure log file to filter records")
 	print("<value>: value of the field for filtering")
 	sys.exit(0)
@@ -92,5 +107,6 @@ plt.title('Mean Time Between Failures (MTBF)')
 plt.hist(mtbf, bins)
 plt.xlabel('Seconds')
 plt.ylabel('Count')
+plt.axis([0,75000, 0,5000])
 plt.savefig(outputFile)
 #plt.show()
