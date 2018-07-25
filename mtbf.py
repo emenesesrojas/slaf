@@ -2,6 +2,7 @@
 
 # Costa Rica High Technology Center (CeNAT)
 # Advanced Computing Laboratory
+# Elvis Rojas, MSc (erojas@una.cr)
 # Esteban Meneses, PhD (esteban.meneses@acm.org)
 # Extracts mean-time-between-failures (MTBF) from the failure log, optionally filtered by the value of a field
 
@@ -18,8 +19,8 @@ import numpy as np
 def readFile(fileName, delta, column=0, value=0):
 	""" Reads a file and returns a list with the MTBF """
 	mtbf = []
-	format = '%m/%d/%y %H:%M %p'
-	formatAlt = '%Y-%m-%d %H:%M:%S'
+	formatAlt = '%m/%d/%y %H:%M %p'
+	date_format = '%Y-%m-%d %H:%M:%S'
 	previousDate = 0
 	count = 0
 	with open(fileName) as f:
@@ -32,7 +33,7 @@ def readFile(fileName, delta, column=0, value=0):
 			if column != 0 and fields[column] != value:
 				continue
 			try:
-				currentDate = datetime.datetime.strptime(dateAndTime, format)
+				currentDate = datetime.datetime.strptime(dateAndTime, date_format)
 			except ValueError:
 				try:
 					currentDate = datetime.datetime.strptime(dateAndTime, formatAlt)
@@ -43,9 +44,14 @@ def readFile(fileName, delta, column=0, value=0):
 				previousDate = currentDate
 				continue
 			diff = currentDate - previousDate
-			if diff.seconds < delta:
+			diff_seconds = diff.days*24*60*60 + diff.seconds
+			if diff_seconds < 0:
+				print("ERROR: negative event time difference in line %d" % count)
+				print(diff_seconds)
+				exit(1)
+			if diff_seconds < delta:
 				continue
-			mtbf.append(diff.seconds)
+			mtbf.append(diff_seconds)
 			previousDate = currentDate	
 	return mtbf
 
@@ -76,6 +82,10 @@ else:
 	print("<column>: field in the failure log file to filter records")
 	print("<value>: value of the field for filtering")
 	sys.exit(0)
+
+# validation, the mtbf values should add up to 1 year or less
+if sum(mtbf) > 31536000:
+	print("WARNING: MTBF values add up to %d seconds, more than one year (31536000 seconds)" % sum(mtbf))
 
 # plotting MTBF
 plt.title('Mean Time Between Failures (MTBF)')
