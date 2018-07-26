@@ -33,7 +33,7 @@ def readFile(fileName,outputFailureFile, delta, column=0, value=0):
 		for line in f:
 			count += 1
 			
-			print ("Progress: %d"% (count/lines*100),end="\r") 
+			print ("Progress: %d%%" % (count/lines*100),end="\r") 
 			sys.stdout.flush()	
 			
 			if count == 1:
@@ -107,6 +107,6 @@ plt.title('Mean Time Between Failures (MTBF)')
 plt.hist(mtbf, bins)
 plt.xlabel('Seconds')
 plt.ylabel('Count')
-plt.axis([0,75000, 0,5000])
+#plt.axis([0,75000, 0,5000])
 plt.savefig(outputFile)
 #plt.show()
