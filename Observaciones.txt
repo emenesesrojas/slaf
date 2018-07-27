@@ -1,10 +1,10 @@
-mtbf.py - funciona bien
+mtbf.py - funciona bien 
 
 stats.py - funciona bien
 
-Jobs.py - se modificó el error de fuera de index
+Jobs.py - funciona bien, se modificó el error de fuera de index
 
-correlate.py - se modificó pero no determiné si es correcto lo que hace.  Solo lo hace para un día en específico.
+correlate.py - funciona bien. Se adapto al nuevo formato MOAB y se ajusto la fecha de busqueda a dos dias antes y dos dias despues
 
 failjobs.py - se modificó pero no determiné si es correcto lo que hace.  Solo lo hace para un día en específico.
 
