@@ -28,9 +28,10 @@ def readFile(fileName,outputFailureFile, delta, column=0, value=0):
 		lines = len(f.readlines())
 	
 	file = open(outputFailureFile, 'w')
-	
 	with open(fileName) as f:
 		for line in f:
+			if count == 0:
+			    file.write(line)
 			count += 1
 			
 			print ("Progress: %d"% (count/lines*100),end="\r") 

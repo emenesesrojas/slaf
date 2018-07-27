@@ -9,6 +9,8 @@ import sys
 import re
 import datetime
 import time
+import os
+
 
 ### FUNCTIONS ###
 
@@ -19,22 +21,32 @@ def correlateFailureJob(fileName, dirName, reportName):
 	dayFormat = '%a_%b_%d_%Y'
 	count = 0
 	missing = 0
+	day = "01"
+	DaysToSearch = []
 
+	
 	# open output file
 	outputFile = open(reportName, 'w')
-
+    
 	# start timer
 	startTime = time.clock()
+	
+	#size of failure file
+	with open(fileName) as f:
+		lines = len(f.readlines())
 
 	# going through all entries in the file
 	with open(fileName) as f:
 		next(f)																			# skipping first line (header)
 		for line in f:
-
+			jobFileName = ""
+			DaysToSearch.clear()
 			# getting jobid and time for each failure
 			count = count + 1
 			fields = line.split('|')													# separating fields
 			jobid = fields[2].strip()													# reading job ib
+
+			
 			dateAndTime = fields[3].strip()												# reading time
 			try:
 				currentDate = datetime.datetime.strptime(dateAndTime, timeFormat)
@@ -44,33 +56,58 @@ def correlateFailureJob(fileName, dirName, reportName):
 				except ValueError:					
 					print("ERROR with date %s in line %s" % (dateAndTime,line))
 					sys.exit(0)
-
-			print("\r%d failures analyzed" % (count), end="")
-			sys.stdout.flush()
-
-			# looking for the corresponding log file in the MOAB directory
-			#jobFileName = dirName + "/events." + currentDate.strftime(dayFormat) 
-			jobFileName = dirName + "01" #+ "/events." + currentDate.strftime(dayFormat)
-			with open(jobFileName) as log:
-				flag = False
-				next(log)
-				for event in log:
-					columns = event.split()
-					if len(columns) < 6:
-						continue														# continue if empty event
-					eventType = columns[2]
-					if eventType != 'job':
-						continue														# continue if not job event
-					objid = columns[3]
-					event_type = columns[4]
-					nodes = columns[5]
-					if len(columns) > 3 and jobid == objid and (event_type == 'JOBEND' or event_type == 'JOBCANCEL'):
-						flag = True
-						break	
-				if not flag:
-					outputFile.write("Job ID %s not found in MOAB logs\n" % (jobid))
-					missing = missing + 1
 	
+			DaysToSearch.append(str(currentDate.month).zfill(2) +"/"+ str(currentDate.day).zfill(2))
+			
+			oneDayBefore = currentDate - datetime.timedelta(days=1)
+			DaysToSearch.append(str(oneDayBefore.month).zfill(2)+"/"+str(oneDayBefore.day).zfill(2))
+			
+			twoDayBefore = currentDate - datetime.timedelta(days=2)
+			DaysToSearch.append(str(twoDayBefore.month).zfill(2)+"/"+str(twoDayBefore.day).zfill(2))
+			
+			oneDayAfter = currentDate + datetime.timedelta(days=1)
+			DaysToSearch.append(str(oneDayAfter.month).zfill(2)+"/"+str(oneDayAfter.day).zfill(2))
+			
+			twoDayAfter = currentDate + datetime.timedelta(days=2)
+			DaysToSearch.append(str(twoDayAfter.month).zfill(2)+"/"+str(twoDayAfter.day).zfill(2))
+			
+			#looking for the corresponding log file in the MOAB directory
+			for fecha in DaysToSearch:
+				jobFileName = dirName + fecha
+				
+				#Progress of excecution
+				
+				print ("Progress: %d%%, Failure Analized: %d, Count missing ID: %d, Search on: %s "% (count/lines*100, count, missing, jobFileName),end="\r") 
+				sys.stdout.flush()
+				
+				#for determine if the patch exist and if the file contains data 
+				if os.path.isdir(dirName[:-1]) == False:
+					continue
+				if os.stat(jobFileName).st_size == 0:
+				    continue
+					
+				with open(jobFileName) as log:
+					flag = False
+					next(log)
+					for event in log:
+						columns = event.split()
+						if len(columns) < 6:
+							continue														# continue if empty event
+						eventType = columns[2]
+						if eventType != 'job':
+							continue														# continue if not job event
+						objid = columns[3]
+						event_type = columns[4]
+						nodes = columns[5]
+						if len(columns) > 3 and jobid == objid and (event_type == 'JOBEND' or event_type == 'JOBCANCEL'):
+							flag = True
+							DaysToSearch.clear()
+							break	
+							
+					if not flag:
+						outputFile.write("Job ID %s with date %s is not found in MOAB logs \n" % (jobid,DaysToSearch[0]))
+						missing = missing + 1
+									
 		# close output file
 		outputFile.close()
 
@@ -92,6 +129,6 @@ if len(sys.argv) >= 3:
 		reportName = 'log.txt'
 	correlateFailureJob(fileName, dirName, reportName)
 else:
-	print("ERROR, usage: %s <file> <directory> [<report>]\n<file>: failure log file\n<directory>: MOAB logs directory\n<report>: output file with stats about the analysis; by default it is named log.txt" % sys.argv[0])
+	print("ERROR, usage: %s <file> <directory> [<report>]\n<file>: failure log file\n<directory>: MOAB logs directory by year(/titan_data/20XX/)\n<report>: output file with stats about the analysis; by default it is named log.txt" % sys.argv[0])
 	sys.exit(0)
 
