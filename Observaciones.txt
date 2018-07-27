@@ -1,4 +1,4 @@
-mtbf.py - funciona bien 
+mtbf.py - funciona bien. 
 
 stats.py - funciona bien
 
