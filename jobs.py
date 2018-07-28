@@ -48,8 +48,6 @@ def generate_jobs(dir_name, outputFileName):
 		for d in dirs:
 			for f in glob.iglob(os.path.join(path, d, '*')):
 				pathFileName.append(f)
-				print (f)
-
 				
 	# going through all files in directory
 	for file_name in pathFileName:  #os.listdir(dir_name):
