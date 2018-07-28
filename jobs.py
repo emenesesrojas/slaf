@@ -105,7 +105,7 @@ def generate_jobs(dir_name, outputFileName):
 						print ("File: %s, job id: %s, execution time: %f minutes" % (file_name, objid, execution_time))
 						execution_time = wallclock_req
 
-					jobs[objid] = Job(file_name, nodes_req, tasks_req, wallclock_req, wait_time, execution_time)
+					jobs[objid] = Job(file_name[-8:], nodes_req, tasks_req, wallclock_req, wait_time, execution_time)
 	print ("\r                                                           ",)
 
 	# creating output file
