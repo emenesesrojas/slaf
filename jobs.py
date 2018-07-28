@@ -12,6 +12,7 @@ import re
 import datetime
 import time
 import os
+import glob
 from math import *
 
 # execution time limit on Titan
@@ -38,20 +39,28 @@ def generate_jobs(dir_name, outputFileName):
 	job_count = 0
 	cancelled_jobs = 0
 	jobs = {}
+	pathFileName = []
 
 	# start timer
 	startTime = time.clock()
+    #get all files of the year
+	for path, dirs, files in os.walk(dir_name):
+		for d in dirs:
+			for f in glob.iglob(os.path.join(path, d, '*')):
+				pathFileName.append(f)
+				print (f)
 
+				
 	# going through all files in directory
-	for file_name in os.listdir(dir_name):
+	for file_name in pathFileName:  #os.listdir(dir_name):
 		file_count = file_count + 1
 
 		print ("\rAnalyzing file %s" % file_name,
 		sys.stdout.flush())
 
-		job_file_name = dir_name + '/' + file_name
+		#job_file_name = dir_name + '/' + file_name
 
-		with open(job_file_name) as log:
+		with open(file_name) as log:
 			for event in log:
 				columns = event.split()
 				if len(columns) < 6:
@@ -68,7 +77,7 @@ def generate_jobs(dir_name, outputFileName):
 
 					# checking cancelled jobs
 					dispatch_time = int(columns[13])
-					start_time = int(columns[14]) 
+					start_time = int(columns[14])
 					if(dispatch_time == 0):
 						if(start_time == 0):
 							cancelled_jobs = cancelled_jobs + 1
@@ -95,19 +104,19 @@ def generate_jobs(dir_name, outputFileName):
 						execution_time = (completion_time - start_time)/60.0			# transforming execution time into minutes
 					if(execution_time > EXECUTION_LIMIT):
 						print ("--->JOB WITH LONG EXECUTION TIME")
-						print ("File: %s, job id: %s, execution time: %f minutes" % (job_file_name, objid, execution_time))
+						print ("File: %s, job id: %s, execution time: %f minutes" % (file_name, objid, execution_time))
 						execution_time = wallclock_req
-          
+
 					jobs[objid] = Job(file_name, nodes_req, tasks_req, wallclock_req, wait_time, execution_time)
-	print ("\r                                                           ",) 
-	
+	print ("\r                                                           ",)
+
 	# creating output file
 	outputFile = open(outputFileName, 'w')
 	outputFile.write("#jobid\tdate\tnodes\ttasks\twallclockTime\twaitTime\texecutionTime\n")
 	for key in jobs.keys():
 		outputFile.write("%s\t%s\t%d\t%d\t%d\t%f\t%f\n" % (key, jobs[key].date, jobs[key].nodes, jobs[key].tasks, jobs[key].wallclockTime, jobs[key].waitTime,jobs[key].execution_time))
 	outputFile.close()
-	
+
 	# stop timer
 	finishTime = time.clock()
 
@@ -118,7 +127,7 @@ def generate_jobs(dir_name, outputFileName):
 	%d cancelled jobs \n \
 	%.3f seconds execution time" \
 	% (file_count, job_count, cancelled_jobs, finishTime-startTime))
-	
+
 	return
 
 ### MAIN CODE ###
