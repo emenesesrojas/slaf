@@ -40,15 +40,20 @@ def failureJob(fileName, dirName, outputFileName):
 	missing = 0
 	jobs = {}
 	cancelled_jobs = 0
+	DaysToSearch = []
 
 	# start timer
 	startTime = time.clock()
+	
+	#size of failure file
+	with open(fileName) as f:
+		lines = len(f.readlines())
+	f.close()
 
 	# going through all entries in the file
 	with open(fileName) as f:
 		next(f)																			# skipping first line (header)
 		for line in f:
-
 			# getting jobid and time for each failure
 			count = count + 1
 			fields = line.split('|')													# separating fields
@@ -64,66 +69,88 @@ def failureJob(fileName, dirName, outputFileName):
 					print ("ERROR with date ", dateAndTime)
 					sys.exit(0)
 
-			print ("\r%d failures analyzed" % (count),)
-			sys.stdout.flush()
+			DaysToSearch.append(str(currentDate.month).zfill(2) +"/"+ str(currentDate.day).zfill(2))
+			
+			oneDayBefore = currentDate - datetime.timedelta(days=1)
+			DaysToSearch.append(str(oneDayBefore.month).zfill(2)+"/"+str(oneDayBefore.day).zfill(2))
+			
+			twoDayBefore = currentDate - datetime.timedelta(days=2)
+			DaysToSearch.append(str(twoDayBefore.month).zfill(2)+"/"+str(twoDayBefore.day).zfill(2))
+			
+			oneDayAfter = currentDate + datetime.timedelta(days=1)
+			DaysToSearch.append(str(oneDayAfter.month).zfill(2)+"/"+str(oneDayAfter.day).zfill(2))
+			
+			twoDayAfter = currentDate + datetime.timedelta(days=2)
+			DaysToSearch.append(str(twoDayAfter.month).zfill(2)+"/"+str(twoDayAfter.day).zfill(2))
 
 			# looking for the corresponding log file in the MOAB directory
-			jobFileName = dirName + "01"#"/events." + currentDate.strftime(dayFormat) 
-			#ORIGINAL jobFileName = dirName + "/events." + currentDate.strftime(dayFormat)
-			with open(jobFileName) as log:
-				flag = False
-				next(log)
-				for event in log:
-					columns = event.split()
-					if len(columns) < 6:
-						continue														# continue if empty event
-					eventType = columns[2]
-					if eventType != 'job':
-						continue														# continue if not job event
-					objid = columns[3]
-					objEvent = columns[4]
-					if len(columns) > 3 and jobid == objid and (objEvent == 'JOBEND' or objEvent == 'JOBCANCEL'):
+			for fecha in DaysToSearch:	
+				jobFileName = dirName + fecha
+				
+				#for determine if the patch exist and if the file contains data 
+				#if os.path.isdir(dirName[:-1]) == False:
+				#	continue
+				if os.stat(jobFileName).st_size == 0:
+					continue
+				
+				#Progress of excecution
+				print ("Progress: %d%%, Failure Analized: %d, Count missing ID: %d, Search on: %s "% (count/lines*100, count, missing, jobFileName),end="\r") 
+				sys.stdout.flush()
 
-						# checking cancelled jobs
-						dispatch_time = int(columns[13])
-						start_time = int(columns[14]) 
-						if(dispatch_time == 0):
+				with open(jobFileName) as log:
+					flag = False
+					next(log)
+					for event in log:
+						columns = event.split()
+						if len(columns) < 6:
+							continue														# continue if empty event
+						eventType = columns[2]
+						if eventType != 'job':
+							continue														# continue if not job event
+						objid = columns[3]
+						objEvent = columns[4]
+						if len(columns) > 3 and jobid == objid and (objEvent == 'JOBEND' or objEvent == 'JOBCANCEL'):
+
+							# checking cancelled jobs
+							dispatch_time = int(columns[13])
+							start_time = int(columns[14]) 
+							if(dispatch_time == 0):
+								if(start_time == 0):
+									cancelled_jobs = cancelled_jobs + 1
+									continue
+								else:
+									dispatch_time = start_time
+
+							# checking number of requested nodes
+							nodes_req = int(columns[5])
+							tasks_req = int(columns[6])
+							tasks_per_node = int(columns[25])
+							if(nodes_req == 0):
+								if(tasks_per_node == -1 or tasks_per_node == 0):
+									nodes_req = int(ceil(tasks_req/16.0))
+								else:
+									nodes_req = int(ceil(tasks_req/float(tasks_per_node)))
+							wallclock_req = int(columns[9])/60.0							# transforming wallclock time into minutes
+							submit_time = int(columns[12])
+							wait_time = (dispatch_time - submit_time)/60.0					# transforming wait time into minutes
+							completion_time = int(columns[15])
 							if(start_time == 0):
-								cancelled_jobs = cancelled_jobs + 1
-								continue
+								execution_time = (completion_time - dispatch_time)/60.0
 							else:
-								dispatch_time = start_time
+								execution_time = (completion_time - start_time)/60.0			# transforming execution time into minutes
+							if(execution_time > EXECUTION_LIMIT):
+								print ("--->JOB WITH LONG EXECUTION TIME")
+								print ("File: %s, job id: %s, execution time: %f minutes" % (jobFileName[2:], objid, execution_time))
+								execution_time = wallclock_req
+							flag = True
+							DaysToSearch.clear()
+							if not jobid in jobs:
+								#ORIGINAL jobs[objid] = Job(parts[1], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
+								jobs[objid] = Job(jobFileName[-5:], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
+							break	
 
-						# checking number of requested nodes
-						nodes_req = int(columns[5])
-						tasks_req = int(columns[6])
-						tasks_per_node = int(columns[25])
-						if(nodes_req == 0):
-							if(tasks_per_node == -1 or tasks_per_node == 0):
-								nodes_req = int(ceil(tasks_req/16.0))
-							else:
-								nodes_req = int(ceil(tasks_req/float(tasks_per_node)))
-						wallclock_req = int(columns[9])/60.0							# transforming wallclock time into minutes
-						submit_time = int(columns[12])
-						wait_time = (dispatch_time - submit_time)/60.0					# transforming wait time into minutes
-						completion_time = int(columns[15])
-						if(start_time == 0):
-							execution_time = (completion_time - dispatch_time)/60.0
-						else:
-							execution_time = (completion_time - start_time)/60.0			# transforming execution time into minutes
-						if(execution_time > EXECUTION_LIMIT):
-							print ("--->JOB WITH LONG EXECUTION TIME")
-							print ("File: %s, job id: %s, execution time: %f minutes" % (jobFileName, objid, execution_time))
-							execution_time = wallclock_req
-						parts = jobFileName.split('.')
-						flag = True
-						if not jobid in jobs:
-						    #ORIGINAL jobs[objid] = Job(parts[1], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
-							jobs[objid] = Job(parts[0], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
-						break	
-
-				if not flag:
-					missing = missing + 1
+					if not flag:
+						missing = missing + 1
 	
 		# stop timer
 		finishTime = time.clock()

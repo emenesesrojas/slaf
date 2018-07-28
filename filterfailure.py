@@ -94,7 +94,8 @@ def printEntry(jobid, category, reason, nodes, startTime, endTime):
   out.append(str(endTime))
   out.append(" ".join(jobs[jobid][category][reason].nodes))
   print ("\t".join(out))
-
+  file.write("\n")
+  file.write(str(out))
 
 def checkRedundant(key1, key2, table):
   if key1 in table and key2 in table:
@@ -153,12 +154,17 @@ def output(jobs):
         if checkRedundant(key1, key2, jobs[jobid]['hardware']):
 	        jobs[jobid]['hardware'][key2].toPrint = False
     
-  outputAll(jobs)
-
+	
+    outputAll(jobs)
+	
 if len(sys.argv) > 1:
   fileName = sys.argv[1]
+  file = open("filterfailure_out.txt", 'w')
+  file.write("[Job ID  |  Category  |  Reason   |   StartTime   |   EndTime   |    Nodes]")
   jobs = failureFilter(fileName)
   outputAll(jobs)
+  file.close()
+  print("Output file: filterfailure_out.txt")
 else:	
   print ("ERROR, usage: %s <file>" % sys.argv[0])
   print ("<file>: output from failurejob.py")

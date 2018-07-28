@@ -21,7 +21,7 @@ def correlateFailureJob(fileName, dirName, reportName):
 	dayFormat = '%a_%b_%d_%Y'
 	count = 0
 	missing = 0
-	day = "01"
+	
 	DaysToSearch = []
 
 	
