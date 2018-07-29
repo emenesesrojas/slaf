@@ -88,8 +88,8 @@ def failureJob(fileName, dirName, outputFileName):
 				jobFileName = dirName + fecha
 				
 				#for determine if the patch exist and if the file contains data 
-				#if os.path.isdir(dirName[:-1]) == False:
-				#	continue
+				if os.path.isdir(dirName[:-1]) == False:
+					continue
 				if os.stat(jobFileName).st_size == 0:
 					continue
 				
