@@ -9,6 +9,8 @@ import sys
 import re
 import datetime
 import time
+import matplotlib as mtl
+mtl.use('Agg')
 import matplotlib.pyplot as plt
 from numpy import *
 
@@ -36,7 +38,7 @@ def plot_histogram(data, bins, titleX, titleY, dirName, file_name):
 	outputFile = dirName + '/' + file_name + '.pdf'
 	output_filename_txt = dirName + '/' + file_name + '.txt'
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	plt.yscale('log')
@@ -55,7 +57,7 @@ def plot_cum_histogram(data, bins, titleX, titleY, dirName, file_name):
 	outputFile = dirName + '/' + file_name + '.pdf'
 	output_filename_txt = dirName + '/' + file_name + '.txt'
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	hist_n, hist_bins, hist_patches = plt.hist(data, bins, normed=1, cumulative=True)
@@ -75,7 +77,7 @@ def plot_weight_histogram(data, bins, weights, titleX, titleY, dirName, file_nam
 	outputFile = dirName + '/' + file_name + '.pdf'
 	output_filename_txt = dirName + '/' + file_name + '.txt'
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	hist_n, hist_bins, hist_patches = plt.hist(data, bins, weights=weights, normed=1, cumulative=True)
@@ -94,9 +96,9 @@ def plotScatter(dataX, dataY, titleX, titleY, dirName, file_name):
 	""" Saves into outputFile a scatter plot with data """
 	outputFile = dirName + '/' + file_name + '.pdf'
 	plt.clf()
-	plt.rc('font', family='serif')
- 	plt.rc('font', serif='Times New Roman')
- 	plt.rc('font', size=24)
+	plt.rc('font', family='DejaVu Sans')
+	plt.rc('font', serif='Times New Roman')
+	plt.rc('font', size=24)
 	plt.yscale('log')
 	plt.ylim([1,max(dataY)])
 	plt.xlim([0,max(dataX)])
@@ -127,6 +129,10 @@ def distributions(fileName, dirName, bins):
 	# start timer
 	startTime = time.clock()
 
+	with open(fileName) as f:
+		lines = len(f.readlines())
+	lines = lines - 1
+	
 	# going through all entries in the file
 	with open(fileName) as f:
 		next(f)																			# skipping first line (header)
@@ -153,27 +159,45 @@ def distributions(fileName, dirName, bins):
 			execution.append(execution_time)
 			sus.append(req_nodes*execution_time/60.0/1000.0)
 			req_sus.append(req_nodes*wallclock_time/60.0/1000.0)
+			
+			print ("Progressing failed job file: %d%%" % (count/lines*100),end="\r") 
+			sys.stdout.flush()
 
 	#		if(req_nodes < 313 and execution_time > 750):
 	#			print "JOB EXECUTION TIME OVER LIMIT: %s\n" % jobid
 	
 	# creating plots
 	if(MAKE_PLOTS):
+		print ("\nGenerating graphics 1 of 15")
 		plot_histogram(nodes, bins, 'Requested Nodes', 'Number of Jobs', dirName, 'workload_nodes')	
+		print ("\nGenerating graphics 2 of 15")
 		plot_cum_histogram(nodes, bins, 'Requested Nodes', 'Cumulative Fraction of Total Number of Jobs', dirName, 'workload_cum_nodes')	
+		print ("\nGenerating graphics 3 of 15")
 		plot_weight_histogram(nodes, bins, sus, 'Requested Nodes', 'Cumulative Fraction of Total Node Service Units', dirName, 'workload_cum_sus_nodes')	
+		print ("\nGenerating graphics 4 of 15")
 		plot_histogram(wallclock, bins, 'Requested Wallclock Time (minutes)', 'Number of Jobs', dirName, 'workload_wallclock')	
+		print ("\nGenerating graphics 5 of 15")
 		plot_histogram(execution, bins, 'Execution Time (minutes)', 'Number of Jobs', dirName, 'workload_execution')	
+		print ("\nGenerating graphics 6 of 15")
 		plot_histogram(wait, bins, 'Wait Time (minutes)', 'Number of Jobs', dirName, 'workload_wait_time')	
+		print ("\nGenerating graphics 7 of 15")
 		plot_histogram(sus, bins, 'Node Service Units (thousands)', 'Number of Jobs', dirName, 'workload_sus')	
+		print ("\nGenerating graphics 8 of 15")
 		plotScatter(nodes, wait, 'Requested Nodes', 'Wait Time (minutes)', dirName, 'workload_nodes_wait_time')
+		print ("\nGenerating graphics 9 of 15")
 		plotScatter(wallclock, wait, 'Requested Wallclock Time (minutes)', 'Wait Time (minutes)', dirName, 'workload_wallclock_wait_time')
+		print ("\nGenerating graphics 10 of 15")
 		plotScatter(execution, wait, 'Execution Time (minutes)', 'Wait Time (minutes)', dirName, 'workload_execution_wait_time')
+		print ("\nGenerating graphics 11 of 15")
 		plotScatter(req_sus, wait, 'Requested Node Service Units (thousands)', 'Wait Time (minutes)', dirName, 'workload_req_sus_wait_time')
+		print ("\nGenerating graphics 12 of 15")
 		plotScatter(nodes, wallclock, 'Requested Nodes', 'Requested Wallclock Time (minutes)', dirName, 'workload_nodes_wallclock_time')
+		print ("\nGenerating graphics 13 of 15")
 		plotScatter(nodes, execution, 'Requested Nodes', 'Execution Time (minutes)', dirName, 'workload_nodes_execution_time')
 		titan_bins = [1,126,313,3750,11250,18688]
+		print ("\nGenerating graphics 14 of 15")
 		plot_histogram(nodes, titan_bins, 'Requested Nodes', 'Number of Jobs', dirName, 'workload_nodes_titan')	
+		print ("\nGenerating graphics 15 of 15")
 		plot_weight_histogram(nodes, titan_bins, sus, 'Requested Nodes', 'Cumulative Fraction of Total Node Service Units', dirName, 'workload_cum_sus_nodes_titan')	
 
 	# computing totals

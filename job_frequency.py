@@ -11,6 +11,7 @@ import re
 import datetime
 import time
 import os
+import glob
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
@@ -88,25 +89,6 @@ def init_tables(hour_table, day_table, month_table):
 	month_table['10'] = 0
 	month_table['11'] = 0
 	month_table['12'] = 0
-	#ORIGINAL day_table['Sun'] = 0
-	#ORIGINAL day_table['Mon'] = 0
-	#ORIGINAL day_table['Tue'] = 0
-	#ORIGINAL day_table['Wed'] = 0
-	#ORIGINAL day_table['Thu'] = 0
-	#ORIGINAL day_table['Fri'] = 0
-	#ORIGINAL day_table['Sat'] = 0
-	#ORIGINAL month_table['Jan'] = 0
-	#ORIGINAL month_table['Feb'] = 0
-	#ORIGINAL month_table['Mar'] = 0
-	#ORIGINAL month_table['Apr'] = 0
-	#ORIGINAL month_table['May'] = 0
-	#ORIGINAL month_table['Jun'] = 0
-	#ORIGINAL month_table['Jul'] = 0
-	#ORIGINAL month_table['Aug'] = 0
-	#ORIGINAL month_table['Sep'] = 0
-	#ORIGINAL month_table['Oct'] = 0
-	#ORIGINAL month_table['Nov'] = 0
-	#ORIGINAL month_table['Dec'] = 0
 
 def generate(dir_name, output_dir_name):
 	""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
@@ -115,30 +97,32 @@ def generate(dir_name, output_dir_name):
 	hour_table = {}
 	day_table = {}
 	month_table = {}
-
+	pathFileName = []
+	
 	init_tables(hour_table,day_table,month_table)
 
 	# start timer
 	startTime = time.clock()
-
+	
+	#get all files of the year
+	for path, dirs, files in os.walk(dir_name):
+		for d in dirs:
+			for f in glob.iglob(os.path.join(path, d, '*')):
+				pathFileName.append(f)
+	
+	sizeList = len(pathFileName)
 	# going through all files in directory
-	for file_name in os.listdir(dir_name):
+	for file_name in pathFileName:
 		file_count = file_count + 1
 
-		print ("\rAnalyzing file %s" % file_name,)
-		sys.stdout.flush()
-
 		# getting day and month
+		day = file_name[-2:]
+		month = file_name[-5:-3]
 		
-		#ORIGINAL parts = file_name.split('.')
-		#ORIGINAL day = parts[1].split('_')[0]
-		#ORIGINAL month = parts[1].split('_')[1]
-		
-		day = file_name
-		month = "01"
-
-		job_file_name = dir_name + '/' + file_name
-		with open(job_file_name) as log:
+		print ("Progress: %d%%, Month Analized: %s"% (file_count/sizeList*100, month),end="\r") 
+		sys.stdout.flush()
+				
+		with open(file_name) as log:
 			for event in log:
 				columns = event.split()
 				if len(columns) < 6:
@@ -162,10 +146,12 @@ def generate(dir_name, output_dir_name):
 	print ("\r                                                           ",) 
 	
 	# creating output file
+	print ("Generating graphics 1 of 3") 
+		
 	output_file_name = output_dir_name + '/' + 'workload_hour_distribution.pdf'
 	data = [hour_table['00'],hour_table['01'],hour_table['02'],hour_table['03'],hour_table['04'],hour_table['05'],hour_table['06'],hour_table['07'],hour_table['08'],hour_table['09'],hour_table['10'],hour_table['11'],hour_table['12'],hour_table['13'],hour_table['14'],hour_table['15'],hour_table['16'],hour_table['17'],hour_table['18'],hour_table['19'],hour_table['20'],hour_table['21'],hour_table['22'],hour_table['23'],]
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	index = np.arange(24)
@@ -180,11 +166,12 @@ def generate(dir_name, output_dir_name):
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(24), data)))
 	output_file_txt.close()
 	
+	print ("Generating graphics 2 of 3")
 	output_file_name = output_dir_name + '/' + 'workload_day_distribution.pdf'
 	#ORIGINAL data = [day_table['Sun'],day_table['Mon'],day_table['Tue'],day_table['Wed'],day_table['Thu'],day_table['Fri'],day_table['Sat']]
 	data = [day_table['01'],day_table['02'],day_table['03'],day_table['04'],day_table['05'],day_table['06'],day_table['07'],day_table['08'],day_table['09'],day_table['10'],day_table['11'],day_table['12'],day_table['13'],day_table['14'],day_table['15'],day_table['16'],day_table['17'],day_table['18'],day_table['19'],day_table['20'],day_table['21'],day_table['22'],day_table['23'],day_table['24'],day_table['25'],day_table['26'],day_table['27'],day_table['28'],day_table['29'],day_table['30'],day_table['31']]
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=7)
 	#ORIGINAL plt.bar(range(7), data)
@@ -200,11 +187,12 @@ def generate(dir_name, output_dir_name):
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(7), data)))
 	output_file_txt.close()
 	
+	print ("Generating graphics 3 of 3")
 	output_file_name = output_dir_name + '/' + 'workload_month_distribution.pdf'
 	#ORIGINAL data = [month_table['Jan'],month_table['Feb'],month_table['Mar'],month_table['Apr'],month_table['May'],month_table['Jun'],month_table['Jul'],month_table['Aug'],month_table['Sep'],month_table['Oct'],month_table['Nov'],month_table['Dec']]
 	data = [month_table['01'],month_table['02'],month_table['03'],month_table['04'],month_table['05'],month_table['06'],month_table['07'],month_table['08'],month_table['09'],month_table['10'],month_table['11'],month_table['12']]
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	plt.bar(range(12), data)
@@ -237,7 +225,7 @@ if len(sys.argv) >= 3:
 	generate(dir_name, output_dir_name)
 else:
 	print ("ERROR, usage: %s <directory> <output directory>" % sys.argv[0])
-	print ("<directory>: MOAB logs directory of a month[01..12]")
+	print ("<directory>: MOAB logs directory of a year")
 	print ("<output directory>: directory to output frequency distributions")
 	sys.exit(0)
 

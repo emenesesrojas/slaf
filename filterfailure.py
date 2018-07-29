@@ -159,7 +159,7 @@ def output(jobs):
 	
 if len(sys.argv) > 1:
   fileName = sys.argv[1]
-  file = open("filterfailure_out.txt", 'w')
+  file = open("filter_failure_2015_filterfailure.txt", 'w')
   file.write("[Job ID  |  Category  |  Reason   |   StartTime   |   EndTime   |    Nodes]")
   jobs = failureFilter(fileName)
   outputAll(jobs)

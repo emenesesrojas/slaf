@@ -50,14 +50,11 @@ def generate_jobs(dir_name, outputFileName):
 				pathFileName.append(f)
 				
 	# going through all files in directory
-	for file_name in pathFileName:  #os.listdir(dir_name):
+	for file_name in pathFileName:  
 		file_count = file_count + 1
 
 		print ("\rAnalyzing file %s" % file_name,
 		sys.stdout.flush())
-
-		#job_file_name = dir_name + '/' + file_name
-
 		with open(file_name) as log:
 			for event in log:
 				columns = event.split()

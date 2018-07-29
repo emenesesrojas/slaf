@@ -1,20 +1,31 @@
-mtbf.py - funciona bien. 
+mtbf.py  
 
-stats.py - funciona bien
+stats.py
 
-Jobs.py - funciona bien, se modificó el error de fuera de index
+jobs.py 
+python3 jobs.py ~/titan_data/2015/ output_2015_jobs.txt
 
-correlate.py - funciona bien. Se adapto al nuevo formato MOAB y se ajusto la fecha de busqueda a dos dias antes y dos dias despues
+correlate.py - 
+python3 correlate.py output_files/outputfiltered_2015_mtbf.txt ~/titan_data/2015/
 
-failjobs.py - se modificó pero no determiné si es correcto lo que hace.  Solo lo hace para un día en específico.
 
-job_frecuency.py - se modificó, pero solo lo hace por un mes.
+failjobs.py 
+python3 failjobs.py output_files/outputfiltered_2015_mtbf.txt ~/titan_data/2015/ output_2015_failjobs.txt
 
-----------------------
-generate.py - no tengo el failed-job.txt
 
-generate_impact.py - no tengo el failed-job.txt 
+job_frecuency.py 
+python3 job_frequency.py ~/titan_data/2015 ~/slaf
 
-extract.py - no se cuál es el "file with filtered list of failures"
+generate.py
+python3 generate.py output_files/failed_job_2015_failjobs.txt ~/slaf 50 
 
-filterfailure.py - Corregido el problema de identación, falta "output from failurejob.py"
+generate_impact.py 
+python3 generate_impact.py output_files/failed_job_2015_failjobs.txt output_files 50
+
+extract.py 
+python3 extract.py output_files/outputfiltered_2015_mtbf.txt output_files/job_information_2015_jobs.txt  output_files/output_2015_extract.txt
+
+##################################################################################
+filterfailure.py -  Preguntar por los resultados de salida, el formato es diferente 
+python3 filterfailure.py data/failures/titan_failures_2015.txt
+
