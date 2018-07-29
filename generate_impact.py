@@ -9,6 +9,8 @@ import sys
 import re
 import datetime
 import time
+import matplotlib as mtl
+mtl.use('Agg')
 import matplotlib.pyplot as plt
 from numpy import *
 
@@ -22,7 +24,7 @@ def plot_histogram(data, bins, titleX, titleY, dirName, file_name):
 	outputFile = dirName + '/' + file_name + '.pdf'
 	output_filename_txt = dirName + '/' + file_name + '.txt'
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	plt.yscale('log')
@@ -43,7 +45,7 @@ def plot_cum_histogram(data, bins, titleX, titleY, dirName, file_name):
 	outputFile = dirName + '/' + file_name + '.pdf'
 	output_filename_txt = dirName + '/' + file_name + '.txt'
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	hist_n, hist_bins, hist_patches = plt.hist(data, bins, normed=1, cumulative=True)
@@ -64,7 +66,7 @@ def plot_weight_histogram(data, bins, weights, titleX, titleY, dirName, file_nam
 	outputFile = dirName + '/' + file_name + '.pdf'
 	output_filename_txt = dirName + '/' + file_name + '.txt'
 	plt.clf()
-	plt.rc('font', family='serif')
+	plt.rc('font', family='DejaVu Sans')
 	plt.rc('font', serif='Times New Roman')
 	plt.rc('font', size=24)
 	hist_n, hist_bins, hist_patches = plt.hist(data, bins, weights=weights, normed=1, cumulative=True, stacked=True, color=['Red','Blue'],label=['software','hardware'])
@@ -85,9 +87,9 @@ def plotScatter(dataX, dataY, titleX, titleY, dirName, file_name):
 	""" Saves into outputFile a scatter plot with data """
 	outputFile = dirName + '/' + file_name + '.pdf'
 	plt.clf()
-	plt.rc('font', family='serif')
- 	plt.rc('font', serif='Times New Roman')
- 	plt.rc('font', size=24)
+	plt.rc('font', family='DejaVu Sans')
+	plt.rc('font', serif='Times New Roman')
+	plt.rc('font', size=24)
 	plt.yscale('log')
 	plt.ylim([1,max(dataY)])
 	plt.xlim([0,max(dataX)])
@@ -122,6 +124,10 @@ def distributions(fileName, dirName, bins):
 
 	# start timer
 	startTime = time.clock()
+	
+	with open(fileName) as f:
+		lines = len(f.readlines())
+	lines = lines - 1
 
 	# going through all entries in the file
 	with open(fileName) as f:
@@ -156,16 +162,25 @@ def distributions(fileName, dirName, bins):
 				execution_hw.append(execution_time)
 				sus_hw.append(req_nodes*execution_time/60.0/1000.0)
 				req_sus_hw.append(req_nodes*wallclock_time/60.0/1000.0)
+			
+			print ("Progressing failed job file: %d%%" % (count/lines*100),end="\r") 
+			sys.stdout.flush()
 
 	# creating plots
 	if(MAKE_PLOTS):
+		print ("\nGenerating graphics 1 of 6") 
 		plot_histogram([nodes_sw,nodes_hw], bins, 'Requested Nodes', 'Number of Jobs', dirName, 'impact_nodes')	
 #		plot_cum_histogram(nodes, bins, 'Requested Nodes', 'Cumulative Fraction of Total Number of Jobs', dirName, 'impact_cum_nodes')	
+		print ("Generating graphics 2 of 6") 
 		plot_weight_histogram([nodes_sw,nodes_hw], bins, [sus_sw,sus_hw], 'Requested Nodes', 'Cumulative Fraction of Node SUs', dirName, 'impact_cum_sus_nodes')	
+		print ("Generating graphics 3 of 6")
 		plot_histogram([wallclock_sw,wallclock_hw], bins, 'Requested Wallclock Time (minutes)', 'Number of Jobs', dirName, 'impact_wallclock')	
+		print ("Generating graphics 4 of 6")
 		plot_histogram([execution_sw,execution_hw], bins, 'Execution Time (minutes)', 'Number of Jobs', dirName, 'impact_execution')
-		wait_bins = range(0,20000,20000/bins)	
+		wait_bins = range(0,20000,int(20000/bins))	
+		print ("Generating graphics 5 of 6")
 		plot_histogram([wait_sw,wait_hw], wait_bins, 'Wait Time (minutes)', 'Number of Jobs', dirName, 'impact_wait_time')	
+		print ("Generating graphics 6 of 6\n")
 		plot_histogram([sus_sw,sus_hw], bins, 'Node Service Units (thousands)', 'Number of Jobs', dirName, 'impact_sus')	
 
 	# computing correlation coefficient between nodes and wallclock
@@ -173,22 +188,22 @@ def distributions(fileName, dirName, bins):
 		nodes_array = array(nodes)
 		wallclock_array = array(wallclock)
 		coefficient = corrcoef(nodes_array,wallclock_array)[1,0]	
-		print "Correlation coefficient (nodes vs wallclock): %f" % coefficient
+		print ("Correlation coefficient (nodes vs wallclock): %f" % coefficient)
 
 	# computing totals
-	print "Total software impact on nodes: %d" % sum(nodes_sw)
-	print "Total hardware impact on nodes: %d" % sum(nodes_hw)
-	print "Total software impact on execution: %f" % sum(execution_sw)
-	print "Total hardware impact on execution: %f" % sum(execution_hw)
-	print "Total software impact on wait time: %f" % sum(wait_sw)
-	print "Total hardware impact on wait time: %f" % sum(wait_hw)
-	print "Total software impact on sus: %f" % sum(sus_sw)
-	print "Total hardware impact on sus: %f" % sum(sus_hw)
+	print ("Total software impact on nodes: %d" % sum(nodes_sw))
+	print ("Total hardware impact on nodes: %d" % sum(nodes_hw))
+	print ("Total software impact on execution: %f" % sum(execution_sw))
+	print ("Total hardware impact on execution: %f" % sum(execution_hw))
+	print ("Total software impact on wait time: %f" % sum(wait_sw))
+	print ("Total hardware impact on wait time: %f" % sum(wait_hw))
+	print ("Total software impact on sus: %f" % sum(sus_sw))
+	print ("Total hardware impact on sus: %f" % sum(sus_hw))
 
 	# stop timer
 	finishTime = time.clock()
 
-	print "%d jobs analyzed in %.3f seconds" % (count, finishTime-startTime)
+	print ("%d jobs analyzed in %.3f seconds" % (count, finishTime-startTime))
 	
 	return
 
@@ -199,9 +214,9 @@ if len(sys.argv) >= 4:
 	bins = int(sys.argv[3])
 	distributions(fileName, dirName, bins)
 else:
-	print "ERROR, usage: %s <file> <directory> <bins>" % sys.argv[0]
-	print "<file>: failed-job file"
-	print "<directory>: output directory"
-	print "<bins>: number of bins for histograms"
+	print ("ERROR, usage: %s <file> <directory> <bins>" % sys.argv[0])
+	print ("<file>: failed-job file")
+	print ("<directory>: output directory")
+	print ("<bins>: number of bins for histograms")
 	sys.exit(0)
 
