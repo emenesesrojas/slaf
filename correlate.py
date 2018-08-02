@@ -45,9 +45,10 @@ def correlateFailureJob(fileName, dirName, reportName):
 			count = count + 1
 			fields = line.split('|')													# separating fields
 			jobid = fields[2].strip()													# reading job ib
-
+			#print ("job id %s",jobid)
 			
 			dateAndTime = fields[3].strip()												# reading time
+			#print ("fecha %s",dateAndTime)
 			try:
 				currentDate = datetime.datetime.strptime(dateAndTime, timeFormat)
 			except ValueError:

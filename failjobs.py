@@ -30,7 +30,11 @@ class Job:
 		self.failure_type = failure_type
 
 ### FUNCTIONS ###
-
+def check_string(substring, string):
+    if substring in string:
+        return True
+    return False
+	
 def failureJob(fileName, dirName, outputFileName):
 	""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
 	timeFormat = '%m/%d/%y %H:%M %p'
@@ -38,6 +42,7 @@ def failureJob(fileName, dirName, outputFileName):
 	dayFormat = '%a_%b_%d_%Y'
 	count = 0
 	missing = 0
+	fail_found = 0
 	jobs = {}
 	cancelled_jobs = 0
 	DaysToSearch = []
@@ -45,14 +50,15 @@ def failureJob(fileName, dirName, outputFileName):
 	# start timer
 	startTime = time.clock()
 	
+	check_output = open("check_output", 'w')
+						
 	#size of failure file
 	with open(fileName) as f:
 		lines = len(f.readlines())
-	f.close()
-
+	
 	# going through all entries in the file
 	with open(fileName) as f:
-		next(f)																			# skipping first line (header)
+		next(f)  # skipping first line (header)
 		for line in f:
 			# getting jobid and time for each failure
 			count = count + 1
@@ -60,6 +66,7 @@ def failureJob(fileName, dirName, outputFileName):
 			jobid = fields[2].strip()													# reading job ib
 			dateAndTime = fields[3].strip()												# reading time
 			failure_type = fields[4].strip()
+			description  = fields[6].strip()
 			try:
 				currentDate = datetime.datetime.strptime(dateAndTime, timeFormat)
 			except ValueError:
@@ -82,58 +89,132 @@ def failureJob(fileName, dirName, outputFileName):
 			
 			twoDayAfter = currentDate + datetime.timedelta(days=2)
 			DaysToSearch.append(str(twoDayAfter.month).zfill(2)+"/"+str(twoDayAfter.day).zfill(2))
+			
 
 			# looking for the corresponding log file in the MOAB directory
 			for fecha in DaysToSearch:	
 				jobFileName = dirName + fecha
-				
+	
 				#for determine if the patch exist and if the file contains data 
-				if os.path.isdir(dirName[:-1]) == False:
+				if os.path.isdir(jobFileName[:-2]) == False:
 					continue
 				if os.stat(jobFileName).st_size == 0:
 					continue
 				
 				#Progress of excecution
-				print ("Progress: %d%%, Failure Analized: %d, Count missing ID: %d, Search on: %s "% (count/lines*100, count, missing, jobFileName),end="\r") 
-				sys.stdout.flush()
+				print ("Progress: %d%%, Failure Analized: %d, Failure found: %d, Count missing ID: %d, Search on: %s "% (count/lines*100, count,fail_found, missing, jobFileName),end="\r") 
 
 				with open(jobFileName) as log:
 					flag = False
-					next(log)
+						
 					for event in log:
 						columns = event.split()
-						if len(columns) < 6:
-							continue														# continue if empty event
 						eventType = columns[2]
-						if eventType != 'job':
-							continue														# continue if not job event
 						objid = columns[3]
 						objEvent = columns[4]
-						if len(columns) > 3 and jobid == objid and (objEvent == 'JOBEND' or objEvent == 'JOBCANCEL'):
-
-							# checking cancelled jobs
-							dispatch_time = int(columns[13])
-							start_time = int(columns[14]) 
+						if len(columns) < 6 or eventType != 'job':# continue if empty event # continue if not job event
+							continue														
+						if jobid == objid and (columns[4] == 'JOBEND' or columns[4] == 'JOBCANCEL'):  
+							###########################################################				
+							columns_check = event.split()
+							columns[5] = 0  #0 because the value is diferent from 2015 value
+							
+							if "2016" in dirName:	
+								for item in columns_check:
+									
+									if  "REQUESTEDTC" in item:
+										columns[6] = item[12:]  	#REQUESTEDTC	
+										continue
+									if "UNAME" in item:							
+										columns[7] = item[6:]		#UNAME
+										continue
+									if "GNAME" in item:							
+										columns[8] = item[6:]		#GNAME
+										continue
+									if "WCLIMIT"in item:	
+										columns[9] = item[8:]		#WCLIMIT
+										continue
+									if "STATE" in item:	
+										columns[10] = item[6:]		#STATE
+										continue								
+									if "SUBMITTIME" in item:
+										columns[12] = item[11:]		#SUBMITTIME
+										continue
+									if "DISPATCHTIME" in item:	
+										columns[13] = item[13:]		#DISPATCHTIME
+										continue
+									if "STARTTIME" in item:	
+										columns[14] = item[10:]		#STARTTIME
+										continue
+									if "COMPLETETIME" in item:	
+										columns[15] = item[13:]		#COMPLETETIME
+										continue
+									if "TASKPERNODE" in item:
+										columns[25] = item[12:]		#TASKPERNODE
+										continue
+									else:
+										columns[25] = 0
+										continue
+						
+							try:
+								dispatch_time = int(columns[13])
+							except ValueError:
+								dispatch_time = 0
+								print("\nAsigned value 0 to dispatch_time")
+							
+							try:
+								start_time = int(columns[14]) 
+							except ValueError:
+								start_time = 0
+								print("\nAsigned value 0 to start_time")
+								
 							if(dispatch_time == 0):
 								if(start_time == 0):
 									cancelled_jobs = cancelled_jobs + 1
 									continue
 								else:
 									dispatch_time = start_time
-
+									
 							# checking number of requested nodes
-							nodes_req = int(columns[5])
-							tasks_req = int(columns[6])
-							tasks_per_node = int(columns[25])
+							try:
+								nodes_req = int(columns[5])
+							except ValueError:
+								nodes_req = 0
+								print("\nAsigned value 0 to nodes_req")
+								
+							try:
+								tasks_req = int(columns[6])
+							except ValueError:
+								tasks_req = 0
+								print("\nAsigned value 0 to tasks_req")
+								
+							try:
+								tasks_per_node = int(columns[25])
+							except ValueError:
+								tasks_per_node = 0
+								print("\nAsigned value 0 to tasks_per_node")
+								
 							if(nodes_req == 0):
 								if(tasks_per_node == -1 or tasks_per_node == 0):
 									nodes_req = int(ceil(tasks_req/16.0))
 								else:
 									nodes_req = int(ceil(tasks_req/float(tasks_per_node)))
 							wallclock_req = int(columns[9])/60.0							# transforming wallclock time into minutes
-							submit_time = int(columns[12])
+							
+							try:
+								submit_time = int(columns[12])
+							except ValueError:
+								submit_time = 0
+								print("\nAsigned value 0 to submit_time")
+							
 							wait_time = (dispatch_time - submit_time)/60.0					# transforming wait time into minutes
-							completion_time = int(columns[15])
+							
+							try:
+								completion_time = int(columns[15])
+							except ValueError:
+								completion_time = 0
+								print("\nAsigned value 0 to completetion_time")
+							
 							if(start_time == 0):
 								execution_time = (completion_time - dispatch_time)/60.0
 							else:
@@ -143,14 +224,16 @@ def failureJob(fileName, dirName, outputFileName):
 								print ("File: %s, job id: %s, execution time: %f minutes" % (jobFileName[2:], objid, execution_time))
 								execution_time = wallclock_req
 							flag = True
+							fail_found = fail_found + 1
 							DaysToSearch.clear()
+							#print("Encontrado")
 							if not jobid in jobs:
-								#ORIGINAL jobs[objid] = Job(parts[1], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
 								jobs[objid] = Job(jobFileName[-5:], nodes_req, tasks_req, wallclock_req, wait_time, execution_time, failure_type)
-							break	
-
+							break
 					if not flag:
 						missing = missing + 1
+	
+		check_output.close()
 	
 		# stop timer
 		finishTime = time.clock()

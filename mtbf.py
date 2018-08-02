@@ -34,7 +34,7 @@ def readFile(fileName,outputFailureFile, delta, column=0, value=0):
 			    file.write(line)
 			count += 1
 			
-			print ("Progress: %d%%" % (count/lines*100),end="\r") 
+			print ("Progress: %d%%" % (count/lines*100), end = "\r")
 			sys.stdout.flush()	
 			
 			if count == 1:

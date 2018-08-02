@@ -9,94 +9,117 @@ import time
 # ignore node heartbeat fault
 
 class FailedJob:
-  def __init__(self, failureType, epoch):
-    self.failureType = failureType
-    self.startTime = epoch
-    self.endTime = epoch
-    self.nodes = []
-    self.toPrint = True
-  def updateTime(self, epoch):
-    if self.startTime > epoch:
-      self.startTime = epoch
-    if self.endTime < epoch:
-      self.endTime = epoch
+	def __init__(self, failureType, epoch):
+		self.failureType = failureType
+		self.startTime = epoch
+		#self.ftime = epoch
+		self.endTime = epoch
+		self.nodes = []
+		self.toPrint = True
+	def updateTime(self, epoch):
+		if self.startTime > epoch:
+			self.startTime = epoch
+		if self.endTime < epoch:
+			self.endTime = epoch
 
 
 def failureFilter(fileName):
-  jobs = {}
-  formatAlt = '%Y-%m-%d %H:%M:%S'
-  with open(fileName) as f:
-    next(f)
-    for line in f:
-	    fields = line.split('|')
-	    jobid = int(fields[2].strip())
+	jobs = {}
+	formatAlt = '%Y-%m-%d %H:%M:%S'
+  
+	#size of failure file
+	with open(fileName) as f:
+		lines = len(f.readlines())
+		
+	count = 0 
+	
+	with open(fileName) as f:
+		next(f)
+		for line in f:
+			count = count + 1
+			print ("Progress: %d%%"% (count/lines*100),end="\r") 
+	
+			fields = line.split('|')
+			jobid = int(fields[2].strip())
 	  
-	    ftime = fields[3].strip()
-	    failureTime = time.strptime(ftime, formatAlt)
-	    epoch = time.mktime(failureTime)
-	    category = fields[4].strip()
-	    user = fields[5].strip()
-	    reason = fields[6].strip()
-	    text = fields[7].strip()
+			ftime = fields[3].strip() #before ftime
+			failureTime = time.strptime(ftime, formatAlt)
+			epoch = time.mktime(failureTime)
+			category = fields[4].strip()
+			user = fields[5].strip()
+			reason = fields[6].strip()
+			text = fields[7].strip()
 	  
-	    #ignore heartbeat faults
-	    if "Heartbeat Fault" in reason:
-		    continue
-	    if(reason == "GPU XID"):
-		    #get the number
-		    match = re.search(r"GPU Xid (\d+)", text)
-		    reason = match.group(0)
+			#ignore heartbeat faults
+			if "Heartbeat Fault" in reason:
+				continue
+			if(reason == "GPU XID"):
+				#get the number
+				match = re.search(r"GPU Xid (\d+)", text)
+				reason = match.group(0)
 	  
-	    node = ''
-	    #find the node related with the failure
-	    #for HT Lockup, no node information is reported
-	    match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)n(\d+)", text)
-	    if not match:
-		    match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)", text)
-		    if match:
-			    node = match.group(0)
-	    else:	
-		    node =  match.group(0)
+			node = ''
+			#find the node related with the failure
+			#for HT Lockup, no node information is reported
+			match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)n(\d+)", text)
+			if not match:
+				match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)", text)
+				if match:
+					node = match.group(0)
+			else:	
+				node =  match.group(0)
 	  
-	    entry = FailedJob(reason, epoch)
-	    #create entry
-	    if jobid not in jobs:
-		    jobs[jobid] = {}
-	    if category not in jobs[jobid]:
-		    jobs[jobid][category] = {}
-	    if reason not in jobs[jobid][category]:
-		    jobs[jobid][category][reason] = FailedJob(reason, epoch)
-	    else:
-		    jobs[jobid][category][reason].updateTime(epoch)
+			entry = FailedJob(reason, epoch)
+			#create entry
+			if jobid not in jobs:
+				jobs[jobid] = {}
+			if ftime not in jobs[jobid]:
+				jobs[jobid][ftime] = {}
+			if category not in jobs[jobid]:
+				jobs[jobid][ftime][category] = {}
+			if reason not in jobs[jobid][ftime][category]:
+				jobs[jobid][ftime][category][reason] = FailedJob(reason, epoch)
+			else:
+				jobs[jobid][ftime][category][reason].updateTime(epoch)
 
-	    if node != '':
-		    if node not in jobs[jobid][category][reason].nodes:
-		       jobs[jobid][category][reason].nodes.append(node);
+			if node != '':
+				if node not in jobs[jobid][ftime][category][reason].nodes:
+					jobs[jobid][ftime][category][reason].nodes.append(node);
 	  
-	    #ignore user related errors
-	    #if reason == "Out of Memory":
-	    #jobs[jobid]['software'][reason].toPrint = False
-	    #continue
-	    #if reason == "GPU Xid 31":
-	    #jobs[jobid]['software'][reason].toPrint = False
-	    if user == 'user':
-		    jobs[jobid][category][reason].toPrint = True
-	    else:	 
-		    jobs[jobid][category][reason].toPrint = False
-  return jobs
+			#ignore user related errors
+			#if reason == "Out of Memory":
+			#jobs[jobid]['software'][reason].toPrint = False
+			#continue
+			#if reason == "GPU Xid 31":
+			#jobs[jobid]['software'][reason].toPrint = False
+			if user == 'user':
+				jobs[jobid][ftime][category][reason].toPrint = True
+			else:	 
+				jobs[jobid][ftime][category][reason].toPrint = False
+	return jobs
 
-def printEntry(jobid, category, reason, nodes, startTime, endTime):
+def printEntry(jobid, ftime, category, reason, nodes, startTime, endTime):
   out = []
+  out.append("| ")
+  out.append("titan")
+  out.append("| ")
   out.append(str(jobid))
+  out.append(" | ")
+  out.append(str(ftime))
+  out.append(" | ")
   out.append(category)
+  out.append(" | ")
   out.append(reason)
+  out.append(" | ")
   out.append(str(startTime))
+  out.append(" | ")
   out.append(str(endTime))
-  out.append(" ".join(jobs[jobid][category][reason].nodes))
+  out.append(" | ")
+  out.append(" ".join(jobs[jobid][ftime][category][reason].nodes))
   print ("\t".join(out))
   file.write("\n")
-  file.write(str(out))
-
+  file.write(" ".join(out))
+ 
 def checkRedundant(key1, key2, table):
   if key1 in table and key2 in table:
     if table[key1].toPrint and table[key2].toPrint:
@@ -108,13 +131,15 @@ def checkRedundant(key1, key2, table):
      	
 
 def outputAll(jobs):
-  for jobid in jobs:
-    for category in jobs[jobid]:
-      for reason in jobs[jobid][category]:
-	      if jobs[jobid][category][reason].toPrint:
-	      #if reason == "GPU Xid 31" or reason == "Out of Memory":
-	      #if reason == "Out of Memory":
-	          printEntry(jobid, category, reason, jobs[jobid][category][reason].nodes, jobs[jobid][category][reason].startTime, jobs[jobid][category][reason].endTime)
+	for jobid in jobs:
+		for ftime in jobs[jobid]:	
+			for category in jobs[jobid][ftime]:
+				for reason in jobs[jobid][ftime][category]:
+					if jobs[jobid][ftime][category][reason].toPrint:
+						#if reason == "GPU Xid 31" or reason == "Out of Memory":
+						#if reason == "Out of Memory":
+						printEntry(jobid, ftime, category, reason, jobs[jobid][ftime][category][reason].nodes, jobs[jobid][ftime][category][reason].startTime, jobs[jobid][ftime][category][reason].endTime) 
+				
 
 def output(jobs):
   for jobid in jobs:
@@ -157,15 +182,16 @@ def output(jobs):
 	
     outputAll(jobs)
 	
-if len(sys.argv) > 1:
-  fileName = sys.argv[1]
-  file = open("filter_failure_2015_filterfailure.txt", 'w')
-  file.write("[Job ID  |  Category  |  Reason   |   StartTime   |   EndTime   |    Nodes]")
-  jobs = failureFilter(fileName)
-  outputAll(jobs)
-  file.close()
-  print("Output file: filterfailure_out.txt")
+if len(sys.argv) > 2:
+	fileName = sys.argv[1]
+	outputFileName =  sys.argv[2]
+	file = open(outputFileName, 'w')
+	file.write("|host name  |Job ID  |   FailTime            |   Category  |  Reason   |   StartTime   |   EndTime   |    Nodes")
+	jobs = failureFilter(fileName)
+	outputAll(jobs)
+	file.close()
 else:	
-  print ("ERROR, usage: %s <file>" % sys.argv[0])
-  print ("<file>: output from failurejob.py")
-  sys.exit(0)
+	print ("ERROR, usage: %s <file>" % sys.argv[0])
+	print ("<file>: Failure log file")
+	print ("<output file>: file name to output filtered information")
+	sys.exit(0)
