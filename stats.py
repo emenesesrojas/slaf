@@ -16,26 +16,26 @@ import numpy as np
 ### FUNCTIONS ###
 
 def readFile(fileName, column):
-	""" Reads a file and returns a hash table with a histogram of unique phrases 
+	""" Reads a file and returns a hash table with a histogram of unique phrases
 on a particular column of a tab-delimited file """
 	table = {}
 	title = ""
 	count = 0
-	
+
 	#size of failure file
 	with open(fileName) as f:
 		lines = len(f.readlines())
-	
+
 	with open(fileName) as f:
 		for line in f:
 			fields = line.split('|')
 			count += 1
-			print ("Progress: %d%%"% (count/lines*100),end="\r") 
+			print ("Progress: %d%%"% (count/lines*100),end="\r")
 			sys.stdout.flush()
 			try:
 				term = fields[column].strip()
 				if count == 1:
-					title = term
+					title = term +"_"+ fileName[-8:-4]
 					continue
 				try:
 					table[term] += 1
@@ -43,7 +43,7 @@ on a particular column of a tab-delimited file """
 					table[term] = 1
 			except IndexError:
 				print('Unrecognized format in line %d: %s' % (count,line))
-	return (table,title)	
+	return (table,title)
 
 ### MAIN CODE ###
 if len(sys.argv) < 3:
