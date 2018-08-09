@@ -46,17 +46,17 @@ def failureFilter(fileName):
 			failureTime = time.strptime(ftime, formatAlt)
 			epoch = time.mktime(failureTime)
 			category = fields[4].strip()
-			user = fields[5].strip()
-			reason = fields[6].strip()
+			reason = fields[5].strip()
+			description = fields[6].strip()
 			text = fields[7].strip()
 	  
 			#ignore heartbeat faults
-			if "Heartbeat Fault" in reason:
+			if "Heartbeat Fault" in description:
 				continue
-			if(reason == "GPU XID"):
+			if(description == "GPU XID"):
 				#get the number
 				match = re.search(r"GPU Xid (\d+)", text)
-				reason = match.group(0)
+				description = match.group(0)
 	  
 			node = ''
 			#find the node related with the failure
@@ -69,7 +69,7 @@ def failureFilter(fileName):
 			else:	
 				node =  match.group(0)
 	  
-			entry = FailedJob(reason, epoch)
+			entry = FailedJob(description, epoch)
 			#create entry
 			if jobid not in jobs:
 				jobs[jobid] = {}
@@ -77,28 +77,28 @@ def failureFilter(fileName):
 				jobs[jobid][ftime] = {}
 			if category not in jobs[jobid]:
 				jobs[jobid][ftime][category] = {}
-			if reason not in jobs[jobid][ftime][category]:
-				jobs[jobid][ftime][category][reason] = FailedJob(reason, epoch)
+			if description not in jobs[jobid][ftime][category]:
+				jobs[jobid][ftime][category][description] = FailedJob(description, epoch)
 			else:
-				jobs[jobid][ftime][category][reason].updateTime(epoch)
+				jobs[jobid][ftime][category][description].updateTime(epoch)
 
 			if node != '':
-				if node not in jobs[jobid][ftime][category][reason].nodes:
-					jobs[jobid][ftime][category][reason].nodes.append(node);
+				if node not in jobs[jobid][ftime][category][description].nodes:
+					jobs[jobid][ftime][category][description].nodes.append(node);
 	  
-			#ignore user related errors
-			#if reason == "Out of Memory":
-			#jobs[jobid]['software'][reason].toPrint = False
+			#ignore reason related errors
+			#if description == "Out of Memory":
+			#jobs[jobid]['software'][description].toPrint = False
 			#continue
-			#if reason == "GPU Xid 31":
-			#jobs[jobid]['software'][reason].toPrint = False
-			if user == 'user':
-				jobs[jobid][ftime][category][reason].toPrint = True
+			#if description == "GPU Xid 31":
+			#jobs[jobid]['software'][description].toPrint = False
+			if category == 'hardware':
+				jobs[jobid][ftime][category][description].toPrint = True
 			else:	 
-				jobs[jobid][ftime][category][reason].toPrint = False
+				jobs[jobid][ftime][category][description].toPrint = False
 	return jobs
 
-def printEntry(jobid, ftime, category, reason, nodes, startTime, endTime):
+def printEntry(jobid, ftime, category, description, nodes, startTime, endTime):
   out = []
   out.append("| ")
   out.append("titan")
@@ -109,13 +109,13 @@ def printEntry(jobid, ftime, category, reason, nodes, startTime, endTime):
   out.append(" | ")
   out.append(category)
   out.append(" | ")
-  out.append(reason)
+  out.append(description)
   out.append(" | ")
   out.append(str(startTime))
   out.append(" | ")
   out.append(str(endTime))
   out.append(" | ")
-  out.append(" ".join(jobs[jobid][ftime][category][reason].nodes))
+  out.append(" ".join(jobs[jobid][ftime][category][description].nodes))
   print ("\t".join(out))
   file.write("\n")
   file.write(" ".join(out))
@@ -134,11 +134,11 @@ def outputAll(jobs):
 	for jobid in jobs:
 		for ftime in jobs[jobid]:	
 			for category in jobs[jobid][ftime]:
-				for reason in jobs[jobid][ftime][category]:
-					if jobs[jobid][ftime][category][reason].toPrint:
-						#if reason == "GPU Xid 31" or reason == "Out of Memory":
-						#if reason == "Out of Memory":
-						printEntry(jobid, ftime, category, reason, jobs[jobid][ftime][category][reason].nodes, jobs[jobid][ftime][category][reason].startTime, jobs[jobid][ftime][category][reason].endTime) 
+				for description in jobs[jobid][ftime][category]:
+					if jobs[jobid][ftime][category][description].toPrint:
+						#if description == "GPU Xid 31" or description == "Out of Memory":
+						#if description == "Out of Memory":
+						printEntry(jobid, ftime, category, description, jobs[jobid][ftime][category][description].nodes, jobs[jobid][ftime][category][description].startTime, jobs[jobid][ftime][category][description].endTime) 
 				
 
 def output(jobs):
@@ -148,22 +148,22 @@ def output(jobs):
     if len(jobs[jobid]) == 2:
         hardfailure_nodes = []
         #both hardware and software failures reported
-        for reason in jobs[jobid]['hardware']:
-	        hardfailure_nodes.extend(jobs[jobid]['hardware'][reason].nodes)
+        for description in jobs[jobid]['hardware']:
+	        hardfailure_nodes.extend(jobs[jobid]['hardware'][description].nodes)
       
         softwareFailures = jobs[jobid]['software']
-        for reason in softwareFailures:
+        for description in softwareFailures:
 	        remove = True
-	        nl = list(jobs[jobid]['software'][reason].nodes)
+	        nl = list(jobs[jobid]['software'][description].nodes)
 	        for node in nl:
 	            if node not in hardfailure_nodes:
 	                remove = False
 	            else:
-	                if node in jobs[jobid]['software'][reason].nodes:
-	                    jobs[jobid]['software'][reason].nodes.remove(node)
+	                if node in jobs[jobid]['software'][description].nodes:
+	                    jobs[jobid]['software'][description].nodes.remove(node)
 
 	        if remove:
-	            jobs[jobid]['software'][reason].toPrint = False
+	            jobs[jobid]['software'][description].toPrint = False
 	  
     #check redundant software failures
     if 'software' in jobs[jobid] and len(jobs[jobid]['software']) > 1:
@@ -186,7 +186,7 @@ if len(sys.argv) > 2:
 	fileName = sys.argv[1]
 	outputFileName =  sys.argv[2]
 	file = open(outputFileName, 'w')
-	file.write("|host name  |Job ID  |   FailTime            |   Category  |  Reason   |   StartTime   |   EndTime   |    Nodes")
+	file.write("|host name  |Job ID  |   FailTime            |   Category  |  Description   |   StartTime   |   EndTime   |    Nodes")
 	jobs = failureFilter(fileName)
 	outputAll(jobs)
 	file.close()

@@ -20,6 +20,20 @@ import numpy as np
 import scipy.stats as ss
 from collections import defaultdict
 import collections
+from datetime import date, timedelta
+
+def full_dates(year1, year2, dictionary):
+	dates_full_year = []
+	d1 = date(int(year1), 1, 1)  	# start date
+	d2 = date(int(year2), 12, 31)   # end date
+	delta = d2 - d1         		# timedelta
+	for i in range(delta.days + 1):
+		r = str(d1 + timedelta(i))
+		f = r[:4]+r[5:7]+r[8:10]
+		print(f)
+		dictionary[f] = 0
+	#print(len(dictionary))
+	return dictionary
 	
 def time_series(dir_name, desc1, desc2):
 	#""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
@@ -33,6 +47,7 @@ def time_series(dir_name, desc1, desc2):
 	event_week_desc2_2015 = {}
 	event_week_desc1_2016 = {}
 	event_week_desc2_2016 = {}
+	init = False
 	
 	# start timer
 	startTime = time.clock()
@@ -61,19 +76,24 @@ def time_series(dir_name, desc1, desc2):
 				category = item[4].strip()
 				desc_fail = item[5].strip().replace(" ", "_")
 				
+				#initialize all key dates of a range to avoid null dates	
+				if init == False:
+					event_day_desc1 = full_dates(2015,2016, event_day_desc1).copy()
+					event_day_desc2 = full_dates(2015,2016, event_day_desc2).copy()
+					init = True
 				#############################################################
 				#DAY
 				if d in event_day_desc1.keys():
 					if desc_fail == desc1:
 						event_day_desc1[d] += 1
-				else:
-					event_day_desc1[d] = 0
+				#else:
+				#	event_day_desc1[d] = 0
 				
 				if d in event_day_desc2.keys():
 					if desc_fail == desc2:
 						event_day_desc2[d] += 1
-				else:
-					event_day_desc2[d] = 0
+				#else:
+				#	event_day_desc2[d] = 0
 					
 				#############################################################
 				#WEEK HARDWARE YEAR
@@ -107,6 +127,8 @@ def time_series(dir_name, desc1, desc2):
 	plt.title('Failures by day 2015-2016 ')
 	ax = plt.gca()
 	ax.tick_params(axis = 'x', which = 'major', labelsize = 6)
+	plt.xticks(np.arange(0, 730, 30))
+	plt.figure(figsize=(12,4)) 
 	
 	day_desc2_sort = collections.OrderedDict(sorted(event_day_desc2.items()))
 	day_desc1_sort = collections.OrderedDict(sorted(event_day_desc1.items()))
