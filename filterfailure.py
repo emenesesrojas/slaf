@@ -23,7 +23,7 @@ class FailedJob:
 			self.endTime = epoch
 
 
-def failureFilter(fileName):
+def failureFilter(fileName,hardware, software):
 	jobs = {}
 	formatAlt = '%Y-%m-%d %H:%M:%S'
   
@@ -93,9 +93,9 @@ def failureFilter(fileName):
 			#if description == "GPU Xid 31":
 			#jobs[jobid]['software'][description].toPrint = False
 			if category == 'hardware':
-				jobs[jobid][ftime][category][description].toPrint = True
+				jobs[jobid][ftime][category][description].toPrint = hardware
 			else:	 
-				jobs[jobid][ftime][category][description].toPrint = False
+				jobs[jobid][ftime][category][description].toPrint = software
 	return jobs
 
 def printEntry(jobid, ftime, category, description, nodes, startTime, endTime):
@@ -182,16 +182,21 @@ def output(jobs):
 	
     outputAll(jobs)
 	
-if len(sys.argv) > 2:
+if len(sys.argv) > 4:
 	fileName = sys.argv[1]
 	outputFileName =  sys.argv[2]
+	hardware =  sys.argv[3]
+	software =  sys.argv[4]
 	file = open(outputFileName, 'w')
+	
 	file.write("|host name  |Job ID  |   FailTime            |   Category  |  Description   |   StartTime   |   EndTime   |    Nodes")
-	jobs = failureFilter(fileName)
+	jobs = failureFilter(fileName, hardware, software)
 	outputAll(jobs)
 	file.close()
 else:	
-	print ("ERROR, usage: %s <file>" % sys.argv[0])
+	print ("ERROR, usage: %s <file><output file><hardare><software>" % sys.argv[0])
 	print ("<file>: Failure log file")
 	print ("<output file>: file name to output filtered information")
+	print ("<hardware>: True or False")
+	print ("<Software>: True or False")
 	sys.exit(0)

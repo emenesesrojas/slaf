@@ -149,7 +149,7 @@ def generate(dir_name, output_dir_name):
 	#for save data
 	output_file_name = output_dir_name + '/' + 'workload_hour_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
-	output_file_txt.write('#HOUR JOBS\n')
+	output_file_txt.write('HOUR HOUR_JOBS\n')
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(24), data)))
 	output_file_txt.close()
 	################################################################################################################
@@ -170,7 +170,7 @@ def generate(dir_name, output_dir_name):
 	#for save data
 	output_file_name = output_dir_name + '/' + 'workload_day_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
-	output_file_txt.write('#DAY JOBS\n')
+	output_file_txt.write('DAY DAY_JOBS\n')
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(7), data)))
 	output_file_txt.close()
 	
@@ -185,7 +185,7 @@ def generate(dir_name, output_dir_name):
 	# for save data
 	output_file_name = output_dir_name + '/' + 'workload_month_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
-	output_file_txt.write('#MONTH JOBS\n')
+	output_file_txt.write('MONTH MONTH_JOBS\n')
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(12), data)))
 	output_file_txt.close()
 	
