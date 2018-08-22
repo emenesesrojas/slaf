@@ -1,12 +1,16 @@
+# Costa Rica High Technology Center (CeNAT)
+# Advanced Computing Laboratory
+# Elvis Rojas, MSc (erojas@una.cr)
+# Esteban Meneses, PhD (esteban.meneses@acm.org)
+# Filters failures, following these rules: 
+#    Groups the failures related to the same job id together
+#    Groups the failures affecting multiple nodes in the same line
+#    Ignores node and blade controller heartbeat fault
+
 import sys
 import re
 import datetime
 import time
-
-# to filter the failures in the log files
-# group the failures related to the same job id together
-# for the same job id, group the failures affecting multiple nodes in the same line
-# ignore node heartbeat fault
 
 class FailedJob:
 	def __init__(self, failureType, epoch):
@@ -21,7 +25,6 @@ class FailedJob:
 			self.startTime = epoch
 		if self.endTime < epoch:
 			self.endTime = epoch
-
 
 def failureFilter(fileName,hardware, software):
 	jobs = {}
@@ -50,9 +53,11 @@ def failureFilter(fileName,hardware, software):
 			description = fields[6].strip()
 			text = fields[7].strip()
 	  
-			#ignore heartbeat faults
+			# ignore heartbeat faults
 			if "Heartbeat Fault" in description:
 				continue
+			
+			# parse error number
 			if(description == "GPU XID"):
 				#get the number
 				match = re.search(r"GPU Xid (\d+)", text)
