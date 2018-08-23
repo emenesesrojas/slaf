@@ -24,6 +24,7 @@ from datetime import date, timedelta
 
 def init_tables(event_day, event_week_2015, event_week_2016):
 	""" Initializes tables """
+	
 	event_day['00'] = 0
 	event_day['01'] = 0
 	event_day['02'] = 0
@@ -206,32 +207,26 @@ def time_series(dir_name):
 				week = datetime.date(int(item[3][2:-17].strip()), int(item[3][7:-14].strip()), int(item[3][10:-11].strip())).isocalendar()[1]
 				year = item[3][2:-17].strip()
 				
+				
+				
 				#initialize all key dates of a range to avoid null dates	
 				if init == False:
 					event_day = full_dates(2015,2016, event_day).copy()
 					init = True
 				
+				
 				if d in event_day.keys():
 					event_day[d] += 1
-				#else:
-				#	event_day[d] = 0
-				
-				
+								
 				if week in event_week_2015.keys():
-					if year == "2015":
+					if year == "2015":		
 						event_week_2015[week] += 1
 						continue
-				#else:
-					#event_week_2015[week] = 0
-					#continue
 				
 				if week in event_week_2016.keys():
 					if year == "2016":
 						event_week_2016[week] += 1
 						
-				#else:
-				#	event_week_2016[week] = 0
-				
 	print("\nPrcessing %d year of 2 - Processing 1 plots of 3"% file_count)	
 	plt.style.use('seaborn-whitegrid')	
 	plt.xlabel('Days')
@@ -242,10 +237,6 @@ def time_series(dir_name):
 	day_sort = collections.OrderedDict(sorted(event_day.items()))
 	plt.xticks(np.arange(0, 730, 30))
 	plt.figure(figsize=(12,4)) 
-	
-
-	#print(event_week_2016.values())
-	
 	plt.plot(range(len(event_day)),list(day_sort.values()), 'b-', linewidth=1, label='2015-2016 failures')
 	plt.legend(framealpha=1,shadow=True, borderpad = 1, fancybox=True)
 		
