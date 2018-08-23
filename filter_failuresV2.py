@@ -27,7 +27,7 @@ def failureFilter(fileName, outputFileName):
 		lines = len(f.readlines())
 		
 	count = 0 
-	file.write("| hostname | job_id  | fail_time           | category | reason | description                      | text                                                                                                                                  | jf_id   |		nodes\n")
+	file.write("| hostname | job_id| fail_time           | category | reason | description                      | text     | jf_id   | nodes\n")
 	with open(fileName) as f:
 		next(f)
 		for line in f:
@@ -76,12 +76,7 @@ def failureFilter(fileName, outputFileName):
 		for cat in jobs_fail[id].keys():
 			for des in jobs_fail[id][cat].keys():
 				for rea in jobs_fail[id][cat][des].keys():
-					#for i in jobs_fail[id][cat][des][rea].nodes.keys():
-					#	entry_nodes = entry_nodes +  i #jobs_fail[id][cat][des][rea].nodes[i].keys()
-					##print("##################################################################")
-					entry_nodes = "|"+" ".join(jobs_fail[id][cat][des][rea].nodes.keys()) +"\n"#" ".join(jobs_fail[id][cat][des][rea].nodes.keys()) + "\n"
-					# print(jobs_fail[id][cat][des][rea].line.strip() + entry_nodes)
-					# sys.exit()
+					entry_nodes = "|"+" ".join(jobs_fail[id][cat][des][rea].nodes.keys()) +"\n"
 					file.write(jobs_fail[id][cat][des][rea].line.strip() + entry_nodes)
 	file.close()
 

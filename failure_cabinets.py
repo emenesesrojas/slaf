@@ -152,56 +152,52 @@ def f_cabinets(dir_name):
 				node_exist = True
 			
 				item = line.split("|")
-				year = item[3][2:-17].strip()		
+				year = item[3][:-16].strip()
 				
+				#print(item[9].strip())
+				#sys.exit()
 				#extrac blade-cabinet[node]
-				match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)n(\d+)", item[8].strip())
-				if not match:
-					match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)", item[8].strip())
-					if match:
-						node_exist = False
-						cabinet = match.group(0)
-				else:	
-					cabinet =  match.group(0)
-				
-				if not match:
-				   continue
-					
-				#extract data
-				cabinet = cabinet.split("-") #example c17-2xxxxxx
-				cabinet_column = int(cabinet[0][1:].strip())  #extract c17
-				cabinet_row = int(cabinet[1][:1]) #extract 2
-				
-				
-				
-				#extract cabinet
-				if node_exist == True:
+
+				all_nodes = item[9].strip().split()
+				for an in all_nodes: 
+					match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)n(\d+)", an)
+					if not match:
+						match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)", an)
+						if match:
+							cabinet = match.group(0)
+					else:	
+						cabinet =  match.group(0)
+						
+					#extract data
+					cabinet = cabinet.split("-") #example c17-2xxxxxx
+					cabinet_column = int(cabinet[0][1:].strip())  #extract c17
+					cabinet_row = int(cabinet[1][:1]) #extract 2
 					node = cabinet[1][-2:] #extract node number
 
-				if cabinet_column not in cabinet_total_count:
-					cabinet_total_count[cabinet_column] = {}	
-				if cabinet_row not in cabinet_total_count[cabinet_column]:
-					cabinet_total_count[cabinet_column][cabinet_row] = 1
-				else:
-					cabinet_total_count[cabinet_column][cabinet_row] += 1
+					if cabinet_column not in cabinet_total_count:
+						cabinet_total_count[cabinet_column] = {}	
+					if cabinet_row not in cabinet_total_count[cabinet_column]:
+						cabinet_total_count[cabinet_column][cabinet_row] = 1
+					else:
+						cabinet_total_count[cabinet_column][cabinet_row] += 1
 
-				if year == "2015":
-					if cabinet_column not in cabinet_2015:
-						cabinet_2015[cabinet_column] = {}
-					if cabinet_row not in cabinet_2015[cabinet_column]:
-						cabinet_2015[cabinet_column][cabinet_row] = 1
-					else:
-						cabinet_2015[cabinet_column][cabinet_row] += 1
-						continue
-			
-				if year == "2016":
-					if cabinet_column not in cabinet_2016:
-						cabinet_2016[cabinet_column] = {}
-					if cabinet_row not in cabinet_2016[cabinet_column]:
-						cabinet_2016[cabinet_column][cabinet_row] = 1
-					else:
-						cabinet_2016[cabinet_column][cabinet_row] += 1
-						
+					if year == "2015":
+						if cabinet_column not in cabinet_2015:
+							cabinet_2015[cabinet_column] = {}
+						if cabinet_row not in cabinet_2015[cabinet_column]:
+							cabinet_2015[cabinet_column][cabinet_row] = 1
+						else:
+							cabinet_2015[cabinet_column][cabinet_row] += 1
+							continue
+				
+					if year == "2016":
+						if cabinet_column not in cabinet_2016:
+							cabinet_2016[cabinet_column] = {}
+						if cabinet_row not in cabinet_2016[cabinet_column]:
+							cabinet_2016[cabinet_column][cabinet_row] = 1
+						else:
+							cabinet_2016[cabinet_column][cabinet_row] += 1
+							
 	
 	
 	#control data
@@ -232,23 +228,13 @@ def f_cabinets(dir_name):
 	fig, ax = plt.subplots(figsize=(8, 6))
 	#im = ax.imshow(cabinets_matrix2,cmap="magma_r")
 	from matplotlib.colors import ListedColormap
-	ax = ax = sns.heatmap(cabinets_matrix2,linewidths=0.1)
-	
-	
-	
-	#ax.grid(which="minor", color="w", linestyle='-', linewidth=3)
-	#ax.tick_params(which="minor", bottom=False, left=False)
-	
+	ax = ax = sns.heatmap(cabinets_matrix2,cmap="YlGnBu", linewidths=0.1)
 	plt.axis("tight")
-	
-	# Create colorbar
-	#cbar = ax.figure.colorbar(im, ax=ax, cmap="magma_r")
-	#cbar.ax.set_ylabel("Failure count", rotation=-90, va="bottom")
-	
+	ax.invert_yaxis()
 	rows = ["0","1","2","3","4","5","6","7"]
 	cols = ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"]
-	ax.set_xticks(np.arange(len(cols)))
-	ax.set_yticks(np.arange(len(rows)))
+	ax.set_xticks([0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5,21.5,22.5,23.5,24.5])
+	ax.set_yticks([0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5])
 	ax.set_xticklabels(cols)
 	ax.set_yticklabels(rows)
 	plt.ylabel('Cabinet row')
