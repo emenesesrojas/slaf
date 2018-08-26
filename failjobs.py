@@ -67,6 +67,8 @@ def failureJob(fileName, dirName, outputFileName):
 			dateAndTime = fields[3].strip()												# reading time
 			failure_type = fields[4].strip()
 			description  = fields[6].strip()
+			print("jobid:"+jobid+" time:"+dateAndTime+" type:"+failure_type+"desc: "+description)
+			sys.exit()
 			try:
 				currentDate = datetime.datetime.strptime(dateAndTime, timeFormat)
 			except ValueError:

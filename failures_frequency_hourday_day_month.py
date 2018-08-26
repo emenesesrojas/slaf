@@ -25,6 +25,7 @@ import calendar as cl
 
 def init_tables(event_hour_day,event_hour_day_hard,event_hour_day_soft, event_week,event_week_hard,event_week_soft, event_month,event_month_hard,event_month_soft):
 	""" Initializes tables """
+		
 	event_hour_day_hard['00'] = 0
 	event_hour_day_hard['01'] = 0
 	event_hour_day_hard['02'] = 0
@@ -198,7 +199,7 @@ def time_series(file_name, output_dir_name):
 	startTime = time.clock()
     
 	init_tables(event_hour_day,event_hour_day_hard,event_hour_day_soft, event_week,event_week_hard,event_week_soft, event_month,event_month_hard,event_month_soft)
-
+	
 	# going through all files in directory
 	#for file_name in pathFileName:  
 	file_count += 1
@@ -211,39 +212,39 @@ def time_series(file_name, output_dir_name):
 			next(log)
 		for line in log:
 			item = line.split("|")
-			
-			d = item[3][2:-17].strip()+item[3][7:-14].strip()+item[3][10:-11].strip()
-			week = datetime.date(int(item[3][2:-17].strip()), int(item[3][7:-14].strip()), int(item[3][10:-11].strip())).isocalendar()[1]
-			month = item[3][7:-14].strip()
-			year = item[3][2:-17].strip()
+			#d = item[3][2:-17].strip()+item[3][7:-14].strip()+item[3][10:-11].strip()
+			#print(item[3].strip()[:-15])
+			week = datetime.date(int(item[3].strip()[:-15]), int(item[3].strip()[5:-12]), int(item[3].strip()[8:-9])).isocalendar()[1]
+			month = item[3].strip()[5:-12]
+			year = item[3].strip()[:-15]
 			#Day of week
 			f = dt.strptime(item[3].strip(),format)
 			day_of_week = cl.day_name[f.weekday()] 
 			#Hour of day
 			hd = item[3].strip()
-			hour_day = hd[10:13].strip()
-			categoria = item[4].strip()
-			
+			hour_day = hd[11:-6]
+			category = item[4].strip()
+			reason = item[5].strip()
 			
 			if hour_day in event_hour_day.keys():
 				event_hour_day[hour_day] += 1
-				if categoria == "hardware":
+				if category == "hardware":
 					event_hour_day_hard[hour_day] += 1
-				if categoria == "software":
+				if category == "software":
 					event_hour_day_soft[hour_day] += 1
 		
 			if month in event_month.keys():
 				event_month[month] += 1
-				if categoria == "hardware":
+				if category == "hardware":
 					event_month_hard[month] += 1
-				if categoria == "software":
+				if category == "software":
 					event_month_soft[month] += 1
 		
 			if day_of_week in event_week.keys():
 				event_week[day_of_week] += 1
-				if categoria == "hardware":
+				if category == "hardware":
 					event_week_hard[day_of_week] += 1
-				if categoria == "software":
+				if category == "software":
 					event_week_soft[day_of_week] += 1
 				continue
 				
