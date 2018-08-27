@@ -17,7 +17,7 @@ class FailedJob:
 		self.line = line
 		self.nodes = {}
 	
-def failureFilter(fileName, outputFileName):
+def failureFilter(fileName, outputFileName,cat):
 	jobs_fail = {}
 	#formatAlt = '%Y-%m-%d %H:%M:%S'
 	file = open(outputFileName, 'w')
@@ -46,6 +46,19 @@ def failureFilter(fileName, outputFileName):
 			if "Heartbeat Fault" in description:
 				continue
 			
+			if cat != "-hs" and cat != "-h" and cat != "-s":
+				print("Error.  Ivalid category.  Accepted categories -hs, -h or -s")
+				sys.exit()
+				
+			if cat == "-h":
+				if category == "software":
+					continue
+			
+			if cat == "-s":
+				if category == "hardware":
+					continue
+				
+					
 			match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)n(\d+)", text)
 			if not match:
 				match = re.search(r"c(\d+)-(\d+)c(\d+)s(\d+)", text)
@@ -80,13 +93,18 @@ def failureFilter(fileName, outputFileName):
 					file.write(jobs_fail[id][cat][des][rea].line.strip() + entry_nodes)
 	file.close()
 
-if len(sys.argv) > 2:
-	fileName = sys.argv[1]
-	outputFileName =  sys.argv[2]
-	failureFilter(fileName, outputFileName)
+if len(sys.argv) > 3:
+	cat =  sys.argv[1]
+	print(cat)
+	fileName = sys.argv[2]
+	print(fileName)
+	outputFileName =  sys.argv[3]
+	print(outputFileName)
+	failureFilter(fileName, outputFileName,cat)
 	
 else:	
-	print ("ERROR, usage: %s <file><output file>" % sys.argv[0])
+	print ("ERROR, usage: %s <category><file><output file>" % sys.argv[0])
+	print ("<category>: filter by category {-hs:hardware|-h:hardare|-s:software}")
 	print ("<file>: Failure log file")
 	print ("<output file>: file name to output filtered information")
 	sys.exit(0)
