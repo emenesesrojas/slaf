@@ -22,7 +22,7 @@ import scipy.special
 
 ### FUNCTIONS ###
 
-def readFile(fileName,outputFile, delta, column=0, value=0):
+def readFile(fileName,outputFile, column=0, value=0):
 	""" Reads a file and returns a list with the MTBF """
 	mtbf = []
 	countList = []
@@ -30,13 +30,15 @@ def readFile(fileName,outputFile, delta, column=0, value=0):
 	date_format = '%Y-%m-%d %H:%M:%S'
 	previousDate = 0
 	count = 0
-
+	
+	outputFile_data = outputFile[:-4]
+	outputFile_data = outputFile_data + ".txt"
 	# with open(fileName) as row:
 		# lines = len(row.readlines())
 	
 	# row.close()
 	
-	file = open(outputFile, 'w')
+	file = open(outputFile_data, 'w')
 	
 	with open(fileName) as f:
 		f.seek(0)
@@ -44,9 +46,6 @@ def readFile(fileName,outputFile, delta, column=0, value=0):
 			if count == 0:
 			    file.write(line)
 			count += 1
-
-			#print ("Progress: %d%%" % (count/lines*100), end = "\r")
-			#sys.stdout.flush()
 
 			if count == 1:
 				continue
@@ -77,11 +76,7 @@ def readFile(fileName,outputFile, delta, column=0, value=0):
 			#	continue
 			
 			print("%d"% diff_seconds)
-			mtbf.append(diff_seconds)
-			
-			#time_format = time.strptime(fields[3].strip(), '%Y-%m-%d %H:%M:%S')
-			#time_epoch = time.mktime(time_format)
-			
+			mtbf.append(diff_seconds)	
 			
 			countList.append(count)
 			file.write(str(diff_seconds)+"\n")
@@ -89,16 +84,14 @@ def readFile(fileName,outputFile, delta, column=0, value=0):
 		file.close()
 	return (mtbf, countList)
 	
-if len(sys.argv) == 4:
+if len(sys.argv) == 3:
 	fileName = sys.argv[1]
 	outputFile = sys.argv[2]
-	delta = int(sys.argv[3])
-	(data, countList) = readFile(fileName,outputFile, delta)
+	(data, countList) = readFile(fileName,outputFile)
 else:
-	print("ERROR, usage: %s <input file> <output file> <delta> <bins> <output file> [<column> <value>] " % sys.argv[0])
+	print("ERROR, usage: %s <input file> <output file>" % sys.argv[0])
 	print("<input file>: failure log file")
-	print("<output file>: PDF file name for figure")
-	print("<delta>: minimum difference in seconds between failures")
+	print("<output file>: PDF file name for plot ")
 	sys.exit(0)
 
 np.random.seed(19680801)
@@ -153,7 +146,7 @@ plt.plot(x, wei.cdf(x),'r--',linewidth=1, label="Weibull")
 plt.xlabel('Time Between Failures (seconds)')
 plt.ylabel('Cumulative probability')
 plt.legend(framealpha=1,shadow=True, borderpad = 1, fancybox=True)
-plt.savefig("PLOT_2016.pdf")
+plt.savefig(outputFile)
 
 
 

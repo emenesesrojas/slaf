@@ -19,7 +19,8 @@ class FailedJob:
 	
 def failureFilter(fileName, outputFileName,cat):
 	jobs_fail = {}
-	#formatAlt = '%Y-%m-%d %H:%M:%S'
+	reason_list = []
+	heartbeat_count = 0
 	file = open(outputFileName, 'w')
 
 	#size of failure file
@@ -44,6 +45,12 @@ def failureFilter(fileName, outputFileName,cat):
 	  
 			# ignore heartbeat faults
 			if "Heartbeat Fault" in description:
+				heartbeat_count += 1
+				continue
+				
+			#ignore user failures
+			if "user" in reason:
+				reason_list.append(line.strip())
 				continue
 			
 			if cat != "-hs" and cat != "-h" and cat != "-s":
@@ -91,15 +98,16 @@ def failureFilter(fileName, outputFileName,cat):
 				for rea in jobs_fail[id][cat][des].keys():
 					entry_nodes = "|"+" ".join(jobs_fail[id][cat][des][rea].nodes.keys()) +"\n"
 					file.write(jobs_fail[id][cat][des][rea].line.strip() + entry_nodes)
+	
+	
 	file.close()
+	print("Heartbeat fault omitted: "+str(heartbeat_count))
+	print("User fauilures omitted: "+str(len(reason_list)))
 
 if len(sys.argv) > 3:
 	cat =  sys.argv[1]
-	print(cat)
 	fileName = sys.argv[2]
-	print(fileName)
 	outputFileName =  sys.argv[3]
-	print(outputFileName)
 	failureFilter(fileName, outputFileName,cat)
 	
 else:	

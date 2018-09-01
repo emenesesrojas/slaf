@@ -462,9 +462,9 @@ def time_series(dir_name, outputFileName):
 	data_reason_2015_2016_system = [event_reason_2015['system'],event_reason_2016['system']]
 	
 	r1 = np.arange(1,3,1)
-	r2 = [x + 0.02 + barWidth for x in r1]
-	r3 = [x + 0.02 + barWidth for x in r2]
-	r4 = [x + + 0.02 + barWidth for x in r3]
+	r2 = [x + 0.012 + barWidth for x in r1]
+	r3 = [x + 0.1 + barWidth for x in r2]
+	r4 = [x + + 0.012 + barWidth for x in r3]
 
 	ax = plt.gca()
 	axs[1,0].bar(r1,data_category_2015_2016_hardware,width=barWidth, label="Hardware",color=['orangered'])
@@ -475,8 +475,8 @@ def time_series(dir_name, outputFileName):
 	axs[1,0].set_ylabel('Count of failures')
 	axs[1,0].set_title('Failures by year')
 	axs[1,0].set_xticklabels(['2015','2016'])
-	axs[1,0].set_xticks([1.2,2.2])
-	axs[1,0].legend(framealpha=1,shadow=True, borderpad = 1, fancybox=True)
+	axs[1,0].set_xticks([1.3,2.3])
+	axs[1,0].legend(framealpha=1,shadow=True, borderpad = 1, fancybox=True, loc=1,prop={'size':7})
 
 	plt.subplots_adjust(top=0.92, bottom=0.08, left=0.10, right=0.95, hspace=0.25, wspace=0.35)
 	plt.savefig("PLOT_category(week,year)_category-reason(year).pdf")
@@ -485,12 +485,12 @@ def time_series(dir_name, outputFileName):
 	return 
 	
 	
-if len(sys.argv) >= 3:
+if len(sys.argv) >= 2:
 	dirName = sys.argv[1]
-	outputFileName = sys.argv[2]
-	time_series(dirName, outputFileName)
+	#outputFileName = sys.argv[2]
+	time_series(dirName, "outputFileName")
 else:
 	print ("ERROR, usage: %s <directory> <output file>" % sys.argv[0])
 	print ("<directory>: Filter failure directory")
-	print ("<output file>: file name to output plot information")
+	#print ("<output file>: file name to output plot information")
 	sys.exit(0)

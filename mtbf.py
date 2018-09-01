@@ -60,8 +60,8 @@ def readFile(fileName,outputFailureFile, delta, column=0, value=0):
 				print("ERROR: negative event time difference in line %d" % count)
 				print(diff_seconds)
 				exit(1)
-			if diff_seconds < delta:
-				continue
+			#if diff_seconds < delta:
+				#continue
 			mtbf.append(diff_seconds)
 			file.write(line)
 			previousDate = currentDate

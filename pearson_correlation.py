@@ -21,6 +21,7 @@ import scipy.stats as ss
 from collections import defaultdict
 import collections
 from datetime import date, timedelta
+import seaborn as sns
 
 
 def pearson(fileName1, column_name1, separator1,fileName2, column_name2, separator2):
@@ -87,9 +88,11 @@ def pearson(fileName1, column_name1, separator1,fileName2, column_name2, separat
 	print("Coeficient of determination(r_squared)")
 	print("Result: ", r_value**2)
 	
-	
-	plt.scatter(list_dataX, list_dataY)
-	
+	# plt.xscale('log')
+	# plt.yscale('log')
+	#plt.scatter(list_dataX, list_dataY, )
+	ax = sns.regplot(x=list_dataX, y=list_dataY, line_kws={"color":"r","alpha":0.7,"lw":2})
+	ax.set(xlabel='Workload', ylabel='Failures')
 	plt.savefig("corrlation.pdf")
 	return 
 	
