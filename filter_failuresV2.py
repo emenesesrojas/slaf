@@ -42,7 +42,7 @@ def failureFilter(fileName, outputFileName,cat):
 			reason = fields[5].strip()
 			description = fields[6].strip()
 			text = fields[7].strip()
-	  
+			
 			# ignore heartbeat faults
 			if "Heartbeat Fault" in description:
 				heartbeat_count += 1
@@ -52,9 +52,14 @@ def failureFilter(fileName, outputFileName,cat):
 			if "user" in reason:
 				reason_list.append(line.strip())
 				continue
+			#ignore system failures
+			# if "system" in reason:
+				# # reason_list.append(line.strip())
+				# continue
+			
 			
 			if cat != "-hs" and cat != "-h" and cat != "-s":
-				print("Error.  Ivalid category.  Accepted categories -hs, -h or -s")
+				print("Error.  Ivalid category.  Accepted categories: -hs, -h or -s")
 				sys.exit()
 				
 			if cat == "-h":
@@ -78,7 +83,14 @@ def failureFilter(fileName, outputFileName,cat):
 				if jobid in jobs_fail and category in jobs_fail[jobid] and description in jobs_fail[jobid][category] and reason in jobs_fail[jobid][category][description]:
 					if node not in jobs_fail[jobid][category][description][reason].nodes.keys():
 						jobs_fail[jobid][category][description][reason].nodes[node]={}
-					
+			
+			#to erase '|' at the end of line
+			
+			# print(line[-2:])
+			# sys.exit()
+			if line[-2:].strip() == "|":
+				line = line[:-2]
+				
 			entry = FailedJob(line)
 			#create entry
 			if jobid not in jobs_fail:

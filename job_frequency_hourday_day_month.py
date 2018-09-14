@@ -18,13 +18,53 @@ import matplotlib.pyplot as plt
 import numpy as np
 from math import *
 import calendar as cl
+import datetime
+
 from datetime import date, timedelta, datetime as dt
 
 ### FUNCTIONS ###
 
 
-def init_tables(event_week_year, hour_table, day_table, month_table):
+def init_tables(event_day_year, event_week_daymonth,event_week_year, hour_table, day_table, month_table):
 	""" Initializes tables """
+	
+	for i in range(365):
+		if i not in event_day_year.keys():
+			event_day_year[i] = 0
+	
+	#print(event_day_year)
+	event_week_daymonth[1] = 0
+	event_week_daymonth[2] = 0
+	event_week_daymonth[3] = 0
+	event_week_daymonth[4] = 0
+	event_week_daymonth[5] = 0
+	event_week_daymonth[6] = 0
+	event_week_daymonth[7] = 0
+	event_week_daymonth[8] = 0
+	event_week_daymonth[9] = 0
+	event_week_daymonth[10] = 0
+	event_week_daymonth[11] = 0
+	event_week_daymonth[12] = 0
+	event_week_daymonth[13] = 0
+	event_week_daymonth[14] = 0
+	event_week_daymonth[15] = 0
+	event_week_daymonth[16] = 0
+	event_week_daymonth[17] = 0
+	event_week_daymonth[18] = 0
+	event_week_daymonth[19] = 0
+	event_week_daymonth[20] = 0
+	event_week_daymonth[21] = 0
+	event_week_daymonth[22] = 0
+	event_week_daymonth[23] = 0
+	event_week_daymonth[24] = 0
+	event_week_daymonth[25] = 0
+	event_week_daymonth[26] = 0
+	event_week_daymonth[27] = 0
+	event_week_daymonth[28] = 0
+	event_week_daymonth[29] = 0
+	event_week_daymonth[30] = 0
+	event_week_daymonth[31] = 0
+	
 	hour_table['00'] = 0
 	hour_table['01'] = 0
 	hour_table['02'] = 0
@@ -133,7 +173,11 @@ def generate(dir_name, output_dir_name):
 	pathFileName = []
 	event_week_year = {}
 	
-	init_tables(event_week_year, hour_table,day_table,month_table)
+	event_week_daymonth = {}
+	event_day_year = {}
+	
+	
+	init_tables(event_day_year, event_week_daymonth, event_week_year, hour_table,day_table,month_table)
 
 	# start timer
 	startTime = time.clock()
@@ -155,11 +199,14 @@ def generate(dir_name, output_dir_name):
 		year = file_name[-10:-6]
 		
 		week = int(datetime.date(int(year), int(month), int(day)).isocalendar()[1])
-				
+		
 		print ("Progress: %d%%, Month Analized: %s"% (file_count/sizeList*100, month),end="\r") 
 		sys.stdout.flush()
 				
 		with open(file_name) as log:
+			day_year = int(datetime.datetime.strptime(year+"-"+month+"-"+day,"%Y-%m-%d").timetuple().tm_yday)
+			#print(day_year)
+			
 			for event in log:
 				columns = event.split()
 				if len(columns) < 6:
@@ -169,7 +216,7 @@ def generate(dir_name, output_dir_name):
 					continue														# continue if not job event
 				objid = columns[3]
 				objEvent = columns[4]
-				
+			    
 				#Day of week
 				f = dt.strptime(year+"-"+month+"-"+day+" "+"11:11:11",format)
 				day_of_week = cl.day_name[f.weekday()]
@@ -179,14 +226,39 @@ def generate(dir_name, output_dir_name):
 					job_count = job_count + 1
 					job_time = columns[0]
 					hour = job_time.split(':')[0]
-					#print ("->%s %s %s<-" % (hour,day,month))
+					
 					hour_table[hour] = hour_table[hour] + 1
 					day_table[day_of_week] = day_table[day_of_week] + 1
 					month_table[month] = month_table[month] + 1
+					day_month = int(day)
+					
+					if day_year in event_day_year.keys():
+						event_day_year[day_year] += 1
+					
+					
+					if day_month in event_week_daymonth.keys():
+						event_week_daymonth[day_month] += 1
 					
 					if week in event_week_year.keys():
 						event_week_year[week] += 1
-						
+	
+	
+	# for save data of day year
+	output_file_name = output_dir_name + '/' + 'workload_day_year_distribution_'+year+'.txt'
+	output_file_txt = open(output_file_name, 'w')
+	output_file_txt.write('DAY DAY_YEAR_JOBS\n')
+	print(event_week_daymonth)
+	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(365), event_day_year.values())))
+	output_file_txt.close()
+	
+	# for save data of day month
+	output_file_name = output_dir_name + '/' + 'workload_day_month_distribution_'+year+'.txt'
+	output_file_txt = open(output_file_name, 'w')
+	output_file_txt.write('DAY DAY_MONTH_JOBS\n')
+	print(event_week_daymonth)
+	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(31), event_week_daymonth.values())))
+	output_file_txt.close()
+	
 	# for save data of week
 	output_file_name = output_dir_name + '/' + 'workload_week_year_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
@@ -257,6 +329,7 @@ def generate(dir_name, output_dir_name):
 	#save all the plots
 	plt.savefig("PLOT_Jobs_frequency_by_hourday_day_month_"+year+".pdf")
 	
+
 	# stop timer
 	finishTime = time.clock()
 
