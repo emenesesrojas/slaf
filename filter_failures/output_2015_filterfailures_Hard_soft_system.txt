@@ -1,0 +1,766 @@
+| hostname | job_id| fail_time           | category | reason | description                      | text     | jf_id   | nodes
+| titan    |2210433| 2015-01-01 10:05:59 | software | system | GPU XID                          | Node c12-6c1s6n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|716275|c12-6c1s6n1
+| titan    |2210433| 2015-01-01 10:05:59 | hardware | system | GPU DBE                          | Node c12-6c1s6n1 GPU DBE on GPU 00 01 00|716272|c12-6c1s6n1
+| titan    |2210433| 2015-01-01 10:06:00 | hardware | system | GPU DPR                          | Node c12-6c1s6n1 GPU DPR on Page 00000000000c9e34|716323|c12-6c1s6n1
+| titan    |2211879| 2015-01-02 15:50:06 | software | system | GPU XID                          | Node c8-1c0s3n3 GPU Xid 13 Graphics Engine Exception|716335|c8-1c0s3n3
+| titan    |2211188| 2015-01-02 17:55:46 | hardware | system | Machine Check Exception          | Node c24-7c1s7n0 Core 0 Machine Check Exception Bank 4 Status f300000200190127 Addr 0000000000000000 Socket 0|736840|c24-7c1s7n0
+| titan    |2207187| 2015-01-03 04:42:16 | hardware | system | GPU DPR                          | Node c23-5c1s0n2 GPU DPR on Page 00000000000290dc|736846|c23-5c1s0n2
+| titan    |2207962| 2015-01-08 02:02:08 | hardware | system | Machine Check Exception          | Node c22-6c1s7n3 Core 14 Machine Check Exception Bank 2 Status be0040f00010010a Addr 0000000000003e00 Socket 0|738874|c22-6c1s7n3
+| titan    |2218007| 2015-01-08 20:14:17 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|739447|c9-2c2s1n2
+| titan    |2217464| 2015-01-09 14:48:26 | hardware | system | Machine Check Exception          | Node c7-5c0s6n3 MCE Threshold CPU 8|739528|c7-5c0s6n3
+| titan    |2218976| 2015-01-10 03:19:39 | software | system | GPU XID                          | Node c8-1c0s6n0 GPU Xid 13 Graphics Engine Exception|739567|c8-1c0s6n0
+| titan    |2218978| 2015-01-10 03:50:42 | software | system | GPU XID                          | Node c6-2c0s1n1 GPU Xid 13 Graphics Engine Exception|739573|c6-2c0s1n1
+| titan    |2207959| 2015-01-10 05:04:12 | hardware | system | GPU DPR                          | Node c13-4c2s2n2 GPU DPR on Page 00000000000394b0|739582|c13-4c2s2n2
+| titan    |2219091| 2015-01-10 14:04:27 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|739591|c9-2c2s1n2
+| titan    |2219092| 2015-01-10 14:07:05 | hardware | system | GPU DPR                          | Node c13-4c2s0n0 GPU DPR on Page 0000000000020df7|739594|c13-4c2s0n0
+| titan    |2216657| 2015-01-10 16:00:51 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|739597|c9-2c2s1n2
+| titan    |2207961| 2015-01-12 01:05:54 | hardware | system | Machine Check Exception          | Node c0-5c0s2n1 Core 8 Machine Check Exception Bank 4 Status fa000020000d0c03 Addr 0000000000000000 Socket 0|739612|c0-5c0s2n1
+| titan    |2220574| 2015-01-12 22:17:14 | software | system | Kernel Panic                     | apinit:  oom_kill_task: killing invalid task|739663|c0-5c0s2n1
+| titan    |2220607| 2015-01-13 09:18:56 | software | system | Kernel Panic                     | kgnilnd_sd_00:  Fatal exception|739720|c0-5c0s2n1
+| titan    |2219384| 2015-01-13 12:51:13 | software | system | Kernel Panic                     | swapper:  Debug NMI|739738|c0-5c0s2n1
+| titan    |2221700| 2015-01-13 12:51:45 | software | system | Kernel Panic                     | swapper:  Debug NMI|739741|c0-5c0s2n1
+| titan    |2222043| 2015-01-13 14:04:13 | software | system | Kernel Panic                     | swapper:  Debug NMI|739744|c0-5c0s2n1
+| titan    |2222044| 2015-01-13 14:08:30 | software | system | Kernel Panic                     | swapper:  Debug NMI|739747|c0-5c0s2n1
+| titan    |2220661| 2015-01-13 16:27:22 | software | system | GPU XID                          | Node c8-6c0s7n2 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|739762|c8-6c0s7n2
+| titan    |2220661| 2015-01-13 16:27:22 | hardware | system | GPU DBE                          | Node c8-6c0s7n2 GPU DBE on GPU 00 00 00|739759|c8-6c0s7n2
+| titan    |2219695| 2015-01-14 08:56:03 | software | system | Kernel Panic                     | SSEPBMPI_3d_eqb:  oom_kill_task: killing invalid task|739951|c8-6c0s7n2
+| titan    |2209048| 2015-01-14 10:29:52 | software | system | GPU XID                          | Node c12-6c1s6n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|739957|c12-6c1s6n0
+| titan    |2209048| 2015-01-14 10:29:52 | hardware | system | GPU DBE                          | Node c12-6c1s6n0 GPU DBE on GPU 00 01 00|739954|c12-6c1s6n0
+| titan    |2209048| 2015-01-14 10:29:54 | hardware | system | GPU DPR                          | Node c12-6c1s6n0 GPU DPR on Page 000000000003417d|740005|c12-6c1s6n0
+| titan    |2223737| 2015-01-15 16:05:13 | software | system | Kernel Panic                     | apinit:  oom_kill_task: killing invalid task|740038|c12-6c1s6n0
+| titan    |2209410| 2015-01-16 00:10:35 | software | system | Kernel Panic                     | qmcapp_comp_201:  oom_kill_task: killing invalid task|740263|c12-6c1s6n0
+| titan    |2222506| 2015-01-16 00:14:27 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740266|c9-2c2s1n2
+| titan    |2222508| 2015-01-16 00:21:21 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740269|c9-2c2s1n2
+| titan    |2222558| 2015-01-16 00:28:05 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740272|c9-2c2s1n2
+| titan    |2222560| 2015-01-16 00:35:03 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740275|c9-2c2s1n2
+| titan    |2223755| 2015-01-16 03:36:51 | software | system | Kernel Panic                     | apinit:  oom_kill_task: killing invalid task|740281|c9-2c2s1n2
+| titan    |2209372| 2015-01-16 04:38:53 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740302|c9-2c2s1n2
+| titan    |2224679| 2015-01-16 19:38:36 | software | system | Kernel Panic                     | python:  oom_kill_task: killing invalid task|740326|c9-2c2s1n2
+| titan    |2224689| 2015-01-16 19:56:09 | software | system | Kernel Panic                     | overlap_test:  oom_kill_task: killing invalid task|740335|c9-2c2s1n2
+| titan    |2224120| 2015-01-16 20:32:29 | hardware | system | Machine Check Exception          | Node c18-1c2s7n1 Core 0 Machine Check Exception Bank 4 Status fe45a00004080813 Addr 0000000276bf6d70 Socket 0|740344|c18-1c2s7n1
+| titan    |2222112| 2015-01-16 20:58:00 | hardware | system | Machine Check Exception          | Node c21-1c0s1n0 MCE Threshold CPU 8|740347|c21-1c0s1n0
+| titan    |2222112| 2015-01-16 20:58:01 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|740350|c21-1c0s1n0
+| titan    |2224127| 2015-01-16 22:54:08 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740356|c9-2c2s1n2
+| titan    |2212614| 2015-01-17 06:14:36 | software | system | Kernel Panic                     | apinit:  oom_kill_task: killing invalid task|740362|c9-2c2s1n2
+| titan    |2222561| 2015-01-18 00:46:56 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740974|c9-2c2s1n2
+| titan    |2224753| 2015-01-18 02:06:00 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|740980|c9-2c2s1n2
+| titan    |2224848| 2015-01-18 03:04:06 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|741655|c9-2c2s1n2
+| titan    |2211167| 2015-01-19 04:43:30 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|741835|c9-2c2s1n2
+| titan    |2226317| 2015-01-20 14:01:37 | software | system | Kernel Panic                     | qmcapp_comp_201:  oom_kill_task: killing invalid task|741865|c9-2c2s1n2
+| titan    |2227155| 2015-01-21 15:09:19 | software | system | GPU XID                          | Node c12-3c1s0n0 GPU Xid 13 Graphics Engine Exception|744466|c12-3c1s0n0
+| titan    |2227727| 2015-01-22 05:03:40 | hardware | system | Machine Check Exception          | Node c21-3c1s0n2 Core 0 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|744508|c21-3c1s0n2
+| titan    |2225004| 2015-01-22 05:58:40 | hardware | system | Voltage Fault                    | Voltage Fault Node c7-3c2s3n2|744511|c7-3c2s3n2
+| titan    |2225990| 2015-01-22 06:03:25 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744517|c9-2c2s1n2
+| titan    |2226000| 2015-01-22 06:14:58 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744520|c9-2c2s1n2
+| titan    |2225997| 2015-01-22 06:18:56 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744523|c9-2c2s1n2
+| titan    |2227080| 2015-01-22 06:22:16 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744526|c9-2c2s1n2
+| titan    |2227106| 2015-01-22 07:22:25 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744532|c9-2c2s1n2
+| titan    |2228539| 2015-01-22 22:06:15 | software | system | Kernel Panic                     | MPACT_flux.exe:  oom_kill_task: killing invalid task|744682|c9-2c2s1n2
+| titan    |2228543| 2015-01-23 11:42:16 | hardware | system | Machine Check Exception          | Node c6-4c0s2n3 Core 8 Machine Check Exception Bank 4 Status fe5821005a080a13 Addr 00000005bef77d00 Socket 0|744752|c6-4c0s2n3
+| titan    |2227738| 2015-01-23 12:57:49 | hardware | system | GPU DPR                          | Node c24-4c1s2n1 GPU DPR on Page 000000000000dbff|744764|c24-4c1s2n1
+| titan    |2227784| 2015-01-23 14:44:19 | hardware | system | GPU DPR                          | Node c18-3c2s5n2 GPU DPR on Page 000000000000ada1|744794|c18-3c2s5n2
+| titan    |2229515| 2015-01-23 18:39:30 | software | system | GPU XID                          | Node c4-5c2s2n0 GPU Xid 13 Graphics Engine Exception|744803|c4-5c2s2n0
+| titan    |2227916| 2015-01-24 03:02:35 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744812|c9-2c2s1n2
+| titan    |2227785| 2015-01-24 19:57:11 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744821|c9-2c2s1n2
+| titan    |2227787| 2015-01-24 20:01:01 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744824|c9-2c2s1n2
+| titan    |2228648| 2015-01-24 20:04:50 | software | system | GPU XID                          | Node c9-2c2s1n2 GPU Xid 13 Graphics Engine Exception|744827|c9-2c2s1n2
+| titan    |2230663| 2015-01-25 22:34:59 | software | system | GPU XID                          | Node c19-6c2s1n2 GPU Xid 13 Graphics Engine Exception|744833|c19-6c2s1n2
+| titan    |2230691| 2015-01-26 00:37:05 | software | system | GPU XID                          | Node c6-1c0s6n1 GPU Xid 13 Graphics Engine Exception|744836|c6-1c0s6n1
+| titan    |2230708| 2015-01-26 01:14:55 | software | system | GPU XID                          | Node c9-0c2s1n1 GPU Xid 13 Graphics Engine Exception|744839|c9-0c2s1n1
+| titan    |2230894| 2015-01-26 12:04:12 | software | system | GPU XID                          | Node c3-7c1s7n1 GPU Xid 13 Graphics Engine Exception|744842|c3-7c1s7n1
+| titan    |2231765| 2015-01-27 18:07:33 | hardware | system | Machine Check Exception          | Node c1-2c0s2n2 Core 4 Machine Check Exception Bank 2 Status be0040b00010010a Addr 000000000000ca80 Socket 0|745601|c1-2c0s2n2
+| titan    |2231912| 2015-01-28 04:01:47 | software | system | Kernel Panic                     | python:  oom_kill_task: killing invalid task|745610|c1-2c0s2n2
+| titan    |2231934| 2015-01-28 06:03:13 | software | system | Kernel Panic                     | python:  oom_kill_task: killing invalid task|745625|c1-2c0s2n2
+| titan    |2232765| 2015-01-28 17:54:13 | software | system | Kernel Panic                     | hfodd2madness_e:  oom_kill_task: killing invalid task|745682|c1-2c0s2n2
+| titan    |2233425| 2015-01-29 11:42:57 | software | system | Kernel Panic                     | hfodd2madness_e:  oom_kill_task: killing invalid task|745769|c1-2c0s2n2
+| titan    |2233283| 2015-01-29 11:47:09 | hardware | system | GPU DPR                          | Node c9-4c1s5n1 GPU DPR on Page 0000000000016829|745775|c9-4c1s5n1
+| titan    |2234039| 2015-01-30 08:35:33 | hardware | system | GPU DPR                          | Node c22-0c2s3n0 GPU DPR on Page 00000000000106e3|746102|c22-0c2s3n0
+| titan    |2234225| 2015-01-30 11:52:16 | software | system | GPU XID                          | Node c12-2c0s5n3 GPU Xid 13 Graphics Engine Exception|746174|c12-2c0s5n3
+| titan    |2234277| 2015-01-30 12:18:48 | software | system | Kernel Panic                     | overlap_test:  oom_kill_task: killing invalid task|746180|c12-2c0s5n3
+| titan    |2234359| 2015-01-30 12:54:29 | software | system | Kernel Panic                     | overlap_test:  oom_kill_task: killing invalid task|746189|c12-2c0s5n3
+| titan    |2234317| 2015-01-30 12:57:23 | software | system | GPU XID                          | Node c19-2c1s4n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|746195|c19-2c1s4n1
+| titan    |2234317| 2015-01-30 12:57:23 | hardware | system | GPU DBE                          | Node c19-2c1s4n1 GPU DBE on GPU 00 03 01|746192|c19-2c1s4n1
+| titan    |2234348| 2015-01-30 14:32:57 | software | system | GPU XID                          | Node c22-1c0s7n3 GPU Xid 13 Graphics Engine Exception|746393|c22-1c0s7n3
+| titan    |2235120| 2015-01-30 15:16:26 | software | system | GPU XID                          | Node c6-1c0s6n1 GPU Xid 13 Graphics Engine Exception|746396|c6-1c0s6n1
+| titan    |2235708| 2015-01-31 05:46:31 | software | system | Kernel Panic                     | s3d.x:  oom_kill_task: killing invalid task|746516|c6-1c0s6n1
+| titan    |2235721| 2015-01-31 12:52:22 | software | system | Kernel Panic                     | python:  oom_kill_task: killing invalid task|746609|c6-1c0s6n1
+| titan    |2235397| 2015-01-31 12:59:44 | hardware | system | GPU DPR                          | Node c2-2c2s4n0 GPU DPR on Page 00000000000157cd|746615|c2-2c2s4n0
+| titan    |2238966| 2015-02-04 09:33:20 | hardware | system | GPU DPR                          | Node c15-1c0s1n2 GPU DPR on Page 0000000000093846|748180|c15-1c0s1n2
+| titan    |2239804| 2015-02-04 13:21:30 | software | system | GPU XID                          | Node c15-7c1s1n1 GPU Xid 13 Graphics Engine Exception|748339|c15-7c1s1n1
+| titan    |2239807| 2015-02-04 13:26:18 | software | system | GPU XID                          | Node c7-7c2s2n0 GPU Xid 13 Graphics Engine Exception|748348|c7-7c2s2n0
+| titan    |2240034| 2015-02-04 16:07:08 | software | system | GPU XID                          | Node c1-2c1s4n1 GPU Xid 13 Graphics Engine Exception|748768|c1-2c1s4n1
+| titan    |2240060| 2015-02-04 16:18:16 | software | system | GPU XID                          | Node c1-0c2s3n2 GPU Xid 13 Graphics Engine Exception|748777|c1-0c2s3n2
+| titan    |2238485| 2015-02-05 01:25:41 | software | system | GPU XID                          | Node c14-3c1s3n2 GPU Xid 13 Graphics Engine Exception|749380|c14-3c1s3n2
+| titan    |2240834| 2015-02-05 14:43:08 | software | system | GPU XID                          | Node c19-5c2s2n1 GPU Xid 13 Graphics Engine Exception|749587|c19-5c2s2n1
+| titan    |2240975| 2015-02-05 17:02:28 | software | system | GPU XID                          | Node c10-1c1s4n0 GPU Xid 13 Graphics Engine Exception|750580|c10-1c1s4n0
+| titan    |2240734| 2015-02-06 19:12:44 | hardware | system | SXM Power Off                    | c17-0c0s0n3 SXM Power Off|752707|c17-0c0s0n3
+| titan    |2242272| 2015-02-07 16:12:40 | hardware | system | Machine Check Exception          | Node c16-5c1s5n3 Core 8 Machine Check Exception Bank 4 Status f300000200190127 Addr 0000000000000000 Socket 0|753217|c16-5c1s5n3
+| titan    |2243755| 2015-02-09 01:52:46 | hardware | system | Machine Check Exception          | Node c19-6c0s5n0 Core 0 Machine Check Exception Bank 4 Status fe20a00053080a13 Addr 0000000323ed9530 Socket 0|762628|c17-4c0s2n3 c19-6c0s5n0
+| titan    |2244748| 2015-02-10 04:16:39 | hardware | system | GPU DPR                          | Node c19-3c1s7n2 GPU DPR on Page 000000000006648c|787780|c19-3c1s7n2
+| titan    |2247925| 2015-02-12 10:02:00 | software | system | GPU XID                          | Node c2-0c0s3n0 GPU Xid 13 Graphics Engine Exception|810901|c12-6c0s1n0 c2-0c0s3n0
+| titan    |2247946| 2015-02-12 10:32:53 | software | system | GPU XID                          | Node c16-4c1s5n1 GPU Xid 13 Graphics Engine Exception|810913|c16-4c1s5n1
+| titan    |2248076| 2015-02-12 11:49:06 | software | system | GPU XID                          | Node c12-4c1s2n2 GPU Xid 13 Graphics Engine Exception|810925|c12-4c1s2n2
+| titan    |2248297| 2015-02-12 13:03:16 | software | system | GPU XID                          | Node c0-0c0s1n3 GPU Xid 13 Graphics Engine Exception|810937|c0-0c0s1n3
+| titan    |2247839| 2015-02-12 17:03:23 | hardware | system | Machine Check Exception          | Node c16-1c2s4n0 Core 8 Machine Check Exception Bank 4 Status f300000600190127 Addr 0000000000000000 Socket 0|810961|c16-1c2s4n0
+| titan    |2248965| 2015-02-15 07:54:07 | hardware | system | Machine Check Exception          | Node c14-7c2s2n0 MCE Threshold CPU 8|837403|c14-7c2s2n0
+| titan    |2248965| 2015-02-15 07:54:08 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|837406|c14-7c2s2n0
+| titan    |2251003| 2015-02-15 14:35:28 | software | system | GPU XID                          | Node c17-4c1s3n3 GPU Xid 13 Graphics Engine Exception|837421|c19-4c1s1n3 c23-4c1s1n3 c23-4c1s1n2 c21-4c1s1n1 c21-4c1s0n0 c19-4c1s2n3 c23-4c1s0n1 c17-4c1s3n3 c19-4c1s3n0 c21-4c1s1n3 c23-4c1s0n2 c21-4c1s0n3 c17-4c1s2n0 c21-4c1s3n0 c21-4c1s1n0 c19-4c1s2n0
+| titan    |2251006| 2015-02-15 14:37:56 | software | system | GPU XID                          | Node c21-2c2s2n2 GPU Xid 13 Graphics Engine Exception|837469|c21-2c2s2n2
+| titan    |2251026| 2015-02-15 15:56:47 | software | system | GPU XID                          | Node c4-2c2s4n2 GPU Xid 13 Graphics Engine Exception|837475|c2-2c2s4n1 c2-2c2s4n0 c4-2c2s4n2 c4-2c2s4n3
+| titan    |2251029| 2015-02-15 15:59:56 | software | system | GPU XID                          | Node c2-2c2s4n0 GPU Xid 13 Graphics Engine Exception|837487|c2-2c2s4n0 c4-2c2s4n3
+| titan    |2251256| 2015-02-16 02:41:43 | hardware | system | Machine Check Exception          | Node c6-1c1s4n0 Core 12 Machine Check Exception Bank 2 Status be0040800010010a Addr 0000000000013980 Socket 0|837508|c6-1c1s4n0
+| titan    |2252207| 2015-02-16 21:16:16 | software | system | GPU XID                          | Node c2-4c1s2n0 GPU Xid 13 Graphics Engine Exception|837523|c4-4c1s3n1 c4-4c1s3n0 c2-4c1s2n1 c2-4c1s2n0 c6-4c1s3n1 c2-4c1s3n1 c2-4c1s3n0 c4-4c1s3n2 c4-4c1s2n0 c2-4c1s3n3 c2-4c1s3n2 c4-4c1s3n3
+| titan    |2252213| 2015-02-16 21:17:25 | software | system | GPU XID                          | Node c2-4c2s1n0 GPU Xid 13 Graphics Engine Exception|837559|c6-4c2s0n1 c2-4c2s1n0 c2-4c2s0n3 c6-4c2s0n0 c4-4c2s0n1 c2-4c2s0n2 c4-4c2s0n0 c6-4c2s0n3 c4-4c2s0n2 c4-4c2s0n3 c2-4c2s0n0 c2-4c2s0n1
+| titan    |2252917| 2015-02-18 04:13:07 | hardware | system | Machine Check Exception          | Node c20-2c2s0n3 Core 0 Machine Check Exception Bank 4 Status f300000000190127 Addr 0000000000000000 Socket 0|838027|c20-2c2s0n3
+| titan    |2254642| 2015-02-18 19:51:31 | hardware | system | GPU DPR                          | Node c23-6c1s2n3 GPU DPR on Page 00000000000870a0|838678|c23-6c1s2n3
+| titan    |2255418| 2015-02-19 05:33:04 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|838699|c18-4c2s5n0
+| titan    |2255418| 2015-02-19 05:33:04 | hardware | system | Machine Check Exception          | Node c18-4c2s5n0 MCE Threshold CPU 0|838696|c18-4c2s5n0
+| titan    |2255376| 2015-02-19 12:49:47 | software | system | GPU XID                          | Node c11-7c0s6n3 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|838717|c11-7c0s6n3
+| titan    |2255376| 2015-02-19 12:49:47 | hardware | system | GPU DBE                          | Node c11-7c0s6n3 GPU DBE on GPU 00 01 01|838714|c11-7c0s6n3
+| titan    |2255376| 2015-02-19 12:50:02 | hardware | system | GPU DPR                          | Node c11-7c0s6n3 GPU DPR on Page 0000000000018786|838765|c11-7c0s6n3
+| titan    |2254942| 2015-02-19 16:33:02 | hardware | system | GPU DPR                          | Node c2-2c0s0n0 GPU DPR on Page 00000000000c6e53|838777|c2-2c0s0n0
+| titan    |2258081| 2015-02-21 21:47:06 | software | system | Kernel Panic                     | lmp_exe:  Fatal machine check on current CPU|838846|c2-2c0s0n0
+| titan    |2258081| 2015-02-21 21:47:06 | hardware | system | Machine Check Exception          | Node c1-6c1s7n1 Machine Check Exception Bank 0 Status bc80000000100189|838849|c1-6c1s7n1
+| titan    |2258260| 2015-02-23 04:44:55 | hardware | system | GPU DPR                          | Node c6-6c2s3n0 GPU DPR on Page 00000000000cb607|838861|c6-6c2s3n0
+| titan    |2259640| 2015-02-25 10:46:32 | hardware | system | GPU DPR                          | Node c2-6c1s2n0 GPU DPR on Page 000000000000e52b|838924|c2-6c1s2n0
+| titan    |2261483| 2015-02-25 13:32:09 | software | system | GPU XID                          | Node c21-4c0s7n0 GPU Xid 13 Graphics Engine Exception|838939|c21-4c0s7n0
+| titan    |2261742| 2015-02-25 16:00:36 | software | system | GPU XID                          | Node c13-3c0s0n2 GPU Xid 13 Graphics Engine Exception|838966|c13-3c0s0n2
+| titan    |2261743| 2015-02-25 16:01:33 | software | system | GPU XID                          | Node c13-3c0s1n1 GPU Xid 13 Graphics Engine Exception|838969|c13-3c0s1n1
+| titan    |2261746| 2015-02-25 16:05:15 | software | system | GPU XID                          | Node c9-3c2s3n3 GPU Xid 13 Graphics Engine Exception|838972|c9-3c2s3n3
+| titan    |2261783| 2015-02-25 16:13:50 | software | system | GPU XID                          | Node c15-3c0s3n1 GPU Xid 13 Graphics Engine Exception|838975|c15-3c0s3n1
+| titan    |2261784| 2015-02-25 16:15:31 | software | system | GPU XID                          | Node c11-3c0s1n0 GPU Xid 13 Graphics Engine Exception|838978|c11-3c0s1n0
+| titan    |2261787| 2015-02-25 16:18:13 | software | system | GPU XID                          | Node c13-3c0s0n1 GPU Xid 13 Graphics Engine Exception|838981|c13-3c0s0n1
+| titan    |2261845| 2015-02-25 16:34:02 | software | system | GPU XID                          | Node c11-3c0s3n1 GPU Xid 13 Graphics Engine Exception|838987|c11-3c0s3n1
+| titan    |2261918| 2015-02-25 17:39:47 | software | system | GPU XID                          | Node c7-4c0s0n0 GPU Xid 13 Graphics Engine Exception|838990|c7-4c0s0n0
+| titan    |2262000| 2015-02-25 18:08:22 | software | system | GPU XID                          | Node c9-2c0s3n3 GPU Xid 13 Graphics Engine Exception|838993|c9-2c0s3n3
+| titan    |2262079| 2015-02-25 19:31:42 | software | system | GPU XID                          | Node c10-7c2s1n1 GPU Xid 13 Graphics Engine Exception|838996|c10-7c2s2n3 c12-7c2s1n2 c10-7c2s1n1
+| titan    |2261899| 2015-02-26 01:36:58 | hardware | system | Machine Check Exception          | Node c19-4c1s3n0 Core 6 Machine Check Exception Bank 2 Status be0040900010010a Addr 0000000000008880 Socket 0|839005|c19-4c1s3n0
+| titan    |2261280| 2015-02-26 09:43:26 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|839029|c18-2c0s7n0 c17-1c1s3n3
+| titan    |2261280| 2015-02-26 12:40:15 | hardware | system | GPU DBE                          | Node c18-2c0s7n0 GPU DBE on GPU 00 01 01|839032|c18-2c0s7n0
+| titan    |2263320| 2015-02-26 20:36:35 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840154|c17-1c1s3n3
+| titan    |2263784| 2015-02-27 07:44:02 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840172|c17-1c1s3n3
+| titan    |2263808| 2015-02-27 07:51:51 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840175|c17-1c1s3n3
+| titan    |2263633| 2015-02-27 08:27:33 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|840187|c13-7c0s4n3
+| titan    |2263633| 2015-02-27 08:27:33 | hardware | system | Machine Check Exception          | Node c13-7c0s4n3 MCE Threshold CPU 8|840184|c13-7c0s4n3
+| titan    |2264702| 2015-02-27 19:22:34 | software | system | Kernel Panic                     | sus:  oom_kill_task: killing invalid task|840964|c13-7c0s4n3
+| titan    |2264650| 2015-02-27 19:56:29 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840970|c17-1c1s3n3
+| titan    |2264203| 2015-02-27 21:56:37 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840973|c17-1c1s3n3
+| titan    |2264538| 2015-02-27 21:59:13 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840976|c17-1c1s3n3
+| titan    |2264545| 2015-02-27 22:01:42 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840979|c17-1c1s3n3
+| titan    |2264885| 2015-02-28 00:01:24 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840985|c17-1c1s3n3
+| titan    |2263151| 2015-02-28 00:14:30 | hardware | system | Machine Check Exception          | Node c12-2c2s4n1 Core 0 Machine Check Exception Bank 4 Status f300000200190127 Addr 0000000000000000 Socket 0|840991|c12-2c2s4n1
+| titan    |2264943| 2015-02-28 05:10:59 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|840997|c17-1c1s3n3
+| titan    |2264982| 2015-02-28 07:59:03 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|841000|c17-1c1s3n3
+| titan    |2263888| 2015-02-28 08:02:26 | software | system | GPU XID                          | Node c17-1c1s3n3 GPU Xid 13 Graphics Engine Exception|841003|c17-1c1s3n3
+| titan    |2264531| 2015-02-28 09:17:45 | software | system | Kernel Panic                     | ksoftirqd/0:  Fatal exception in interrupt|841006|c17-1c1s3n3
+| titan    |2265319| 2015-03-01 21:09:57 | hardware | system | Machine Check Exception          | Node c14-7c1s0n2 Core 8 Machine Check Exception Bank 2 Status be0040300010010a Addr 000000000001a0c0 Socket 0|841225|c14-7c1s0n2
+| titan    |2265770| 2015-03-02 04:44:24 | hardware | system | GPU DPR                          | Node c8-5c2s7n0 GPU DPR on Page 000000000000d094|841621|c8-5c2s7n0
+| titan    |2265770| 2015-03-02 04:48:16 | software | system | GPU XID                          | Node c8-5c2s7n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|841627|c8-5c2s7n0
+| titan    |2265770| 2015-03-02 04:48:16 | hardware | system | GPU DBE                          | Node c8-5c2s7n0 GPU DBE on GPU 00 02 01|841624|c8-5c2s7n0
+| titan    |2266459| 2015-03-02 13:49:18 | hardware | system | GPU DPR                          | Node c22-1c0s2n1 GPU DPR on Page 0000000000075b2d|841819|c22-1c0s2n1
+| titan    |2266469| 2015-03-02 13:58:57 | software | system | GPU XID                          | Node c5-5c2s1n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|841825|c5-5c2s1n0
+| titan    |2266469| 2015-03-02 13:58:57 | hardware | system | GPU DBE                          | Node c5-5c2s1n0 GPU DBE on GPU 00 02 00|841822|c5-5c2s1n0
+| titan    |2266469| 2015-03-02 13:58:57 | hardware | system | GPU DPR                          | Node c5-5c2s1n0 GPU DPR on Page 00000000000ef139|841873|c5-5c2s1n0
+| titan    |2266189| 2015-03-02 19:15:24 | software | system | GPU XID                          | Node c17-6c0s2n2 GPU Xid 13 Graphics Engine Exception|841891|c17-6c0s2n2
+| titan    |2268185| 2015-03-04 11:17:45 | software | system | GPU XID                          | Node c3-0c1s0n0 GPU Xid 44 Graphics Engine fault during context switch|842005|c3-0c1s0n0
+| titan    |2268316| 2015-03-04 13:40:43 | software | system | GPU XID                          | Node c0-0c2s1n3 GPU Xid 44 Graphics Engine fault during context switch|842026|c0-0c2s1n3
+| titan    |2268319| 2015-03-04 13:47:54 | software | system | GPU XID                          | Node c0-0c2s1n3 GPU Xid 44 Graphics Engine fault during context switch|842029|c0-0c2s1n3
+| titan    |2268321| 2015-03-04 13:48:49 | software | system | GPU XID                          | Node c6-1c1s0n1 GPU Xid 44 Graphics Engine fault during context switch|842032|c6-1c1s0n1
+| titan    |2268322| 2015-03-04 13:49:18 | software | system | GPU XID                          | Node c0-0c2s1n3 GPU Xid 44 Graphics Engine fault during context switch|842035|c0-0c2s1n3
+| titan    |2269525| 2015-03-05 15:12:32 | software | system | Kernel Panic                     | testing_dpotrf_:  oom_kill_task: killing invalid task|842307|c0-0c2s1n3
+| titan    |2272867| 2015-03-09 02:38:56 | software | system | GPU XID                          | Node c12-4c1s5n3 GPU Xid 32 Invalid or corrupted push buffer stream|842847|c12-4c1s5n3
+| titan    |2273379| 2015-03-09 14:27:07 | software | system | Kernel Panic                     | lsdalton.x:  oom_kill_task: killing invalid task|842871|c12-4c1s5n3
+| titan    |2274471| 2015-03-09 18:14:24 | software | system | GPU XID                          | Node c21-1c0s5n3 GPU Xid 13 Graphics Engine Exception|842904|c21-1c0s5n3 c23-1c0s6n2 c23-1c0s7n2 c23-1c0s5n3 c23-1c0s6n0 c23-1c0s7n3 c23-1c0s7n0 c23-1c0s6n1 c23-1c0s5n2 c23-1c0s6n3 c23-1c0s7n1 c21-1c0s7n2
+| titan    |2274512| 2015-03-09 19:22:21 | software | system | GPU XID                          | Node c1-5c0s4n1 GPU Xid 13 Graphics Engine Exception|842955|c3-5c0s5n3 c5-5c0s4n2 c5-5c0s5n2 c5-5c0s5n0 c5-5c0s5n1 c3-5c0s5n1 c5-5c0s4n1 c5-5c0s4n3 c3-5c0s5n2 c3-5c0s5n0 c5-5c0s4n0 c1-5c0s4n1
+| titan    |2274519| 2015-03-09 19:34:01 | software | system | GPU XID                          | Node c3-7c1s7n3 GPU Xid 13 Graphics Engine Exception|842991|c10-4c1s0n2 c10-1c0s2n2 c10-1c0s2n3 c10-1c0s2n1 c10-1c0s1n2 c3-7c1s7n3 c5-7c1s7n2 c10-1c0s1n3 c10-1c0s3n0 c8-0c0s1n2 c10-1c0s2n0 c5-5c1s7n0
+| titan    |2274520| 2015-03-09 19:40:46 | software | system | GPU XID                          | Node c20-6c2s2n0 GPU Xid 13 Graphics Engine Exception|843027|c3-2c1s6n2 c20-6c2s3n2 c22-6c2s2n2 c20-6c2s3n0 c20-6c2s3n1 c20-6c2s2n1 c20-6c2s2n3 c20-6c2s2n2 c20-6c2s3n3 c18-2c0s6n2 c1-2c1s6n0 c20-6c2s2n0
+| titan    |2274539| 2015-03-09 20:01:26 | software | system | GPU XID                          | Node c2-0c2s0n3 GPU Xid 13 Graphics Engine Exception|843063|c4-0c2s0n0 c4-0c2s0n1 c15-2c1s5n3 c15-2c1s5n0 c15-2c1s5n2 c2-0c2s0n0 c15-2c1s6n1 c2-0c2s0n2 c15-2c1s5n1 c4-0c2s0n3 c4-0c2s0n2 c2-0c2s0n3
+| titan    |2277214| 2015-03-12 16:41:29 | software | system | GPU XID                          | Node c0-4c0s0n2 GPU Xid 13 Graphics Engine Exception|843546|c0-4c0s0n2
+| titan    |2276879| 2015-03-12 20:09:28 | hardware | system | GPU DPR                          | Node c13-5c2s1n0 GPU DPR on Page 000000000009ae9d|862341|c13-5c2s1n0
+| titan    |2276433| 2015-03-13 09:19:20 | software | system | GPU XID                          | Node c22-4c1s4n2 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|862404|c22-4c1s4n2
+| titan    |2276433| 2015-03-13 09:19:20 | hardware | system | GPU DBE                          | Node c22-4c1s4n2 GPU DBE on GPU 00 04 00|862398|c22-4c1s4n2
+| titan    |2278779| 2015-03-13 13:55:47 | software | system | GPU XID                          | Node c7-1c2s2n0 GPU Xid 13 Graphics Engine Exception|862518|c7-1c2s2n0
+| titan    |2278958| 2015-03-13 14:47:24 | software | system | GPU XID                          | Node c7-3c2s6n0 GPU Xid 13 Graphics Engine Exception|862530|c7-3c2s6n0
+| titan    |2278979| 2015-03-13 14:52:30 | software | system | GPU XID                          | Node c9-3c2s7n2 GPU Xid 13 Graphics Engine Exception|862536|c9-3c2s7n2
+| titan    |2278985| 2015-03-13 14:55:59 | software | system | GPU XID                          | Node c12-7c0s3n3 GPU Xid 13 Graphics Engine Exception|862542|c12-7c0s3n3
+| titan    |2279002| 2015-03-13 14:59:19 | software | system | GPU XID                          | Node c23-3c1s1n2 GPU Xid 13 Graphics Engine Exception|862548|c23-3c1s1n2
+| titan    |2279009| 2015-03-13 15:04:20 | software | system | GPU XID                          | Node c7-3c2s6n1 GPU Xid 13 Graphics Engine Exception|862554|c7-3c2s6n1
+| titan    |2279018| 2015-03-13 15:12:55 | software | system | GPU XID                          | Node c9-3c2s7n2 GPU Xid 13 Graphics Engine Exception|862560|c9-3c2s7n2
+| titan    |2279023| 2015-03-13 15:16:41 | software | system | GPU XID                          | Node c7-1c2s0n0 GPU Xid 13 Graphics Engine Exception|862566|c7-1c2s0n0
+| titan    |2279030| 2015-03-13 15:20:02 | software | system | GPU XID                          | Node c5-0c1s4n0 GPU Xid 13 Graphics Engine Exception|862572|c5-0c1s4n0
+| titan    |2280028| 2015-03-14 01:39:29 | hardware | system | GPU DPR                          | Node c18-1c0s3n1 GPU DPR on Page 0000000000148f6b|862743|c18-1c0s3n1
+| titan    |2265842| 2015-03-14 04:18:47 | hardware | system | GPU DPR                          | Node c21-2c1s5n3 GPU DPR on Page 0000000000016c19|862755|c21-2c1s5n3
+| titan    |2282159| 2015-03-15 10:33:25 | software | system | GPU XID                          | Node c19-5c2s4n2 GPU Xid 13 Graphics Engine Exception|864033|c19-5c2s4n2
+| titan    |2281955| 2015-03-15 17:03:59 | hardware | system | Machine Check Exception          | Node c16-3c0s3n0 Core 8 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|864081|c16-3c0s3n0
+| titan    |2281091| 2015-03-15 18:19:57 | hardware | system | GPU DPR                          | Node c4-2c2s7n1 GPU DPR on Page 00000000000cae2c|864087|c4-2c2s7n1
+| titan    |2284299| 2015-03-16 12:24:13 | hardware | system | GPU DPR                          | Node c4-4c1s2n0 GPU DPR on Page 0000000000007fea|864213|c4-4c1s2n0
+| titan    |2288624| 2015-03-17 23:19:35 | hardware | system | Machine Check Exception          | Node c0-5c0s4n2 MCE Threshold CPU 0|864666|c0-5c0s4n2
+| titan    |2288624| 2015-03-17 23:19:36 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|864669|c0-5c0s4n2
+| titan    |2289035| 2015-03-18 06:09:57 | hardware | system | GPU DPR                          | Node c2-2c1s5n1 GPU DPR on Page 0000000000067435|864678|c2-2c1s5n1
+| titan    |2289035| 2015-03-18 06:32:10 | hardware | system | Machine Check Exception          | Node c19-6c0s0n3 Core 8 Machine Check Exception Bank 4 Status f300000600190127 Addr 0000000000000000 Socket 0|864681|c19-6c0s0n3
+| titan    |2288948| 2015-03-19 05:20:56 | hardware | system | Machine Check Exception          | Node c14-7c1s0n0 Core 8 Machine Check Exception Bank 4 Status fa000010000d0c03 Addr 0000000000000000 Socket 0|864768|c14-7c1s0n0
+| titan    |2298747| 2015-03-22 18:44:41 | hardware | system | GPU DPR                          | Node c19-3c1s7n0 GPU DPR on Page 0000000000134044|864993|c20-5c2s0n3 c19-3c1s7n0
+| titan    |2299485| 2015-03-23 15:05:41 | software | system | GPU XID                          | Node c5-2c2s7n2 GPU Xid 13 Graphics Engine Exception|865017|c1-0c0s6n2 c5-2c2s7n2 c3-2c2s7n3 c3-2c2s6n0 c3-2c2s7n1 c5-2c2s7n3 c0-0c1s2n1 c1-0c0s6n3 c3-2c2s7n0 c3-2c2s6n1 c0-0c1s2n0 c3-2c2s7n2
+| titan    |2299553| 2015-03-23 16:29:24 | software | system | GPU XID                          | Node c15-5c2s2n2 GPU Xid 13 Graphics Engine Exception|865059|c15-5c2s3n1 c13-5c2s3n1 c15-5c2s2n3 c13-5c2s2n3 c15-5c2s3n3 c15-5c2s3n2 c13-5c2s3n2 c13-5c2s3n0 c15-5c2s3n0 c13-5c2s2n2 c15-5c2s2n2 c13-5c2s3n3
+| titan    |2300241| 2015-03-23 23:22:31 | software | system | GPU XID                          | Node c8-3c2s3n2 GPU Xid 13 Graphics Engine Exception|865104|c8-3c2s2n0 c8-3c2s2n2 c8-3c2s2n3 c6-3c2s2n3 c6-3c2s3n2 c6-3c2s2n0 c8-3c2s3n2 c6-3c2s3n0 c6-3c2s2n1 c8-3c2s3n3 c6-3c2s3n3 c6-3c2s3n1
+| titan    |2301589| 2015-03-25 00:58:51 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|865191|c24-3c0s6n3
+| titan    |2301589| 2015-03-25 00:58:51 | hardware | system | Machine Check Exception          | Node c24-3c0s6n3 MCE Threshold CPU 0|865188|c24-3c0s6n3
+| titan    |2302366| 2015-03-25 18:12:16 | software | system | GPU XID                          | Node c0-7c1s6n1 GPU Xid 13 Graphics Engine Exception|865233|c0-7c1s6n1
+| titan    |2302379| 2015-03-25 18:24:38 | software | system | GPU XID                          | Node c10-7c2s3n0 GPU Xid 13 Graphics Engine Exception|865236|c10-7c2s2n2 c10-7c2s2n1 c10-7c2s3n1 c10-7c2s3n0
+| titan    |2303517| 2015-03-26 15:55:45 | software | system | GPU XID                          | Node c14-6c2s3n2 GPU Xid 13 Graphics Engine Exception|865296|c14-6c2s3n2 c14-4c2s6n1
+| titan    |2303526| 2015-03-26 16:02:36 | software | system | GPU XID                          | Node c14-4c2s6n0 GPU Xid 13 Graphics Engine Exception|865302|c14-4c2s6n0 c0-0c0s1n3 c14-4c2s6n2
+| titan    |2303545| 2015-03-26 16:12:10 | software | system | GPU XID                          | Node c8-1c0s6n2 GPU Xid 13 Graphics Engine Exception|865314|c8-1c0s6n2 c8-1c0s6n3
+| titan    |2303177| 2015-03-27 10:32:49 | hardware | system | Module Failed                    | Module Failed c15-2c0s0|865341|c15-2c1s3 c15-2c2s5 c15-2c1s0 c15-2c2s4 c15-2c1s2 c15-2c0s1 c15-2c0s5 c15-2c2s6 c15-2c2s2 c15-2c1s7 c15-2c0s7 c15-2c0s3 c15-2c1s1 c15-2c2s3 c15-2c2s1 c15-2c2s7 c15-2c0s0 c15-2c1s4 c15-2c0s2 c15-2c0s6 c15-2c1s5 c15-2c2s0 c15-2c0s4 c15-2c1s6
+| titan    |2303248| 2015-03-27 10:32:49 | hardware | system | Module Failed                    | Module Failed c15-2c0s0|865338|c15-2c2s6 c15-2c0s0 c15-2c1s5 c15-2c2s1 c15-2c1s2
+| titan    |2304816| 2015-03-27 20:14:46 | hardware | system | GPU DPR                          | Node c14-7c2s7n2 GPU DPR on Page 0000000000137b99|865641|c14-7c2s7n2
+| titan    |2304358| 2015-03-29 13:37:56 | hardware | system | Machine Check Exception          | Node c10-0c2s1n1 Core 4 Machine Check Exception Bank 2 Status be0040400010010a Addr 0000000000005e80 Socket 0|865659|c10-0c2s1n1
+| titan    |2310237| 2015-04-01 14:24:31 | software | system | GPU XID                          | Node c5-5c2s1n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|890745|c5-5c2s1n1
+| titan    |2310237| 2015-04-01 14:24:31 | hardware | system | GPU DBE                          | Node c5-5c2s1n1 GPU DBE on GPU 00 02 00|890742|c5-5c2s1n1
+| titan    |2310124| 2015-04-01 15:20:36 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|901539|c4-2c1s4n1
+| titan    |2310124| 2015-04-01 15:20:36 | hardware | system | Machine Check Exception          | Node c4-2c1s4n1 MCE Threshold CPU 8|901536|c4-2c1s4n1
+| titan    |2313422| 2015-04-04 21:57:17 | hardware | system | GPU DPR                          | Node c21-7c2s2n2 GPU DPR on Page 000000000000bfc1|926235|c21-7c2s2n2
+| titan    |2287393| 2015-04-05 11:43:42 | hardware | system | Machine Check Exception          | Node c9-2c1s5n2 Core 0 Machine Check Exception Bank 4 Status fe0fa00019080a23 Addr 00000003c5811710 Socket 0|926241|c9-2c1s5n2
+| titan    |2319813| 2015-04-09 11:02:42 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|926304|c0-5c0s4n2
+| titan    |2319813| 2015-04-09 11:02:42 | hardware | system | Machine Check Exception          | Node c0-5c0s4n2 MCE Threshold CPU 0|926301|c0-5c0s4n2
+| titan    |2322890| 2015-04-12 15:44:25 | hardware | system | Machine Check Exception          | Node c0-5c0s0n0 Core 0 Machine Check Exception Bank 4 Status f300000000190127 Addr 0000000000000000 Socket 0|927195|c0-5c0s0n0
+| titan    |2323116| 2015-04-13 01:53:31 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|958278|c24-4c2s0n2
+| titan    |2323116| 2015-04-13 01:53:31 | hardware | system | Machine Check Exception          | Node c24-4c2s0n2 MCE Threshold CPU 8|958275|c24-4c2s0n2
+| titan    |2321764| 2015-04-13 17:53:57 | hardware | system | Machine Check Exception          | Node c16-5c1s3n2 Core 0 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|958368|c16-5c1s3n2
+| titan    |2323820| 2015-04-13 20:30:12 | hardware | system | GPU DPR                          | Node c20-5c2s0n3 GPU DPR on Page 000000000015380d|958398|c20-5c2s0n3
+| titan    |2323839| 2015-04-14 15:12:53 | software | system | GPU BUS                          | Node c11-1c1s3n1 GPU 0000:02:00.0 off the bus|927207|c11-1c1s3n1
+| titan    |2323839| 2015-04-14 15:12:59 | software | system | GPU XID                          | Node c11-1c1s3n1 GPU Xid 62 PMU communication error|927213|c11-1c1s3n1
+| titan    |2325807| 2015-04-15 09:19:29 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|927669|c24-3c0s6n3
+| titan    |2325807| 2015-04-15 09:19:29 | hardware | system | Machine Check Exception          | Node c24-3c0s6n3 MCE Threshold CPU 0|927666|c24-3c0s6n3
+| titan    |2325835| 2015-04-15 09:56:23 | hardware | system | GPU DPR                          | Node c20-5c2s0n3 GPU DPR on Page 0000000000152951|927672|c20-5c2s0n3
+| titan    |2325933| 2015-04-15 13:06:18 | software | system | GPU XID                          | Node c16-1c0s3n1 GPU Xid 13 Graphics Engine Exception|928260|c16-1c0s3n1
+| titan    |2325972| 2015-04-15 13:54:51 | software | system | GPU XID                          | Node c16-7c1s0n2 GPU Xid 13 Graphics Engine Exception|928308|c16-7c1s0n2
+| titan    |2326050| 2015-04-15 14:10:57 | software | system | GPU XID                          | Node c10-1c1s4n1 GPU Xid 13 Graphics Engine Exception|928353|c10-1c1s4n1
+| titan    |2326076| 2015-04-15 14:32:55 | software | system | GPU XID                          | Node c16-7c1s5n3 GPU Xid 13 Graphics Engine Exception|928434|c16-7c1s5n3
+| titan    |2326081| 2015-04-15 14:41:19 | software | system | GPU XID                          | Node c4-1c2s6n3 GPU Xid 13 Graphics Engine Exception|928461|c4-1c2s6n3
+| titan    |2326133| 2015-04-15 14:51:07 | software | system | GPU XID                          | Node c4-1c0s0n1 GPU Xid 13 Graphics Engine Exception|928485|c4-1c0s0n1
+| titan    |2326140| 2015-04-15 15:01:05 | software | system | GPU XID                          | Node c16-7c1s0n2 GPU Xid 13 Graphics Engine Exception|928530|c16-7c1s0n2
+| titan    |2326153| 2015-04-15 15:12:52 | software | system | GPU XID                          | Node c14-1c2s5n2 GPU Xid 13 Graphics Engine Exception|928587|c14-1c2s5n2
+| titan    |2326160| 2015-04-15 15:42:58 | software | system | GPU XID                          | Node c8-4c2s2n1 GPU Xid 13 Graphics Engine Exception|928626|c8-4c2s2n1
+| titan    |2326182| 2015-04-15 17:00:56 | software | system | GPU XID                          | Node c6-1c0s6n1 GPU Xid 13 Graphics Engine Exception|958170|c6-1c0s6n1
+| titan    |2326213| 2015-04-15 17:05:48 | software | system | GPU XID                          | Node c2-4c1s6n3 GPU Xid 13 Graphics Engine Exception|958203|c2-4c1s6n3
+| titan    |2323018| 2015-04-15 21:40:42 | hardware | system | Voltage Fault                    | Voltage Fault Node c9-3c1s7n2|958260|c9-3c1s7n2
+| titan    |2326451| 2015-04-16 03:57:57 | software | system | GPU XID                          | Node c16-2c1s4n0 GPU Xid 62 PMU communication error|958422|c16-2c1s4n0
+| titan    |2326451| 2015-04-16 03:57:57 | hardware | system | GPU DBE                          | Node c16-2c1s4n0 GPU DBE on GPU 00 04 00|958419|c16-2c1s4n0
+| titan    |2326451| 2015-04-16 03:58:03 | hardware | system | GPU DPR                          | Node c16-2c1s4n0 GPU DPR on Page 0000000000167773|958425|c16-2c1s4n0
+| titan    |2325260| 2015-04-17 02:07:46 | hardware | system | GPU DPR                          | Node c24-1c1s1n3 GPU DPR on Page 0000000000006257|958497|c24-1c1s1n3
+| titan    |2326528| 2015-04-17 17:37:37 | software | system | GPU XID                          | Node c23-2c0s6n2 GPU Xid 62 PMU communication error|958755|c23-2c0s6n2
+| titan    |2326528| 2015-04-17 17:37:37 | software | system | GPU BUS                          | Node c23-2c0s6n2 GPU 0000:02:00.0 off the bus|958752|c23-2c0s6n2
+| titan    |2327235| 2015-04-17 23:14:27 | hardware | system | Machine Check Exception          | Node c12-0c1s3n2 Core 0 Machine Check Exception Bank 4 Status fe67200040080813 Addr 000000034722aba0 Socket 0|959187|c12-0c1s3n2
+| titan    |2326605| 2015-04-18 00:12:48 | software | system | GPU XID                          | Node c22-3c0s0n2 GPU Xid 13 Graphics Engine Exception|959367|c20-7c0s3n0 c22-1c2s5n0 c20-5c2s2n2 c24-4c2s7n2 c16-4c0s6n3 c14-4c1s2n1 c22-4c2s7n2 c16-0c0s7n3 c16-2c1s6n2 c16-2c1s3n1 c22-3c0s3n0 c10-0c1s4n1 c12-2c2s6n2 c10-4c1s5n3 c20-5c2s1n0 c20-6c0s5n0 c10-4c1s5n1 c24-7c0s3n0 c20-6c0s6n2 c12-0c0s4n1 c20-1c2s5n1 c18-7c0s0n0 c22-1c2s5n1 c10-0c1s5n1 c20-1c2s2n3 c24-4c2s2n2 c22-7c2s6n2 c24-1c1s6n1 c22-3c0s2n0 c24-6c0s5n0 c18-5c2s5n0 c10-2c2s5n0 c22-3c0s1n2 c14-4c1s4n3 c22-4c2s4n3 c24-3c0s5n1 c20-7c0s2n0 c22-4c2s4n0 c12-2c2s5n0 c12-4c1s2n3 c14-4c1s4n1 c20-7c2s6n2 c20-3c0s6n2 c14-0c0s4n1 c22-5c2s1n0 c16-0c0s2n3 c18-7c0s1n0 c16-0c0s2n1 c14-4c1s7n1 c24-5c2s4n2 c10-4c1s2n3 c22-3c0s0n2 c10-0c0s7n1 c24-3c0s5n0 c14-4c1s7n3 c20-7c2s6n1 c18-5c2s4n0 c14-0c0s7n3 c20-1c2s5n2 c16-0c0s2n2 c24-4c2s2n3 c10-4c0s7n3 c20-1c2s5n3 c18-4c2s7n0 c16-2c2s4n0 c22-3c0s5n0 c18-3c0s2n2 c22-3c0s2n1 c20-5c2s1n2 c16-4c0s7n3 c24-7c0s4n0 c22-6c0s6n2 c10-6c1s0n1 c12-2c1s6n0 c10-4c0s7n1 c10-0c0s6n1 c22-1c2s2n3 c22-5c2s2n2 c12-2c1s5n2 c20-3c0s5n2 c18-3c0s1n2 c24-1c2s4n3 c22-1c1s6n1 c16-2c1s3n3 c12-2c2s6n0 c22-1c2s7n1 c16-2c1s7n3 c20-3c0s5n0 c14-0c1s7n3 c14-4c1s2n3 c24-7c0s1n2 c22-1c2s6n1
+| titan    |2329191| 2015-04-20 03:20:14 | hardware | system | GPU DPR                          | Node c15-1c2s0n1 GPU DPR on Page 000000000005e4cc|961110|c15-1c2s0n1
+| titan    |2329674| 2015-04-20 14:06:57 | hardware | system | GPU DPR                          | Node c13-4c2s0n0 GPU DPR on Page 000000000001ba19|961116|c13-4c2s0n0 c16-5c2s5n0
+| titan    |2329821| 2015-04-20 15:25:35 | hardware | system | Machine Check Exception          | Node c0-2c0s2n3 Core 8 Machine Check Exception Bank 4 Status fe0d2000dd080813 Addr 000000081fc0dfa0 Socket 0|961131|c0-2c0s2n3
+| titan    |2331509| 2015-04-22 01:59:00 | hardware | system | GPU DPR                          | Node c13-4c2s0n0 GPU DPR on Page 0000000000024dcd|962370|c13-4c2s0n0
+| titan    |2331510| 2015-04-22 06:02:23 | hardware | system | GPU DPR                          | Node c23-2c0s5n2 GPU DPR on Page 0000000000041c3b|962376|c23-2c0s5n2
+| titan    |2331527| 2015-04-22 08:00:54 | software | system | GPU BUS                          | Node c11-1c1s3n0 GPU 0000:02:00.0 off the bus|962379|c11-1c1s3n0
+| titan    |2331527| 2015-04-22 08:01:00 | software | system | GPU XID                          | Node c11-1c1s3n0 GPU Xid 62 PMU communication error|962385|c11-1c1s3n0
+| titan    |2331526| 2015-04-22 08:36:19 | software | system | GPU BUS                          | Node c23-2c0s6n3 GPU 0000:02:00.0 off the bus|962817|c23-2c0s6n3
+| titan    |2331526| 2015-04-22 08:36:21 | software | system | GPU XID                          | Node c23-2c0s6n3 GPU Xid 62 PMU communication error|962820|c23-2c0s6n3
+| titan    |2332138| 2015-04-22 16:04:13 | software | system | GPU XID                          | Node c12-7c1s3n3 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|963288|c12-7c1s3n3
+| titan    |2332138| 2015-04-22 16:04:13 | hardware | system | GPU DBE                          | Node c12-7c1s3n3 GPU DBE on GPU 00 05 01|963285|c12-7c1s3n3
+| titan    |2333047| 2015-04-23 11:35:08 | hardware | system | GPU DPR                          | Node c11-6c2s1n0 GPU DPR on Page 00000000000b4096|964074|c11-6c2s1n0
+| titan    |2333375| 2015-04-23 15:37:31 | software | system | GPU XID                          | Node c20-0c1s2n3 GPU Xid 13 Graphics Engine Exception|964089|c20-0c1s2n3
+| titan    |2331983| 2015-04-24 14:21:18 | software | system | GPU BUS                          | Node c9-3c1s3n0 GPU 0000:02:00.0 off the bus|964620|c9-3c1s3n0
+| titan    |2331983| 2015-04-24 14:23:16 | software | system | GPU XID                          | Node c9-3c1s3n0 GPU Xid 62 PMU communication error|964626|c9-3c1s3n0
+| titan    |2333677| 2015-04-24 14:39:12 | hardware | system | Machine Check Exception          | Node c8-6c0s1n3 Core 0 Machine Check Exception Bank 4 Status fe0a2100bf080a13 Addr 00000000015c5810 Socket 0|965082|c8-6c0s1n3
+| titan    |2334386| 2015-04-24 16:45:48 | software | system | Kernel Panic                     | xgc2:  Fatal exception|965085|c8-6c0s1n3
+| titan    |2335167| 2015-04-28 02:17:14 | hardware | system | Machine Check Exception          | Node c19-7c1s6n3 Core 0 Machine Check Exception Bank 4 Status fe082000ce080a13 Addr 000000016afb27a0 Socket 0|965409|c19-7c1s6n3
+| titan    |2336182| 2015-04-28 23:46:02 | hardware | system | Voltage Fault                    | Voltage Fault Node c11-5c1s2n3|965418|c11-5c1s2n3
+| titan    |2339854| 2015-04-30 17:45:39 | software | system | GPU XID                          | Node c8-1c0s7n2 GPU Xid 13 Graphics Engine Exception|965469|c8-1c0s7n2
+| titan    |2339930| 2015-04-30 18:43:27 | software | system | GPU XID                          | Node c18-2c1s7n3 GPU Xid 13 Graphics Engine Exception|965490|c18-2c1s7n3
+| titan    |2339971| 2015-04-30 19:20:31 | software | system | GPU XID                          | Node c5-5c1s3n3 GPU Xid 13 Graphics Engine Exception|965493|c5-5c1s3n3
+| titan    |2340865| 2015-05-01 17:57:02 | software | system | GPU XID                          | Node c4-6c1s1n3 GPU Xid 13 Graphics Engine Exception|965697|c4-6c1s1n3
+| titan    |2341599| 2015-05-03 15:20:44 | software | system | Kernel Panic                     | kgnilnd_rr_00:  LBUG|965733|c4-6c1s1n3
+| titan    |2343500| 2015-05-05 14:52:13 | software | system | Kernel Panic                     | xtnhd:  bad_page=panic: print_bad_pte: bad page vma:ffff8803fa8549e0|965763|c4-6c1s1n3
+| titan    |2343501| 2015-05-05 14:52:17 | software | system | Kernel Panic                     | sh:  bad_page=panic: print_bad_pte: bad page vma:ffff8807f9a289e0|965775|c4-6c1s1n3
+| titan    |2343503| 2015-05-05 14:52:29 | software | system | Kernel Panic                     | sh:  bad_page=panic: print_bad_pte: bad page vma:ffff8807f9b02368|965784|c4-6c1s1n3
+| titan    |2343504| 2015-05-05 14:52:53 | software | system | Kernel Panic                     | xtnhd:  bad_page=panic: print_bad_pte: bad page vma:ffff8803fa387d78|965793|c4-6c1s1n3
+| titan    |2343519| 2015-05-05 14:55:42 | software | system | Kernel Panic                     | pcmd_helper:  bad_page=panic: print_bad_pte: bad page vma:ffff8807ea792928|965802|c4-6c1s1n3
+| titan    |2343514| 2015-05-05 15:00:29 | software | system | Kernel Panic                     | real-nvidia-smi:  Fatal exception|965805|c4-6c1s1n3
+| titan    |2343506| 2015-05-05 15:00:36 | software | system | Kernel Panic                     | real-nvidia-smi:  bad_page=panic: print_bad_pte: bad page vma:ffff8807f8b0b870|965811|c4-6c1s1n3
+| titan    |2343515| 2015-05-05 15:00:36 | software | system | Kernel Panic                     | real-nvidia-smi:  Fatal exception|965808|c4-6c1s1n3
+| titan    |2343502| 2015-05-05 15:02:59 | software | system | Kernel Panic                     | pcmd_helper:  Fatal exception|965820|c4-6c1s1n3
+| titan    |2343505| 2015-05-05 15:03:36 | software | system | Kernel Panic                     | real-nvidia-smi:  bad_page=panic: print_bad_pte: bad page vma:ffff8807f99b21f8|965829|c4-6c1s1n3
+| titan    |2343507| 2015-05-05 15:04:01 | software | system | Kernel Panic                     | pcmd_helper:  Fatal exception|965841|c4-6c1s1n3
+| titan    |2343522| 2015-05-05 15:04:38 | software | system | Kernel Panic                     | ptlrpcd_7:  Fatal exception|965856|c4-6c1s1n3
+| titan    |2343539| 2015-05-05 15:19:25 | software | system | Kernel Panic                     | real-nvidia-smi:  bad_page=panic: print_bad_pte: bad page vma:ffff8807f9ad8140|965859|c4-6c1s1n3
+| titan    |2343544| 2015-05-05 15:25:24 | software | system | Kernel Panic                     | real-nvidia-smi:  Fatal exception|965865|c4-6c1s1n3
+| titan    |2344692| 2015-05-06 20:46:01 | hardware | system | GPU DPR                          | Node c5-1c2s7n0 GPU DPR on Page 000000000006532a|966003|c5-1c2s7n0
+| titan    |2345752| 2015-05-07 06:07:03 | software | system | GPU XID                          | Node c16-1c1s3n1 GPU Xid 13 Graphics Engine Exception|967113|c16-1c1s3n1
+| titan    |2345776| 2015-05-07 07:05:18 | software | system | GPU XID                          | Node c12-1c1s7n1 GPU Xid 13 Graphics Engine Exception|968124|c14-3c2s1n2 c14-3c1s5n2 c10-0c0s1n0 c20-1c1s4n2 c12-1c1s7n1 c10-3c1s7n0
+| titan    |2346443| 2015-05-07 18:00:14 | software | system | GPU XID                          | Node c4-1c0s6n0 GPU Xid 13 Graphics Engine Exception|972060|c4-1c0s6n0
+| titan    |2346571| 2015-05-07 18:02:57 | software | system | GPU XID                          | Node c1-0c0s4n3 GPU Xid 13 Graphics Engine Exception|972123|c1-0c0s4n3
+| titan    |2347023| 2015-05-08 10:22:46 | software | system | GPU XID                          | Node c8-2c0s3n2 GPU Xid 13 Graphics Engine Exception|973941|c8-2c0s3n2 c4-2c1s2n0
+| titan    |2345034| 2015-05-09 07:15:12 | hardware | system | GPU DPR                          | Node c11-5c2s5n3 GPU DPR on Page 000000000003b516|976356|c11-5c2s5n3
+| titan    |2347535| 2015-05-09 13:28:47 | hardware | system | GPU DPR                          | Node c14-3c0s7n1 GPU DPR on Page 0000000000005611|976359|c14-3c0s7n1
+| titan    |2344300| 2015-05-09 14:04:50 | hardware | system | Machine Check Exception          | Node c14-1c1s7n3 Core 0 Machine Check Exception Bank 4 Status f300000600190127 Addr 0000000000000000 Socket 0|976362|c14-1c1s7n3
+| titan    |2349234| 2015-05-10 23:17:11 | software | system | Kernel Panic                     | IOR:  Fatal exception|976365|c14-1c1s7n3
+| titan    |2348558| 2015-05-11 05:04:48 | software | system | Kernel Panic                     | pmcl3d:  Fatal machine check on current CPU|976491|c6-2c2s5n3 c14-1c1s7n3
+| titan    |2348558| 2015-05-11 05:04:53 | hardware | system | SXM Power Off                    | c6-2c2s5n3 SXM Power Off|976494|c6-2c2s5n3
+| titan    |2349175| 2015-05-11 20:52:51 | hardware | system | Machine Check Exception          | Node c9-2c2s6n3 Core 8 Machine Check Exception Bank 4 Status f300000600190127 Addr 0000000000000000 Socket 0|976707|c9-2c2s6n3
+| titan    |2350569| 2015-05-11 21:42:59 | software | system | GPU XID                          | Node c13-4c0s6n2 GPU Xid 13 Graphics Engine Exception|976713|c13-4c0s7n2 c13-4c0s7n0 c13-4c0s6n2 c15-4c0s6n2 c13-4c0s7n1 c13-4c0s7n3
+| titan    |2350956| 2015-05-12 10:53:09 | software | system | GPU XID                          | Node c8-0c0s4n2 GPU Xid 13 Graphics Engine Exception|976749|c8-0c0s5n0 c8-0c0s4n3 c8-0c0s5n1 c8-0c0s5n3 c8-0c0s4n2 c8-0c0s5n2
+| titan    |2350922| 2015-05-12 10:53:09 | software | system | GPU XID                          | Node c8-0c0s4n2 GPU Xid 13 Graphics Engine Exception|976746|c8-0c0s5n0 c8-0c0s4n3 c8-0c0s5n1 c8-0c0s5n3 c8-0c0s4n2 c8-0c0s5n2
+| titan    |2351740| 2015-05-12 17:19:03 | software | system | GPU XID                          | Node c8-1c1s5n1 GPU Xid 13 Graphics Engine Exception|976818|c8-1c1s5n1 c8-1c1s3n0 c2-1c1s3n2 c8-1c1s4n0 c8-1c1s3n1 c2-1c1s3n0
+| titan    |2352194| 2015-05-13 10:04:45 | software | system | GPU XID                          | Node c2-2c2s0n1 GPU Xid 13 Graphics Engine Exception|976839|c2-2c2s0n1
+| titan    |2351012| 2015-05-14 22:35:31 | hardware | system | GPU DPR                          | Node c2-4c2s6n2 GPU DPR on Page 00000000000179be|978663|c2-4c2s6n2
+| titan    |2355670| 2015-05-17 20:27:06 | hardware | system | Machine Check Exception          | Node c9-0c2s5n0 Core 0 Machine Check Exception Bank 2 Status be0040300010010a Addr 000000000001afc0 Socket 0|1062498|c9-0c2s5n0
+| titan    |2359571| 2015-05-19 10:31:02 | hardware | system | Machine Check Exception          | Node c5-2c2s1n1 Core 8 Machine Check Exception Bank 4 Status fa000010000d0c03 Addr 0000000000000000 Socket 0|1073634|c5-2c2s1n1
+| titan    |2362105| 2015-05-20 15:51:25 | software | system | GPU XID                          | Node c0-3c2s3n0 GPU Xid 13 Graphics Engine Exception|1080240|c0-3c2s4n0 c0-3c2s3n1 c0-3c2s4n3 c0-3c2s4n1 c0-3c2s3n0 c0-3c2s4n2
+| titan    |2362112| 2015-05-20 15:55:08 | software | system | GPU XID                          | Node c0-3c0s6n0 GPU Xid 13 Graphics Engine Exception|1080258|c0-3c0s6n1 c0-3c0s6n0 c0-3c0s6n3 c0-3c0s7n2 c0-3c0s6n2 c0-3c0s7n3
+| titan    |2362118| 2015-05-20 15:59:39 | software | system | GPU XID                          | Node c0-3c0s6n0 GPU Xid 13 Graphics Engine Exception|1080276|c0-3c0s6n1 c0-3c0s6n0 c0-3c0s6n3 c0-3c0s6n2 c7-5c2s1n1 c0-3c0s7n3
+| titan    |2358857| 2015-05-20 19:15:14 | hardware | system | GPU DPR                          | Node c22-1c1s0n3 GPU DPR on Page 00000000000702f8|1080294|c22-1c1s0n3
+| titan    |2356878| 2015-05-21 10:50:52 | hardware | system | GPU DPR                          | Node c15-4c0s5n1 GPU DPR on Page 0000000000043de0|1080504|c15-4c0s5n1
+| titan    |2363377| 2015-05-21 11:21:25 | hardware | system | GPU DPR                          | Node c3-7c2s2n2 GPU DPR on Page 0000000000005922|1080519|c3-7c2s2n2
+| titan    |2361406| 2015-05-21 19:23:41 | hardware | system | Machine Check Exception          | Node c22-3c0s3n1 Core 8 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|1080756|c22-3c0s3n1
+| titan    |2363470| 2015-05-22 10:17:51 | software | system | Kernel Panic                     | pmcl3d:  Fatal exception|1080768|c22-3c0s3n1
+| titan    |2357393| 2015-05-23 04:47:04 | hardware | system | GPU DPR                          | Node c20-7c0s6n0 GPU DPR on Page 000000000010e01c|1081326|c20-7c0s6n0 c23-1c1s4n3
+| titan    |2365709| 2015-05-23 10:27:27 | hardware | system | Machine Check Exception          | Node c18-2c1s2n2 MCE Threshold CPU 0|1081359|c18-2c1s2n2
+| titan    |2365709| 2015-05-23 10:27:28 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1081362|c18-2c1s2n2
+| titan    |2367655| 2015-05-25 21:57:52 | software | system | GPU XID                          | Node c11-7c0s6n3 GPU Xid 13 Graphics Engine Exception|1084065|c11-7c0s6n3
+| titan    |2367898| 2015-05-26 00:30:41 | software | system | GPU XID                          | Node c4-5c1s4n3 GPU Xid 13 Graphics Engine Exception|1084077|c4-5c1s4n3
+| titan    |2368407| 2015-05-27 09:50:02 | software | system | GPU XID                          | Node c22-5c1s5n2 GPU Xid 13 Graphics Engine Exception|1084125|c20-5c1s5n1 c22-5c1s5n2 c20-5c1s5n2 c20-5c1s5n3 c20-5c1s5n0 c24-5c1s6n0
+| titan    |2368541| 2015-05-27 12:36:57 | software | system | GPU XID                          | Node c18-0c0s2n0 GPU Xid 13 Graphics Engine Exception|1084173|c18-0c0s2n0
+| titan    |2368721| 2015-05-27 15:45:00 | software | system | GPU XID                          | Node c8-1c0s5n0 GPU Xid 13 Graphics Engine Exception|1084494|c8-1c0s5n0
+| titan    |2369139| 2015-05-27 18:55:14 | software | system | GPU XID                          | Node c7-3c0s7n3 GPU Xid 13 Graphics Engine Exception|1084524|c7-3c0s7n3
+| titan    |2369848| 2015-05-28 11:00:14 | software | system | GPU XID                          | Node c4-7c0s4n2 GPU Xid 13 Graphics Engine Exception|1086015|c2-7c0s4n1 c4-7c0s4n2 c4-7c0s4n3 c2-7c0s4n2 c2-7c0s4n0 c2-7c0s4n3
+| titan    |2370325| 2015-05-28 16:56:00 | software | system | GPU XID                          | Node c0-0c0s1n2 GPU Xid 13 Graphics Engine Exception|1086069|c0-0c0s1n2
+| titan    |2370328| 2015-05-28 16:59:16 | software | system | GPU XID                          | Node c3-5c2s5n2 GPU Xid 13 Graphics Engine Exception|1086072|c3-5c2s5n2
+| titan    |2370333| 2015-05-28 17:05:09 | software | system | GPU XID                          | Node c0-1c2s4n3 GPU Xid 13 Graphics Engine Exception|1086078|c0-1c2s4n3
+| titan    |2370323| 2015-05-28 17:05:55 | software | system | Kernel Panic                     | apinit:  cray_oom_kill_task: killing invalid task|1086081|c0-1c2s4n3
+| titan    |2370339| 2015-05-28 17:10:13 | software | system | GPU XID                          | Node c1-0c0s1n3 GPU Xid 13 Graphics Engine Exception|1086087|c1-0c0s1n3
+| titan    |2370348| 2015-05-28 17:20:24 | software | system | GPU XID                          | Node c0-0c2s1n3 GPU Xid 13 Graphics Engine Exception|1086090|c0-0c2s1n3
+| titan    |2370423| 2015-05-28 20:19:30 | software | system | Kernel Panic                     | apinit:  cray_oom_kill_task: killing invalid task|1086108|c0-0c2s1n3
+| titan    |2370515| 2015-05-28 21:22:02 | software | system | Kernel Panic                     | apinit:  cray_oom_kill_task: killing invalid task|1086126|c0-0c2s1n3
+| titan    |2371031| 2015-05-29 13:15:15 | software | system | Kernel Panic                     | apinit:  cray_oom_kill_task: killing invalid task|1086204|c0-0c2s1n3
+| titan    |2371553| 2015-05-29 16:25:00 | software | system | GPU XID                          | Node c6-2c2s5n3 GPU Xid 44 Graphics Engine fault during context switch|1086249|c6-2c2s5n1 c6-2c2s5n2 c6-2c2s5n0 c6-2c2s5n3
+| titan    |2371608| 2015-05-29 16:52:56 | software | system | Kernel Panic                     | DVS-IPC_msg:  cray_oom_kill_task: killing invalid task|1086267|c6-2c2s5n2
+| titan    |2371644| 2015-05-29 17:29:32 | software | system | Kernel Panic                     | kworker/15:0:  cray_oom_kill_task: killing invalid task|1086339|c6-2c2s5n2
+| titan    |2371618| 2015-05-30 03:25:57 | software | system | GPU XID                          | Node c7-5c1s6n1 GPU Xid 13 Graphics Engine Exception|1086348|c15-6c2s7n1 c7-5c2s4n2 c11-3c0s5n2 c15-5c2s4n0 c13-5c1s7n0 c9-6c2s7n0 c7-5c1s6n3 c9-6c2s5n0 c13-5c1s7n1 c11-3c0s7n1 c13-6c0s7n1 c11-7c0s2n0 c7-6c2s5n1 c7-7c0s2n3 c15-5c1s4n1 c9-6c0s7n3 c15-6c2s7n0 c15-6c2s4n0 c7-5c1s6n0 c13-3c0s1n1 c15-5c2s7n1 c11-3c0s2n1 c11-3c0s3n2 c13-7c0s2n0 c9-6c2s6n1 c13-5c1s4n0 c9-5c2s6n0 c14-3c2s7n1 c15-6c0s4n3 c13-5c2s4n3 c7-6c2s5n2 c11-3c0s7n0 c9-7c0s1n2 c7-7c0s2n2 c13-6c2s4n1 c7-6c2s5n3 c7-3c0s3n1 c9-6c2s5n1 c9-6c0s7n2 c11-3c0s7n2 c7-6c0s7n2 c15-3c0s1n1 c15-5c1s7n0 c13-5c2s7n0 c15-3c0s1n0 c9-3c2s7n3 c7-5c1s6n1 c9-3c0s0n3 c9-5c1s6n0 c7-5c2s4n3 c13-6c2s7n0 c15-5c2s7n3 c13-7c0s2n1 c13-1c2s3n2 c9-3c2s7n2 c15-3c0s2n0 c15-5c1s4n0 c13-6c0s6n2 c11-7c0s2n1 c15-7c0s0n3 c13-1c2s3n3 c7-3c0s4n0 c15-5c2s7n0 c13-5c2s4n0 c13-6c2s4n0 c11-3c0s5n1 c9-7c0s0n2 c15-3c0s5n1 c15-7c0s1n2 c15-3c0s5n0 c11-3c0s0n0 c13-5c2s4n1 c9-3c0s0n1 c11-3c0s3n1 c15-7c0s0n2 c11-3c0s4n1 c9-6c2s6n0 c9-5c2s6n3 c15-3c0s6n0 c9-3c0s0n0 c7-3c0s2n1 c7-7c0s2n0 c13-1c2s2n2
+| titan    |2367262| 2015-05-30 18:22:27 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1086768|c6-5c1s5n2
+| titan    |2367262| 2015-05-30 18:22:27 | hardware | system | Machine Check Exception          | Node c6-5c1s5n2 MCE Threshold CPU 8|1086765|c6-5c1s5n2
+| titan    |2372389| 2015-05-31 03:51:52 | software | system | GPU XID                          | Node c13-6c1s3n1 GPU Xid 13 Graphics Engine Exception|1086774|c7-6c1s2n2 c17-4c1s6n1 c15-5c2s4n2 c9-5c2s7n3 c13-5c1s4n1 c7-3c1s6n3 c9-3c1s5n1 c19-6c2s0n3 c13-5c1s4n3 c15-3c1s7n2 c17-4c1s6n0 c23-6c2s2n0 c17-7c0s4n2 c17-7c0s1n3 c13-6c1s3n3 c7-6c1s6n0 c19-6c2s1n3 c9-5c1s6n3 c13-3c1s0n2 c23-4c0s6n1 c19-4c0s4n1 c7-6c1s2n3 c7-3c1s6n2 c17-4c1s6n2 c13-3c1s4n1 c9-5c2s7n1 c7-6c1s2n0 c13-5c2s7n1 c13-5c2s7n3 c9-5c1s4n2 c17-7c0s4n1 c15-3c1s2n3 c9-6c2s7n0 c17-6c2s2n2 c21-4c0s4n1 c9-3c1s2n2 c7-6c1s6n1 c23-3c1s7n2 c21-4c0s4n0 c15-5c1s7n3 c9-5c1s4n3 c13-3c1s4n0 c13-6c1s3n0 c17-7c0s1n0 c13-6c1s3n1 c13-3c1s7n1 c15-3c1s7n0 c13-3c1s4n2 c13-3c1s1n3 c17-6c2s3n3 c9-5c1s6n2 c13-3c1s1n0 c9-3c1s2n1 c15-3c1s4n1 c17-4c0s2n1 c19-6c2s0n0 c17-6c2s3n2 c17-4c0s2n0 c15-3c1s2n2 c13-5c2s7n0 c17-4c1s6n3 c13-3c1s1n2 c9-3c1s4n1 c17-4c0s2n3 c9-5c1s4n1 c21-4c0s4n2 c13-3c1s2n2 c13-5c1s5n2 c23-6c2s2n3 c11-6c2s6n3 c23-6c2s2n2 c23-4c0s7n1 c17-7c0s4n3 c15-5c1s7n2 c13-5c1s4n2 c7-6c1s6n3 c15-5c1s7n1 c9-5c2s7n2 c17-4c0s3n0 c23-6c2s1n3 c15-3c1s7n1 c23-4c0s7n2 c9-3c1s4n0 c9-6c2s6n1 c9-5c1s6n1
+| titan    |2372146| 2015-05-31 18:30:09 | hardware | system | Machine Check Exception          | Node c4-1c2s3n0 Core 0 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|1090260|c4-1c2s3n0
+| titan    |2373238| 2015-06-01 09:54:29 | software | system | GPU XID                          | Node c15-4c2s1n2 GPU Xid 13 Graphics Engine Exception|1090308|c9-5c2s3n0 c11-6c1s7n1 c9-5c2s2n0 c11-7c1s4n1 c9-4c1s0n0 c7-4c2s1n1 c11-7c1s7n1 c11-6c0s0n0 c9-4c2s1n0 c15-5c2s5n2 c13-3c0s4n2 c7-6c1s0n2 c13-5c2s6n2 c9-6c0s0n1 c7-7c1s7n0 c7-7c1s4n1 c7-6c1s4n1 c7-6c1s3n0 c13-5c2s7n1 c7-7c1s3n0 c9-5c2s2n3 c15-4c2s0n0 c9-4c1s1n0 c9-4c1s1n1 c15-4c1s0n2 c11-3c0s4n2 c13-4c1s0n1 c7-7c1s4n0 c7-6c1s4n0 c9-6c0s0n0 c21-4c1s4n2 c15-4c2s1n2 c13-6c1s3n0 c13-6c1s3n1 c15-6c1s6n1 c7-5c2s7n2 c13-5c2s7n3 c15-5c2s4n1 c9-5c1s6n2 c15-5c1s7n3 c9-5c1s6n3 c11-7c0s7n1 c15-7c1s6n0 c15-6c1s6n0 c9-5c2s7n3 c15-4c2s0n3 c7-7c0s7n1 c7-7c0s6n1 c11-7c1s2n0 c9-5c2s7n1 c15-6c1s5n0 c15-3c0s2n2 c15-5c1s6n2 c7-6c1s0n3 c11-7c0s7n0 c9-5c2s4n2 c11-6c1s6n2 c13-7c1s6n1 c15-3c0s2n3 c9-5c2s5n2 c11-6c1s4n2 c11-3c0s4n3 c15-5c2s4n3 c11-7c1s5n1 c7-4c2s1n0 c11-7c1s2n2 c11-7c1s6n0 c9-5c2s2n1 c15-5c1s7n2 c7-7c0s7n0 c11-7c1s6n1 c15-4c2s0n2 c9-5c2s5n1 c9-5c1s7n2 c11-6c1s4n0 c11-7c1s6n2 c11-7c1s2n1
+| titan    |2373552| 2015-06-01 13:43:33 | software | system | GPU XID                          | Node c6-3c1s0n0 GPU Xid 13 Graphics Engine Exception|1090710|c6-3c0s5n3 c6-3c1s0n0 c6-0c1s4n0
+| titan    |2373610| 2015-06-01 14:18:28 | software | system | GPU XID                          | Node c18-5c2s1n0 GPU Xid 13 Graphics Engine Exception|1090773|c18-5c2s3n3 c22-5c2s3n3 c18-5c2s1n0 c20-5c2s2n3
+| titan    |2373704| 2015-06-01 14:46:05 | software | system | GPU XID                          | Node c22-5c2s3n1 GPU Xid 13 Graphics Engine Exception|1090788|c18-5c2s1n0 c22-5c2s3n1 c18-5c2s0n0 c20-5c2s2n1 c18-5c2s0n1
+| titan    |2373742| 2015-06-01 15:31:22 | software | system | GPU XID                          | Node c24-7c1s7n2 GPU Xid 13 Graphics Engine Exception|1090803|c22-7c1s6n3 c24-7c1s6n2 c24-7c1s7n2 c24-7c1s7n3 c8-3c0s3n0
+| titan    |2373779| 2015-06-01 15:58:01 | software | system | GPU XID                          | Node c6-3c0s7n2 GPU Xid 13 Graphics Engine Exception|1090818|c2-3c0s7n2 c2-3c0s7n1 c6-3c0s7n2 c4-3c0s6n2
+| titan    |2373889| 2015-06-01 16:49:57 | software | system | GPU XID                          | Node c2-1c0s5n0 GPU Xid 13 Graphics Engine Exception|1090830|c2-1c0s7n2 c2-1c0s4n1 c2-1c0s5n0 c2-1c0s4n0 c4-1c0s6n2
+| titan    |2373994| 2015-06-01 17:28:10 | software | system | GPU XID                          | Node c24-7c2s7n1 GPU Xid 13 Graphics Engine Exception|1090845|c24-5c2s0n1 c10-1c1s1n2 c20-5c2s0n0 c24-7c2s7n1 c24-5c2s0n0
+| titan    |2374007| 2015-06-01 18:35:50 | software | system | GPU XID                          | Node c22-7c1s5n3 GPU Xid 13 Graphics Engine Exception|1090863|c22-7c1s5n3
+| titan    |2374844| 2015-06-02 15:13:04 | software | system | Kernel Panic                     | apinit:  cray_oom_kill_task: killing invalid task|1091673|c22-7c1s5n3
+| titan    |2375656| 2015-06-03 11:44:58 | software | system | Kernel Panic                     | taskstats_stage:  cray_oom_kill_task: killing invalid task|1091904|c22-7c1s5n3
+| titan    |2375860| 2015-06-03 14:48:21 | software | system | GPU XID                          | Node c8-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1091982|c4-1c0s6n3 c2-1c0s6n2 c8-1c0s6n0 c4-1c0s6n2 c8-1c0s7n0 c8-1c0s7n1 c2-1c0s5n2 c6-1c0s6n1
+| titan    |2376046| 2015-06-03 16:10:10 | software | system | GPU XID                          | Node c4-1c2s1n3 GPU Xid 13 Graphics Engine Exception|1092090|c6-1c2s2n2 c2-1c2s1n0 c2-1c2s3n3 c2-1c2s1n3 c6-1c2s2n3 c2-1c2s1n2 c6-1c2s2n0 c4-1c2s1n3
+| titan    |2375623| 2015-06-04 02:51:54 | software | system | GPU XID                          | Node c24-6c0s6n3 GPU Xid 13 Graphics Engine Exception|1092318|c18-6c0s4n1 c4-2c1s0n0 c6-4c2s3n2 c16-2c2s0n3 c12-4c2s4n1 c6-4c0s7n2 c24-1c2s4n3 c14-6c2s3n1 c10-2c2s5n1 c8-4c0s6n2 c22-7c0s7n3 c18-1c2s4n2 c10-6c2s0n3 c16-1c2s1n0 c20-3c2s4n2 c16-0c1s2n3 c8-6c1s2n3 c12-4c2s3n0 c8-6c0s6n1 c10-1c0s2n2 c6-4c0s1n1 c10-4c1s6n
+| titan    |2377070| 2015-06-04 08:43:59 | software | system | GPU XID                          | Node c20-7c0s5n3 GPU Xid 13 Graphics Engine Exception|1104459|c18-6c0s4n1 c4-2c1s0n0 c12-4c2s3n0 c12-4c2s4n1 c10-1c0s4n3 c14-6c2s3n1 c8-0c2s5n0 c22-7c0s7n3 c8-1c0s0n3 c18-1c2s4n2 c10-6c2s0n3 c16-1c2s1n0 c20-3c2s4n2 c16-0c1s2n3 c4-1c1s3n0 c16-2c2s0n3 c10-1c0s2n2 c2-0c2s3n0 c10-4c1s6n3 c18-3c2s7n3 c22-3c2s0n0 c12-3c2s
+| titan    |2377485| 2015-06-04 11:53:38 | software | system | GPU XID                          | Node c8-1c0s6n1 GPU Xid 13 Graphics Engine Exception|1116624|c8-1c0s6n1
+| titan    |2377506| 2015-06-04 12:07:30 | software | system | GPU XID                          | Node c6-1c1s7n1 GPU Xid 13 Graphics Engine Exception|1116627|c6-1c1s7n1
+| titan    |2377568| 2015-06-04 12:42:13 | software | system | GPU XID                          | Node c15-6c2s1n1 GPU Xid 13 Graphics Engine Exception|1116630|c15-6c2s1n1
+| titan    |2379051| 2015-06-05 13:41:44 | software | system | Kernel Panic                     | kthreadd:  cray_oom_kill_task: killing invalid task|1116693|c15-6c2s1n1
+| titan    |2380292| 2015-06-07 16:13:38 | hardware | system | GPU DPR                          | Node c24-0c2s6n1 GPU DPR on Page 00000000001388e4|1117305|c24-0c2s6n1
+| titan    |2381228| 2015-06-07 18:09:07 | software | system | GPU XID                          | Node c6-2c1s6n3 GPU Xid 13 Graphics Engine Exception|1117308|c6-2c1s6n3
+| titan    |2373517| 2015-06-07 18:36:20 | hardware | system | Module Failed                    | Module Failed c14-3c2s4|1117314|c14-3c2s4
+| titan    |2380478| 2015-06-09 14:43:11 | hardware | system | Module Failed                    | Module Failed c9-3c0s0|1117494|c9-3c0s4 c9-3c1s7 c9-3c0s1 c9-3c0s2 c9-3c0s0 c9-3c1s2 c9-3c2s6 c9-3c0s3 c9-3c2s2 c9-3c0s6 c9-3c2s1 c9-3c2s3 c9-3c2s7 c9-3c2s4 c9-3c1s5 c9-3c1s0 c9-3c0s7 c9-3c0s5 c9-3c1s1 c9-3c2s0 c9-3c1s3 c9-3c1s4
+| titan    |2380480| 2015-06-09 15:01:09 | hardware | system | Module Failed                    | Module Failed c10-3c0s0|1117758|c10-3c2s0 c10-3c2s1 c10-3c1s1 c10-3c2s3 c10-3c0s7 c10-3c2s4 c10-3c1s5 c10-3c0s2 c10-3c0s5 c10-3c2s7 c10-3c2s5 c10-3c2s6 c10-3c0s4 c10-3c1s0 c10-3c2s2 c10-3c1s6 c10-3c0s6 c10-3c1s4 c10-3c0s0 c10-3c0s3 c10-3c0s1 c10-3c1s7 c10-3c1s3 c10-3c1s2
+| titan    |2386097| 2015-06-10 21:01:38 | software | system | GPU XID                          | Node c6-1c2s7n1 GPU Xid 13 Graphics Engine Exception|1118412|c6-1c2s7n1
+| titan    |2386578| 2015-06-11 10:07:03 | software | system | GPU XID                          | Node c0-0c0s1n2 GPU Xid 13 Graphics Engine Exception|1118430|c0-0c0s1n2
+| titan    |2387088| 2015-06-11 15:43:23 | software | system | GPU XID                          | Node c24-4c2s6n0 GPU Xid 13 Graphics Engine Exception|1118457|c24-4c2s6n0
+| titan    |2387965| 2015-06-12 11:13:58 | hardware | system | Machine Check Exception          | Node c13-4c0s5n2 Core 0 Machine Check Exception Bank 4 Status fe402000ed080a13 Addr 00000003b5cf0b20 Socket 0|1133304|c13-4c0s5n2
+| titan    |2388040| 2015-06-12 11:58:36 | software | system | GPU XID                          | Node c1-0c0s1n0 GPU Xid 13 Graphics Engine Exception|1133319|c0-0c0s1n3 c1-0c0s1n0 c1-0c0s1n1 c0-0c0s1n1 c0-0c0s1n0 c0-0c0s1n2
+| titan    |2388050| 2015-06-12 12:06:01 | software | system | GPU XID                          | Node c2-1c1s4n1 GPU Xid 13 Graphics Engine Exception|1133337|c6-1c2s6n2 c8-1c0s6n2 c6-1c0s4n0 c6-1c0s4n1 c2-1c1s4n1 c6-1c2s6n3
+| titan    |2388064| 2015-06-12 12:21:49 | software | system | GPU XID                          | Node c8-3c2s5n0 GPU Xid 13 Graphics Engine Exception|1133355|c6-3c2s5n1 c8-3c2s5n1 c6-3c2s5n0 c8-3c2s5n0 c6-3c2s5n2 c8-3c2s5n3
+| titan    |2388067| 2015-06-12 12:40:01 | software | system | GPU XID                          | Node c24-1c1s2n0 GPU Xid 13 Graphics Engine Exception|1133373|c22-1c1s2n0 c24-1c1s2n1 c24-1c1s2n3 c22-1c1s2n1 c24-1c1s2n0 c6-1c0s1n1
+| titan    |2388081| 2015-06-12 12:42:31 | software | system | GPU XID                          | Node c22-1c1s2n0 GPU Xid 13 Graphics Engine Exception|1133391|c22-1c1s2n0 c6-1c0s1n2 c6-1c0s1n1 c8-1c0s6n1 c24-1c1s2n1 c22-1c1s2n1
+| titan    |2388086| 2015-06-12 12:50:51 | software | system | GPU XID                          | Node c24-1c1s5n0 GPU Xid 13 Graphics Engine Exception|1133409|c24-1c1s5n1 c24-1c1s3n0 c24-1c1s5n0 c24-1c1s3n1 c24-1c1s4n0 c24-1c1s4n1
+| titan    |2388092| 2015-06-12 12:54:47 | software | system | GPU XID                          | Node c8-3c1s0n0 GPU Xid 13 Graphics Engine Exception|1133427|c8-3c1s0n3 c8-3c1s0n0 c8-3c1s1n3 c8-3c1s1n0 c8-3c1s1n2 c8-3c1s1n1
+| titan    |2388174| 2015-06-12 13:27:17 | software | system | GPU XID                          | Node c18-1c0s1n0 GPU Xid 13 Graphics Engine Exception|1133445|c18-1c0s1n1 c20-1c0s1n2 c20-1c0s1n1 c18-1c0s1n0 c20-1c0s1n0 c18-1c0s0n1
+| titan    |2388178| 2015-06-12 13:31:05 | software | system | GPU XID                          | Node c18-1c0s0n1 GPU Xid 13 Graphics Engine Exception|1133463|c22-1c0s0n2 c22-1c0s1n1 c22-1c0s0n3 c22-1c0s1n3 c22-1c0s1n2 c18-1c0s0n1
+| titan    |2388180| 2015-06-12 13:41:03 | software | system | GPU XID                          | Node c24-1c0s3n2 GPU Xid 13 Graphics Engine Exception|1133481|c22-1c0s3n0 c24-1c0s3n3 c22-1c0s3n2 c22-1c0s3n1 c22-1c0s3n3 c24-1c0s3n2
+| titan    |2388183| 2015-06-12 13:47:38 | software | system | GPU XID                          | Node c14-0c0s3n0 GPU Xid 13 Graphics Engine Exception|1133499|c14-0c0s3n0 c20-1c0s4n2 c20-1c0s4n3 c14-0c0s3n1 c14-0c0s2n1 c14-0c0s3n2
+| titan    |2380302| 2015-06-12 13:48:15 | hardware | system | GPU DPR                          | Node c16-1c1s3n2 GPU DPR on Page 0000000000075452|1133517|c16-1c1s3n2
+| titan    |2388186| 2015-06-12 13:50:15 | software | system | GPU XID                          | Node c14-0c0s2n1 GPU Xid 13 Graphics Engine Exception|1133520|c14-0c0s3n2 c14-0c0s3n0 c20-1c0s4n3 c14-0c0s3n1 c14-0c0s2n1 c20-1c0s4n2
+| titan    |2388188| 2015-06-12 13:52:58 | software | system | GPU XID                          | Node c8-1c2s3n2 GPU Xid 13 Graphics Engine Exception|1133538|c6-1c2s3n2 c8-1c2s3n2 c6-1c2s3n3 c8-1c2s2n2 c8-1c2s3n3 c6-1c2s3n1
+| titan    |2388193| 2015-06-12 13:58:33 | software | system | GPU XID                          | Node c6-1c1s3n0 GPU Xid 13 Graphics Engine Exception|1133556|c4-1c1s3n2 c6-1c1s3n1 c6-1c1s3n0 c4-1c1s3n1 c4-1c1s3n0 c4-1c1s3n3
+| titan    |2390441| 2015-06-14 17:56:51 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1133886|c10-4c2s6n0
+| titan    |2390441| 2015-06-14 17:56:51 | hardware | system | Machine Check Exception          | Node c10-4c2s6n0 MCE Threshold CPU 0|1133883|c10-4c2s6n0
+| titan    |2390853| 2015-06-15 00:01:00 | hardware | system | Machine Check Exception          | Node c11-6c2s4n1 Core 8 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|1134300|c11-6c2s4n1
+| titan    |2391030| 2015-06-15 00:27:34 | software | system | GPU XID                          | Node c4-1c1s1n3 GPU Xid 13 Graphics Engine Exception|1134303|c4-1c1s1n3
+| titan    |2391036| 2015-06-15 00:42:22 | software | system | GPU XID                          | Node c4-1c1s1n2 GPU Xid 13 Graphics Engine Exception|1134306|c4-1c1s1n2
+| titan    |2391311| 2015-06-15 09:59:00 | software | system | GPU XID                          | Node c2-6c2s2n0 GPU Xid 13 Graphics Engine Exception|1134309|c2-6c2s2n3 c8-6c2s7n2 c4-6c2s1n2 c2-6c2s2n2 c4-6c2s1n3 c2-6c2s2n0 c2-6c2s1n2 c2-6c2s1n3
+| titan    |2391377| 2015-06-15 11:03:53 | software | system | GPU XID                          | Node c16-1c0s7n3 GPU Xid 13 Graphics Engine Exception|1134351|c16-1c0s7n3
+| titan    |2391381| 2015-06-15 11:07:36 | software | system | GPU XID                          | Node c16-1c0s3n2 GPU Xid 13 Graphics Engine Exception|1134357|c16-1c0s3n2
+| titan    |2391420| 2015-06-16 00:46:00 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1134525|c17-3c0s7n0
+| titan    |2391420| 2015-06-16 00:46:00 | hardware | system | Machine Check Exception          | Node c17-3c0s7n0 MCE Threshold CPU 0|1134522|c17-3c0s7n0
+| titan    |2394328| 2015-06-17 15:58:23 | software | system | GPU XID                          | Node c6-1c1s2n0 GPU Xid 13 Graphics Engine Exception|1138605|c6-1c1s2n0
+| titan    |2387325| 2015-06-19 01:41:28 | hardware | system | GPU DPR                          | Node c24-5c2s0n0 GPU DPR on Page 0000000000007d05|1134882|c24-5c2s0n0
+| titan    |2387323| 2015-06-19 04:26:41 | hardware | system | GPU DPR                          | Node c15-5c1s4n1 GPU DPR on Page 000000000012c5ce|1134888|c15-5c1s4n1
+| titan    |2387329| 2015-06-21 11:12:35 | hardware | system | GPU DPR                          | Node c19-7c0s3n0 GPU DPR on Page 00000000000f7967|1135062|c19-7c0s3n0 c21-5c1s1n1
+| titan    |2394124| 2015-06-22 07:40:25 | software | system | GPU XID                          | Node c0-2c1s3n1 GPU Xid 13 Graphics Engine Exception|1135146|c0-2c1s3n1
+| titan    |2395279| 2015-06-23 01:46:56 | hardware | system | GPU DPR                          | Node c12-4c0s1n3 GPU DPR on Page 000000000001d9f1|1135203|c12-4c0s1n3
+| titan    |2399874| 2015-06-23 14:35:44 | hardware | system | Machine Check Exception          | Node c12-0c0s5n3 Core 0 Machine Check Exception Bank 4 Status fe02200001080813 Addr 000000041e7d23b0 Socket 0|1136844|c12-0c0s5n3
+| titan    |2399938| 2015-06-23 16:16:19 | hardware | system | Machine Check Exception          | Node c16-4c2s1n0 Core 0 Machine Check Exception Bank 4 Status fe2020000a080a13 Addr 000000028b578aa0 Socket 0|1137111|c16-4c2s1n0
+| titan    |2399961| 2015-06-23 17:32:22 | hardware | system | Machine Check Exception          | Node c14-1c0s4n1 Core 0 Machine Check Exception Bank 4 Status fe01200063080813 Addr 00000001b46d91a0 Socket 0|1137267|c14-1c0s4n1
+| titan    |2399976| 2015-06-23 18:02:46 | hardware | system | Machine Check Exception          | Node c18-0c1s3n2 Core 0 Machine Check Exception Bank 4 Status f300000600190127 Addr 0000000000000000 Socket 0|1137270|c18-0c1s3n2
+| titan    |2399986| 2015-06-24 10:55:23 | hardware | system | GPU DBE                          | Node c14-4c2s7n3 GPU DBE on GPU 00 03 01|1141185|c14-4c2s7n3
+| titan    |2399986| 2015-06-24 10:55:24 | hardware | system | GPU DPR                          | Node c14-4c2s7n3 GPU DPR on Page 00000000000195f3|1141188|c14-4c2s7n3
+| titan    |2399986| 2015-06-24 13:59:56 | hardware | system | Machine Check Exception          | Node c19-4c1s3n0 Core 0 Machine Check Exception Bank 4 Status fe102000ab080a13 Addr 000000040d9167b0 Socket 0|1142889|c19-4c1s3n0 c1-6c1s0n2
+| titan    |2399132| 2015-06-24 19:24:04 | hardware | system | Machine Check Exception          | Node c11-7c0s2n1 Core 0 Machine Check Exception Bank 4 Status fe55a00040080813 Addr 00000003a9fe02b0 Socket 0|1145118|c11-7c0s2n1
+| titan    |2396417| 2015-06-25 02:55:26 | hardware | system | GPU DPR                          | Node c16-6c0s3n0 GPU DPR on Page 00000000000d561c|1145382|c16-6c0s3n0
+| titan    |2395298| 2015-06-25 19:38:17 | hardware | system | GPU DBE                          | Node c5-2c2s2n2 GPU DBE on GPU 00 04 00|1145451|c5-2c2s2n2
+| titan    |2395298| 2015-06-25 19:38:17 | hardware | system | GPU DPR                          | Node c5-2c2s2n2 GPU DPR on Page 000000000004912c|1145454|c5-2c2s2n2
+| titan    |2404161| 2015-06-30 01:34:44 | hardware | system | Machine Check Exception          | Node c22-2c2s4n1 Core 0 Machine Check Exception Bank 4 Status fe652100d6080a13 Addr 00000002688a0600 Socket 0|1146609|c22-2c2s4n1 c16-6c2s0n3
+| titan    |2406803| 2015-06-30 04:11:37 | hardware | system | Machine Check Exception          | Node c23-2c1s4n0 Core 0 Machine Check Exception Bank 4 Status fe45a00004080a13 Addr 000000014e2e3e70 Socket 0|1147347|c23-2c1s4n0
+| titan    |2407683| 2015-06-30 17:57:19 | hardware | system | Machine Check Exception          | Node c19-4c1s2n2 Core 0 Machine Check Exception Bank 4 Status fe202100ce080a13 Addr 0000000118020ae0 Socket 0|1149117|c23-6c1s4n2 c19-4c1s2n2
+| titan    |2398674| 2015-07-01 01:19:13 | hardware | system | Machine Check Exception          | Node c1-5c1s5n0 Core 8 Machine Check Exception Bank 4 Status f300000200190127 Addr 0000000000000000 Socket 0|1149864|c1-5c1s5n0
+| titan    |2409469| 2015-07-02 02:33:51 | hardware | system | Machine Check Exception          | Node c14-1c0s4n1 Core 0 Machine Check Exception Bank 4 Status fe10200005080a13 Addr 0000000295c7c890 Socket 0|1149975|c14-1c0s4n1
+| titan    |2403984| 2015-07-02 12:46:20 | hardware | system | Machine Check Exception          | Node c11-7c2s0n0 Core 14 Machine Check Exception Bank 2 Status be0040c00010010a Addr 0000000000016540 Socket 0|1149996|c11-7c2s0n0
+| titan    |2406483| 2015-07-03 03:09:25 | hardware | system | GPU DBE                          | Node c18-1c2s4n0 GPU DBE on GPU 00 04 00|1150038|c18-1c2s4n0
+| titan    |2410386| 2015-07-08 16:49:10 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1150599|c5-0c0s4n3
+| titan    |2410386| 2015-07-08 16:49:10 | hardware | system | Machine Check Exception          | Node c5-0c0s4n3 MCE Threshold CPU 0|1150596|c5-0c0s4n3
+| titan    |2411343| 2015-07-09 00:58:15 | hardware | system | GPU DBE                          | Node c22-6c1s4n1 GPU DBE on GPU 00 02 00|1150617|c22-6c1s4n1
+| titan    |2411343| 2015-07-09 00:58:20 | hardware | system | GPU DPR                          | Node c22-6c1s4n1 GPU DPR on Page 0000000000167792|1150620|c22-6c1s4n1
+| titan    |2394809| 2015-07-09 09:02:47 | hardware | system | GPU DPR                          | Node c24-5c0s2n1 GPU DPR on Page 0000000000137845|1150623|c24-5c0s2n1
+| titan    |2414218| 2015-07-10 04:15:49 | hardware | system | Machine Check Exception          | Node c16-6c2s0n3 Core 0 Machine Check Exception Bank 4 Status fe00a10004080a13 Addr 00000002be820a70 Socket 0|1151655|c16-6c2s0n3
+| titan    |2415013| 2015-07-11 07:49:35 | hardware | system | Machine Check Exception          | Node c14-1c0s7n3 Core 0 Machine Check Exception Bank 4 Status fe00200010080813 Addr 000000039b3c71e0 Socket 0|1152675|c14-1c0s7n3
+| titan    |2416223| 2015-07-12 01:15:37 | hardware | system | Machine Check Exception          | Node c3-5c1s0n0 Core 0 Machine Check Exception Bank 4 Status f300000200190127 Addr 0000000000000000 Socket 0|1153047|c5-6c1s7n3 c17-0c2s4n0 c3-5c1s0n0
+| titan    |2416729| 2015-07-13 02:48:12 | hardware | system | Machine Check Exception          | Node c10-7c2s0n3 Core 8 Machine Check Exception Bank 4 Status f300000000190127 Addr 0000000000000000 Socket 0|1153074|c10-7c2s0n3
+| titan    |2415290| 2015-07-13 10:41:33 | hardware | system | GPU DPR                          | Node c17-4c0s7n0 GPU DPR on Page 000000000002d32b|1153077|c17-4c0s7n0
+| titan    |2417143| 2015-07-13 15:34:21 | hardware | system | Machine Check Exception          | Node c11-6c2s1n2 Core 0 Machine Check Exception Bank 4 Status fe2ea00008080a13 Addr 00000002c83b4da0 Socket 0|1153086|c21-0c1s7n1 c13-5c2s1n2 c17-0c1s0n0 c11-7c1s3n0 c13-1c2s4n0 c13-6c0s2n2 c13-3c2s3n1 c13-3c2s3n3 c9-7c2s4n2 c9-7c2s4n3 c9-7c1s6n2 c11-6c2s1n2 c15-3c2s6n2
+| titan    |2413670| 2015-07-15 10:47:09 | hardware | system | Machine Check Exception          | Node c1-7c1s3n1 Core 8 Machine Check Exception Bank 4 Status f300000200190127 Addr 0000000000000000 Socket 0|1153368|c1-7c1s3n1
+| titan    |2418781| 2015-07-16 03:28:25 | hardware | system | Machine Check Exception          | Node c12-4c0s5n3 Core 0 Machine Check Exception Bank 4 Status fe01200004080813 Addr 00000002322c1ee0 Socket 0|1154256|c12-4c0s5n3 c16-4c0s5n0 c12-2c2s5n0
+| titan    |2419815| 2015-07-16 05:25:17 | hardware | system | Machine Check Exception          | Node c17-3c1s2n3 Core 0 Machine Check Exception Bank 4 Status fe02200010080813 Addr 00000001b89ecaf0 Socket 0|1154616|c17-3c1s2n3
+| titan    |2422658| 2015-07-18 03:21:08 | hardware | system | Machine Check Exception          | Node c2-6c2s6n1 Core 0 Machine Check Exception Bank 4 Status f6000000000c0c0f Addr 0000000000000016 Socket 0|1155039|c2-6c2s6n1
+| titan    |2418675| 2015-07-18 19:01:01 | hardware | system | Machine Check Exception          | Node c3-4c2s6n2 Core 6 Machine Check Exception Bank 2 Status be0040c00010010a Addr 0000000000003e80 Socket 0|1156254|c3-4c2s6n2
+| titan    |2419861| 2015-07-19 00:36:40 | hardware | system | GPU DPR                          | Node c11-6c2s6n3 GPU DPR on Page 000000000009eab2|1156263|c5-4c2s0n3 c1-7c0s1n3 c11-6c2s6n3
+| titan    |2418507| 2015-07-19 08:19:29 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1156278|c22-3c2s6n1
+| titan    |2418507| 2015-07-19 08:19:29 | hardware | system | Machine Check Exception          | Node c22-3c2s6n1 MCE Threshold CPU 8|1156275|c22-3c2s6n1
+| titan    |2422150| 2015-07-19 08:32:28 | hardware | system | GPU DPR                          | Node c20-3c1s2n1 GPU DPR on Page 0000000000016875|1156284|c20-3c1s2n1
+| titan    |2422416| 2015-07-20 20:14:31 | hardware | system | Machine Check Exception          | Node c13-7c2s4n2 Core 0 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|1161111|c13-7c2s4n2
+| titan    |2425585| 2015-07-21 05:11:20 | hardware | system | GPU DPR                          | Node c23-6c1s0n2 GPU DPR on Page 00000000000aa702|1161117|c23-6c1s0n2
+| titan    |2424284| 2015-07-21 06:25:12 | hardware | system | Voltage Fault                    | Voltage Fault Node c22-4c0s1n2|1161129|c22-4c0s1n2
+| titan    |2423813| 2015-07-21 16:06:15 | hardware | system | GPU DBE                          | Node c19-0c2s6n1 GPU DBE on GPU 00 02 01|1161162|c19-0c2s6n1
+| titan    |2429348| 2015-07-24 23:36:52 | hardware | system | GPU DBE                          | Node c18-1c2s4n1 GPU DBE on GPU 00 04 00|1161210|c18-1c2s4n1
+| titan    |2427019| 2015-07-25 00:04:59 | hardware | system | GPU DPR                          | Node c23-6c1s0n2 GPU DPR on Page 00000000000aa745|1161213|c23-6c1s0n2
+| titan    |2422344| 2015-07-25 22:28:23 | software | system | Kernel Panic                     | dtms.e:  Fatal exception in interrupt|1161219|c23-6c1s0n2
+| titan    |2427868| 2015-07-26 05:08:27 | hardware | system | GPU DPR                          | Node c9-6c2s1n3 GPU DPR on Page 000000000000ddec|1161225|c9-6c2s1n3
+| titan    |2431288| 2015-07-27 07:14:23 | software | system | GPU BUS                          | Node c6-3c1s3n3 GPU 0000:02:00.0 off the bus|1161231|c6-3c1s3n3
+| titan    |2427023| 2015-07-27 14:32:43 | hardware | system | GPU DBE                          | Node c1-5c2s3n0 GPU DBE on GPU 00 01 00|1161255|c1-5c2s3n0
+| titan    |2430891| 2015-07-28 02:52:02 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1161261|c21-3c1s1n2
+| titan    |2430891| 2015-07-28 02:52:02 | hardware | system | Machine Check Exception          | Node c21-3c1s1n2 MCE Threshold CPU 0|1161258|c21-3c1s1n2
+| titan    |2434568| 2015-07-30 05:08:22 | hardware | system | GPU DPR                          | Node c8-2c2s6n0 GPU DPR on Page 000000000000c2a4|1161591|c8-2c2s6n0
+| titan    |2434544| 2015-07-30 16:27:17 | hardware | system | GPU DBE                          | Node c3-2c1s3n2 GPU DBE on GPU 00 02 00|1161597|c3-2c1s3n2
+| titan    |2435110| 2015-07-30 16:58:36 | hardware | system | GPU DBE                          | Node c22-0c2s0n1 GPU DBE on GPU 00 04 01|1161678|c22-0c2s0n1
+| titan    |2435110| 2015-07-30 16:58:36 | hardware | system | GPU DPR                          | Node c22-0c2s0n1 GPU DPR on Page 0000000000002f42|1161681|c22-0c2s0n1
+| titan    |2435110| 2015-07-30 19:36:12 | hardware | system | Machine Check Exception          | Node c9-2c1s1n0 Core 0 Machine Check Exception Bank 4 Status fe202100ab080a13 Addr 0000000191fa1220 Socket 0|1162428|c9-2c1s1n0 c20-3c2s2n0
+| titan    |2435239| 2015-07-31 16:36:19 | hardware | system | Machine Check Exception          | Node c13-2c1s1n0 Core 0 Machine Check Exception Bank 4 Status fe63200050080a13 Addr 00000002c99cca60 Socket 0|1165122|c13-2c1s1n0
+| titan    |2435200| 2015-07-31 23:24:05 | hardware | system | GPU DPR                          | Node c6-5c0s2n0 GPU DPR on Page 000000000013b136|1165776|c6-5c0s2n0
+| titan    |2435203| 2015-08-01 06:14:00 | hardware | system | GPU DPR                          | Node c17-6c2s2n3 GPU DPR on Page 000000000012db18|1165818|c17-6c2s2n3
+| titan    |2434924| 2015-08-01 23:36:52 | hardware | system | GPU DBE                          | Node c8-0c2s4n1 GPU DBE on GPU 00 02 00|1165827|c8-0c2s4n1
+| titan    |2434924| 2015-08-01 23:36:55 | hardware | system | GPU DPR                          | Node c8-0c2s4n1 GPU DPR on Page 00000000000055d3|1165830|c8-0c2s4n1
+| titan    |2436589| 2015-08-02 06:55:49 | hardware | system | GPU DPR                          | Node c20-5c0s2n3 GPU DPR on Page 000000000011e9bd|1165833|c20-5c0s2n3
+| titan    |2436590| 2015-08-02 07:32:14 | hardware | system | GPU DPR                          | Node c19-7c0s3n0 GPU DPR on Page 00000000000f7924|1165836|c19-7c0s3n0
+| titan    |2438666| 2015-08-05 12:05:54 | software | system | GPU BUS                          | Node c21-4c2s3n1 GPU 0000:02:00.0 off the bus|1165929|c21-4c2s3n1
+| titan    |2438758| 2015-08-06 04:19:08 | software | system | GPU BUS                          | Node c11-0c2s6n2 GPU 0000:02:00.0 off the bus|1166280|c11-0c2s6n2
+| titan    |2440350| 2015-08-06 13:33:41 | hardware | system | GPU DPR                          | Node c24-1c0s3n2 GPU DPR on Page 0000000000097fef|1166292|c24-1c0s3n2
+| titan    |2440429| 2015-08-06 15:19:45 | software | system | GPU XID                          | Node c11-6c2s3n0 GPU Xid 13 Graphics Engine Exception|1166295|c11-6c2s3n0
+| titan    |2440282| 2015-08-06 19:03:28 | software | system | GPU XID                          | Node c14-7c2s4n2 GPU Xid 13 Graphics Engine Exception|1166301|c14-7c2s4n2 c14-7c2s6n0
+| titan    |2440285| 2015-08-07 01:57:31 | software | system | GPU XID                          | Node c12-1c2s0n1 GPU Xid 13 Graphics Engine Exception|1166328|c12-1c2s0n1 c4-1c0s4n1
+| titan    |2441185| 2015-08-07 12:20:24 | software | system | GPU XID                          | Node c22-5c2s7n3 GPU Xid 13 Graphics Engine Exception|1166364|c22-5c2s7n3 c24-5c2s7n0
+| titan    |2441187| 2015-08-07 12:27:53 | software | system | GPU XID                          | Node c18-5c2s1n1 GPU Xid 13 Graphics Engine Exception|1166385|c18-5c2s1n1 c24-5c1s7n3
+| titan    |2441269| 2015-08-07 14:38:00 | software | system | GPU XID                          | Node c4-0c0s0n0 GPU Xid 13 Graphics Engine Exception|1166409|c12-1c0s4n0 c4-0c0s0n0
+| titan    |2441268| 2015-08-07 14:38:17 | software | system | GPU XID                          | Node c16-1c2s7n1 GPU Xid 13 Graphics Engine Exception|1166418|c14-2c1s0n3 c16-1c2s7n1
+| titan    |2441273| 2015-08-07 14:43:16 | software | system | GPU XID                          | Node c8-5c1s5n3 GPU Xid 13 Graphics Engine Exception|1166445|c2-7c1s3n3 c8-5c1s5n3 c2-4c2s1n0
+| titan    |2441274| 2015-08-07 14:46:42 | software | system | GPU XID                          | Node c4-0c0s0n0 GPU Xid 13 Graphics Engine Exception|1166472|c12-1c1s2n2 c4-0c0s0n0 c10-1c0s5n3
+| titan    |2441432| 2015-08-07 17:13:56 | software | system | GPU XID                          | Node c4-2c1s3n3 GPU Xid 13 Graphics Engine Exception|1166502|c4-2c1s3n3
+| titan    |2441468| 2015-08-07 17:21:24 | software | system | GPU XID                          | Node c14-1c0s5n0 GPU Xid 13 Graphics Engine Exception|1166511|c14-1c0s5n0
+| titan    |2440440| 2015-08-07 21:41:51 | software | system | GPU BUS                          | Node c0-0c1s7n1 GPU 0000:02:00.0 off the bus|1166520|c0-0c1s7n1
+| titan    |2435876| 2015-08-08 11:48:57 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1166592|c8-2c2s2n2
+| titan    |2435876| 2015-08-08 11:48:57 | hardware | system | Machine Check Exception          | Node c8-2c2s2n2 MCE Threshold CPU 0|1166589|c8-2c2s2n2
+| titan    |2442034| 2015-08-08 20:10:19 | hardware | system | GPU DPR                          | Node c6-0c2s0n2 GPU DPR on Page 000000000006ead0|1166610|c6-0c2s0n2
+| titan    |2442126| 2015-08-09 03:22:28 | hardware | system | GPU DPR                          | Node c20-5c2s0n3 GPU DPR on Page 0000000000159d4f|1166643|c20-5c2s0n3
+| titan    |2442435| 2015-08-10 05:38:35 | hardware | system | GPU DPR                          | Node c20-5c2s0n3 GPU DPR on Page 000000000015a2ef|1166662|c20-5c2s0n3 c24-2c2s4n1
+| titan    |2441962| 2015-08-11 01:28:51 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1166935|c23-0c1s7n0
+| titan    |2441962| 2015-08-11 01:28:51 | hardware | system | Machine Check Exception          | Node c23-0c1s7n0 MCE Threshold CPU 0|1166932|c23-0c1s7n0
+| titan    |2442773| 2015-08-11 09:14:17 | hardware | system | GPU DPR                          | Node c23-0c1s1n1 GPU DPR on Page 0000000000081a78|1167439|c23-0c1s1n1
+| titan    |2442773| 2015-08-11 18:26:56 | software | system | GPU XID                          | Node c24-5c2s2n0 GPU Xid 62 PMU communication error|1167445|c24-5c2s2n0
+| titan    |2442773| 2015-08-11 18:26:56 | hardware | system | GPU DBE                          | Node c24-5c2s2n0 GPU DBE on GPU 00 02 00|1167442|c24-5c2s2n0
+| titan    |2443379| 2015-08-14 01:18:52 | software | system | GPU BUS                          | Node c17-0c1s6n3 GPU 0000:02:00.0 off the bus|1168663|c17-0c1s6n3
+| titan    |2447070| 2015-08-15 09:42:08 | software | system | GPU XID                          | Node c17-0c2s7n1 GPU Xid 62 PMU communication error|1168912|c17-0c2s7n1
+| titan    |2447070| 2015-08-15 09:42:08 | hardware | system | GPU DBE                          | Node c17-0c2s7n1 GPU DBE on GPU 00 02 00|1168909|c17-0c2s7n1
+| titan    |2448420| 2015-08-16 00:40:30 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1169278|c14-2c0s5n3
+| titan    |2448420| 2015-08-16 00:40:30 | hardware | system | Machine Check Exception          | Node c14-2c0s5n3 MCE Threshold CPU 8|1169275|c14-2c0s5n3
+| titan    |2449464| 2015-08-16 17:22:51 | software | system | Kernel Panic                     | IOR:  Fatal exception|1169440|c14-2c0s5n3
+| titan    |2449466| 2015-08-16 17:25:31 | software | system | Kernel Panic                     | IOR:  Fatal exception|1169446|c14-2c0s5n3
+| titan    |2449532| 2015-08-16 22:17:52 | software | system | GPU XID                          | Node c13-0c2s2n3 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1169458|c13-0c2s2n3
+| titan    |2449532| 2015-08-16 22:17:52 | hardware | system | GPU DBE                          | Node c13-0c2s2n3 GPU DBE on GPU 03 01 01|1169512|c13-0c2s2n3
+| titan    |2449687| 2015-08-16 22:23:31 | software | system | Kernel Panic                     | IOR:  Fatal exception|1169521|c13-0c2s2n3
+| titan    |2451762| 2015-08-19 01:04:46 | hardware | system | GPU DPR                          | Node c2-2c2s4n2 GPU DPR on Page 00000000000be8ff|1169587|c2-2c2s4n2
+| titan    |2452546| 2015-08-20 04:10:09 | software | system | GPU XID                          | Node c21-3c0s2n2 GPU Xid 13 Graphics Engine Exception|1169611|c21-3c0s2n2
+| titan    |2452688| 2015-08-24 01:43:44 | hardware | system | GPU DPR                          | Node c20-6c2s2n2 GPU DPR on Page 00000000000bf99d|1169692|c20-6c2s2n2 c20-7c0s6n0
+| titan    |2454317| 2015-08-24 04:54:15 | software | system | GPU XID                          | Node c23-6c1s3n0 GPU Xid 13 Graphics Engine Exception|1169701|c23-6c1s3n0
+| titan    |2456064| 2015-08-24 11:35:51 | software | system | GPU XID                          | Node c6-2c2s5n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1169719|c6-2c2s5n0
+| titan    |2456064| 2015-08-24 11:35:51 | hardware | system | GPU DBE                          | Node c6-2c2s5n0 GPU DBE on GPU 00 01 01|1169716|c6-2c2s5n0
+| titan    |2454248| 2015-08-24 15:44:50 | hardware | system | Machine Check Exception          | Node c23-4c1s2n2 Core 0 Machine Check Exception Bank 4 Status fa000010000d0c03 Addr 0000000000000000 Socket 0|1208311|c23-4c1s2n2
+| titan    |2456135| 2015-08-25 14:27:12 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1208344|c7-4c2s2n0
+| titan    |2456000| 2015-08-25 18:50:12 | software | system | GPU XID                          | Node c21-5c2s6n2 GPU Xid 13 Graphics Engine Exception|1208368|c21-5c2s6n2
+| titan    |2459767| 2015-08-27 08:57:08 | hardware | system | Machine Check Exception          | Node c19-0c1s3n0 Core 0 Machine Check Exception Bank 4 Status fe20a100f8080a13 Addr 00000002149d3450 Socket 0|1209046|c19-0c1s3n0
+| titan    |2462890| 2015-08-29 19:02:06 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1209514|c7-4c2s2n0
+| titan    |2465555| 2015-09-01 04:16:30 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1210138|c7-4c2s2n0
+| titan    |2465556| 2015-09-01 04:18:29 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1210147|c7-4c2s2n0
+| titan    |2466492| 2015-09-01 12:04:00 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1210207|c7-4c2s2n0
+| titan    |2466241| 2015-09-02 02:03:09 | software | system | GPU XID                          | Node c1-0c2s0n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1248694|c1-0c2s0n1
+| titan    |2466241| 2015-09-02 02:03:09 | hardware | system | GPU DBE                          | Node c1-0c2s0n1 GPU DBE on GPU 00 05 00|1248691|c1-0c2s0n1
+| titan    |2466241| 2015-09-02 02:03:15 | hardware | system | GPU DPR                          | Node c1-0c2s0n1 GPU DPR on Page 00000000000298a8|1248700|c1-0c2s0n1
+| titan    |2466440| 2015-09-02 17:29:36 | software | system | Kernel Panic                     | ptlrpcd_rcv:  Fatal exception|1248769|c1-0c2s0n1
+| titan    |2468993| 2015-09-03 16:46:11 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1248871|c7-4c2s2n0
+| titan    |2467219| 2015-09-04 10:53:52 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1248886|c7-4c2s2n0
+| titan    |2469873| 2015-09-04 16:30:01 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1249816|c7-4c2s2n0
+| titan    |2466733| 2015-09-05 00:29:19 | hardware | system | GPU DBE                          | Node c24-2c2s2n2 GPU DBE on GPU 00 00 00|1250281|c24-2c2s2n2
+| titan    |2466733| 2015-09-05 00:29:25 | software | system | GPU XID                          | Node c24-2c2s2n2 GPU Xid 62 PMU communication error|1250284|c24-2c2s2n2
+| titan    |2469932| 2015-09-05 08:35:38 | hardware | system | GPU DPR                          | Node c19-4c1s1n1 GPU DPR on Page 00000000001031e7|1250548|c19-4c1s1n1
+| titan    |2469988| 2015-09-05 13:49:25 | software | system | GPU XID                          | Node c19-1c1s0n2 GPU Xid 13 Graphics Engine Exception|1250554|c19-1c1s0n2
+| titan    |2470638| 2015-09-05 23:23:53 | software | system | GPU XID                          | Node c14-0c2s4n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1250566|c14-0c2s4n1
+| titan    |2470638| 2015-09-05 23:23:53 | hardware | system | GPU DBE                          | Node c14-0c2s4n1 GPU DBE on GPU 00 02 00|1250563|c14-0c2s4n1
+| titan    |2470793| 2015-09-07 00:04:06 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1250620|c24-0c1s5n2
+| titan    |2470793| 2015-09-07 00:04:06 | hardware | system | Machine Check Exception          | Node c24-0c1s5n2 MCE Threshold CPU 8|1250617|c24-0c1s5n2
+| titan    |2472369| 2015-09-08 17:19:38 | software | system | GPU BUS                          | Node c22-0c1s1n0 GPU 0000:02:00.0 off the bus|1251541|c22-0c1s1n0
+| titan    |2473100| 2015-09-09 11:17:33 | software | system | GPU XID                          | Node c7-3c2s5n3 GPU Xid 13 Graphics Engine Exception|1252027|c7-3c2s5n3
+| titan    |2475881| 2015-09-13 07:24:45 | hardware | system | GPU DPR                          | Node c0-3c2s5n1 GPU DPR on Page 000000000002f184|1253275|c0-3c2s5n1
+| titan    |2478518| 2015-09-13 14:14:12 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1253371|c8-1c2s0n2
+| titan    |2478518| 2015-09-13 14:14:12 | hardware | system | Machine Check Exception          | Node c8-1c2s0n2 MCE Threshold CPU 8|1253368|c8-1c2s0n2
+| titan    |2478785| 2015-09-14 20:41:25 | hardware | system | GPU DPR                          | Node c9-0c1s6n1 GPU DPR on Page 0000000000032f75|1253950|c9-0c1s6n1
+| titan    |2483274| 2015-09-17 17:35:14 | hardware | system | GPU DPR                          | Node c22-1c1s0n3 GPU DPR on Page 0000000000070726|1255615|c22-1c1s0n3
+| titan    |2482587| 2015-09-18 11:02:12 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1255780|c14-6c1s0n0
+| titan    |2482587| 2015-09-18 11:02:12 | hardware | system | Machine Check Exception          | Node c14-6c1s0n0 MCE Threshold CPU 8|1255777|c14-6c1s0n0
+| titan    |2485361| 2015-09-19 00:41:26 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1255915|c4-6c2s4n2
+| titan    |2484132| 2015-09-19 02:58:42 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1255945|c4-6c2s4n2
+| titan    |2484133| 2015-09-19 06:26:11 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1255957|c4-6c2s4n2
+| titan    |2484426| 2015-09-20 04:26:21 | software | system | GPU XID                          | Node c17-7c1s7n2 GPU Xid 13 Graphics Engine Exception|1255984|c17-7c1s7n2
+| titan    |2486497| 2015-09-20 07:20:51 | software | system | GPU XID                          | Node c17-1c2s6n0 GPU Xid 62 PMU communication error|1255999|c17-1c2s6n0
+| titan    |2486497| 2015-09-20 07:20:51 | hardware | system | GPU DBE                          | Node c17-1c2s6n0 GPU DBE on GPU 00 00 00|1255996|c17-1c2s6n0
+| titan    |2486504| 2015-09-20 09:23:28 | software | system | GPU XID                          | Node c17-7c1s7n2 GPU Xid 32 Invalid or corrupted push buffer stream|1256002|c17-7c1s7n2
+| titan    |2486682| 2015-09-20 16:42:32 | hardware | system | Machine Check Exception          | Node c20-1c2s0n3 Core 8 Machine Check Exception Bank 4 Status fe10200005080a13 Addr 00000007086d3360 Socket 0|1256020|c20-1c2s0n3
+| titan    |2486904| 2015-09-20 22:37:56 | software | system | GPU XID                          | Node c16-3c2s7n2 GPU Xid 13 Graphics Engine Exception|1256023|c16-3c2s7n2 c16-3c2s7n3 c16-3c2s6n3 c16-3c2s6n0 c16-3c2s6n2
+| titan    |2487085| 2015-09-20 23:59:12 | software | system | GPU XID                          | Node c8-3c2s1n0 GPU Xid 13 Graphics Engine Exception|1256671|c8-3c2s1n0 c6-3c2s1n0 c8-3c2s1n3 c8-3c2s1n1 c8-3c2s1n2
+| titan    |2487088| 2015-09-21 00:21:33 | software | system | GPU XID                          | Node c6-3c2s0n3 GPU Xid 13 Graphics Engine Exception|1257166|c6-3c2s0n3 c6-3c2s1n3 c6-3c2s0n0 c6-3c2s1n0 c8-3c2s1n1
+| titan    |2487397| 2015-09-21 11:23:32 | hardware | system | GPU DPR                          | Node c8-4c1s4n3 GPU DPR on Page 0000000000167794|1257271|c8-4c1s4n3
+| titan    |2487397| 2015-09-21 11:23:44 | software | system | GPU XID                          | Node c8-4c1s4n3 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1257274|c8-4c1s4n3
+| titan    |2486008| 2015-09-22 00:20:54 | hardware | system | Voltage Fault                    | Voltage Fault Node c2-4c0s2n0|1258630|c2-4c0s2n0 c2-4c0s2n1
+| titan    |2486008| 2015-09-22 00:20:54 | hardware | system | SXM Power Off                    | c2-4c0s2n0 SXM Power Off|1258633|c2-4c0s2n0 c2-4c0s2n1 c2-4c0s2n3
+| titan    |2486008| 2015-09-22 00:21:03 | hardware | system | Module Failed                    | Module Failed c2-4c0s2|1258489|c2-4c0s2
+| titan    |2486805| 2015-09-22 07:49:17 | hardware | system | Machine Check Exception          | Node c13-3c0s7n1 Core 0 Machine Check Exception Bank 4 Status fe2da10004080a13 Addr 00000003431caae0 Socket 0|1258621|c13-3c0s7n1
+| titan    |2488717| 2015-09-22 14:39:23 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1258843|c4-6c2s4n2
+| titan    |2489141| 2015-09-22 15:14:56 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1258855|c4-6c2s4n2
+| titan    |2489178| 2015-09-22 15:26:23 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1258879|c4-6c2s4n2
+| titan    |2487419| 2015-09-22 19:20:41 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1258924|c4-6c2s4n2
+| titan    |2488500| 2015-09-22 19:48:33 | software | system | GPU XID                          | Node c7-4c2s2n0 GPU Xid 13 Graphics Engine Exception|1258936|c7-4c2s2n0
+| titan    |2489653| 2015-09-23 00:47:00 | hardware | system | GPU DPR                          | Node c9-6c2s1n3 GPU DPR on Page 000000000007d180|1259032|c9-6c2s1n3 c9-4c1s1n2
+| titan    |2489679| 2015-09-23 07:53:01 | software | system | GPU XID                          | Node c4-6c2s4n2 GPU Xid 13 Graphics Engine Exception|1259101|c4-6c2s4n2
+| titan    |2490856| 2015-09-23 16:38:51 | software | system | GPU XID                          | Node c2-3c0s7n1 GPU Xid 43 GPU stopped processing|1259884|c2-3c0s7n2 c18-0c2s0n1 c4-3c0s7n1 c2-7c0s7n0 c20-2c2s3n2 c24-2c2s6n3 c24-2c2s6n0 c4-3c0s6n0 c24-2c2s6n2 c18-0c2s0n0 c2-7c0s7n1 c4-3c0s7n2 c18-0c2s1n0 c18-2c2s3n3 c4-3c0s6n1 c2-7c0s7n2 c2-3c0s7n1 c2-3c1s0n0 c18-2c2s3n2 c2-3c0s7n3 c18-0c2s1n1 c4-3c0s7n0 c4-3c0s6n3 c4-3c0s6n2 c2-3c0s2n2 c4-3c0s7n3
+| titan    |2490856| 2015-09-23 16:38:51 | software | system | Kernel Panic                     | run.titan.gpu:  nvidia_uvm_lite.c:756 _fault_common[pid:7538]: failed cond !pMigTracker|1259932|c18-0c2s1n1 c24-2c2s6n2 c2-3c0s2n2 c4-3c0s7n0 c20-2c2s3n2 c24-2c2s6n3 c4-3c0s7n2 c4-3c0s7n1 c2-3c1s0n0 c24-2c2s6n0 c4-3c0s7n3
+| titan    |2490867| 2015-09-23 16:58:30 | software | system | GPU XID                          | Node c10-5c0s6n2 GPU Xid 43 GPU stopped processing|1260301|c24-0c2s1n2 c8-7c0s1n0 c22-0c2s1n3 c22-0c2s1n1 c24-0c2s0n0 c22-0c2s0n0 c24-0c1s1n0 c24-0c2s1n0 c22-0c2s1n0 c24-0c1s1n1 c10-5c0s6n2 c24-0c1s0n1 c22-0c2s0n2 c20-0c2s0n0 c24-0c2s1n1 c8-7c0s1n3 c24-0c1s0n0 c24-0c2s0n3 c22-0c2s1n2 c22-0c2s0n1 c12-3c0s2n1 c22-0c2s0n3 c8-7c0s1n2 c24-0c2s0n1 c24-0c2s0n2 c24-0c2s1n3
+| titan    |2490867| 2015-09-23 16:58:30 | software | system | Kernel Panic                     | run.titan.gpu:  nvidia_uvm_lite.c:756 _fault_common[pid:19244]: failed cond !pMigTracker|1260370|c8-7c0s1n2 c8-7c0s1n3 c8-7c0s1n0 c22-0c2s1n3
+| titan    |2494262| 2015-09-24 18:32:32 | software | system | GPU BUS                          | Node c10-7c2s2n3 GPU 0000:02:00.0 off the bus|1260556|c10-7c2s2n3
+| titan    |2495072| 2015-09-25 21:39:54 | hardware | system | GPU DPR                          | Node c17-7c0s6n1 GPU DPR on Page 000000000013abd0|1267318|c17-7c0s6n1
+| titan    |2497808| 2015-09-26 22:21:56 | software | system | GPU XID                          | Node c17-7c1s7n2 GPU Xid 13 Graphics Engine Exception|1267327|c17-7c1s7n2
+| titan    |2499569| 2015-09-27 03:06:04 | hardware | system | Machine Check Exception          | Node c6-4c0s7n3 Core 0 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|1267339|c6-4c0s7n3
+| titan    |2499312| 2015-09-27 03:29:10 | hardware | system | GPU DPR                          | Node c13-6c0s4n1 GPU DPR on Page 0000000000012efd|1267342|c13-6c0s4n1
+| titan    |2500327| 2015-09-27 15:29:42 | software | system | GPU BUS                          | Node c19-1c2s6n2 GPU 0000:02:00.0 off the bus|1267345|c19-1c2s6n2
+| titan    |2506148| 2015-09-28 16:22:44 | hardware | system | Machine Check Exception          | Node c3-2c2s7n2 Core 0 Machine Check Exception Bank 4 Status fe63200002080a13 Addr 00000002619c5e30 Socket 0|1267585|c3-2c2s7n2
+| titan    |2503474| 2015-09-29 02:58:33 | hardware | system | GPU DPR                          | Node c18-7c0s1n1 GPU DPR on Page 0000000000075cb0|1267606|c18-7c0s1n1
+| titan    |2510010| 2015-09-30 05:03:09 | software | system | GPU XID                          | Node c19-0c2s0n0 GPU Xid 62 PMU communication error|1267639|c19-0c2s0n0
+| titan    |2511385| 2015-09-30 06:36:52 | hardware | system | Machine Check Exception          | Node c21-5c1s1n2 Core 12 Machine Check Exception Bank 2 Status be0040a00010010a Addr 0000000000010ac0 Socket 0|1267654|c21-5c1s1n2
+| titan    |2511278| 2015-09-30 15:11:00 | hardware | system | GPU DPR                          | Node c19-0c2s2n0 GPU DPR on Page 0000000000043c6d|1268584|c19-0c2s2n0
+| titan    |2511278| 2015-09-30 15:12:01 | software | system | GPU XID                          | Node c11-5c2s5n3 GPU Xid 13 Graphics Engine Exception|1268671|c11-5c2s5n3
+| titan    |2512159| 2015-10-01 07:57:56 | software | system | GPU BUS                          | Node c23-0c2s0n1 GPU 0000:02:00.0 off the bus|1270273|c23-0c2s0n1
+| titan    |2511868| 2015-10-02 07:49:16 | software | system | GPU XID                          | Node c18-3c2s4n3 GPU Xid 61 |1271047|c18-3c2s4n3
+| titan    |2511868| 2015-10-02 07:49:16 | hardware | system | GPU DBE                          | Node c18-3c2s4n3 GPU DBE on GPU 00 02 00|1271044|c18-3c2s4n3
+| titan    |2514500| 2015-10-04 01:52:00 | hardware | system | GPU DBE                          | Node c21-0c2s4n0 GPU DBE on GPU 00 00 00|1276027|c21-0c2s4n0
+| titan    |2515729| 2015-10-04 21:41:53 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1284460|c6-2c2s4n0
+| titan    |2515729| 2015-10-04 21:41:53 | hardware | system | Machine Check Exception          | Node c6-2c2s4n0 MCE Threshold CPU 8|1284457|c6-2c2s4n0
+| titan    |2515406| 2015-10-04 23:35:31 | software | system | GPU XID                          | Node c2-5c2s0n2 GPU Xid 13 Graphics Engine Exception|1284466|c2-5c2s0n2
+| titan    |2515415| 2015-10-05 13:45:54 | hardware | system | Voltage Fault                    | Voltage Fault Node c18-5c0s6n3|1286791|c18-5c0s6n3
+| titan    |2515415| 2015-10-05 13:46:11 | hardware | system | Module Failed                    | Module Failed c18-5c0s6|1286794|c18-5c0s6
+| titan    |2515855| 2015-10-05 18:08:51 | software | system | GPU XID                          | Node c13-1c1s1n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1286812|c13-1c1s1n0
+| titan    |2515855| 2015-10-05 18:08:51 | hardware | system | GPU DBE                          | Node c13-1c1s1n0 GPU DBE on GPU 03 01 00|1286866|c13-1c1s1n0
+| titan    |2516436| 2015-10-05 20:06:09 | hardware | system | GPU DPR                          | Node c4-6c0s0n0 GPU DPR on Page 000000000009c325|1286884|c4-6c0s0n0
+| titan    |2517951| 2015-10-05 22:52:16 | software | system | GPU BUS                          | Node c23-2c0s6n0 GPU 0000:02:00.0 off the bus|1286890|c23-2c0s6n0
+| titan    |2516244| 2015-10-06 07:52:53 | hardware | system | GPU DPR                          | Node c9-0c0s3n0 GPU DPR on Page 000000000002b5ff|1286914|c11-6c2s6n3 c9-0c0s3n0
+| titan    |2517107| 2015-10-06 13:00:27 | software | system | GPU BUS                          | Node c21-7c2s0n1 GPU 0000:02:00.0 off the bus|1286920|c21-7c2s0n1
+| titan    |2518735| 2015-10-07 07:04:53 | software | system | GPU XID                          | Node c23-5c0s0n1 GPU Xid 13 Graphics Engine Exception|1287094|c23-5c0s0n1
+| titan    |2520433| 2015-10-07 12:20:00 | software | system | GPU XID                          | Node c4-5c2s3n0 GPU Xid 43 GPU stopped processing|1287103|c4-5c2s3n0
+| titan    |2520433| 2015-10-07 12:20:01 | software | system | Kernel Panic                     | hpgmg-fv:  Fatal exception|1287106|c4-5c2s3n0
+| titan    |2520466| 2015-10-07 12:49:11 | software | system | GPU XID                          | Node c2-1c0s6n0 GPU Xid 43 GPU stopped processing|1287112|c2-1c0s6n0
+| titan    |2520466| 2015-10-07 12:49:11 | software | system | Kernel Panic                     | hpgmg-fv:  nvidia_uvm_lite.c:756 _fault_common[pid:13449]: failed cond !pMigTracker|1287115|c2-1c0s6n0
+| titan    |2520734| 2015-10-07 17:10:28 | software | system | GPU XID                          | Node c2-5c0s4n0 GPU Xid 13 Graphics Engine Exception|1287166|c6-1c1s5n3 c2-5c0s4n0 c2-5c0s5n0 c2-5c0s4n1 c4-1c2s2n1
+| titan    |2520743| 2015-10-07 17:17:47 | software | system | GPU XID                          | Node c2-1c2s1n0 GPU Xid 13 Graphics Engine Exception|1287442|c2-1c2s1n0 c2-1c2s0n1 c6-1c2s0n1 c2-1c2s0n0 c4-1c2s0n0
+| titan    |2520812| 2015-10-07 17:28:49 | software | system | GPU XID                          | Node c16-1c0s2n0 GPU Xid 13 Graphics Engine Exception|1288015|c16-1c0s2n1 c16-1c0s2n3 c16-1c0s2n0
+| titan    |2520829| 2015-10-07 17:50:40 | software | system | GPU XID                          | Node c2-1c0s0n2 GPU Xid 13 Graphics Engine Exception|1288267|c8-1c0s0n3 c2-1c0s0n2 c8-1c0s1n2 c8-1c0s0n2 c8-1c0s0n1
+| titan    |2520831| 2015-10-07 17:54:11 | software | system | GPU XID                          | Node c8-1c0s1n2 GPU Xid 13 Graphics Engine Exception|1288858|c8-1c0s0n3 c8-1c0s0n1 c8-1c0s1n2 c8-1c0s0n2 c8-1c0s0n0
+| titan    |2520839| 2015-10-07 18:11:01 | software | system | GPU XID                          | Node c6-1c1s5n0 GPU Xid 13 Graphics Engine Exception|1289341|c6-1c1s5n0 c6-1c1s5n1 c6-1c1s5n3 c6-1c1s7n1 c6-1c1s7n0
+| titan    |2520879| 2015-10-07 18:18:04 | software | system | GPU XID                          | Node c6-1c1s5n0 GPU Xid 13 Graphics Engine Exception|1289599|c6-1c1s7n1 c6-1c1s5n0 c6-1c1s5n3 c6-1c1s5n1 c6-1c1s7n0
+| titan    |2520884| 2015-10-07 18:24:54 | software | system | GPU XID                          | Node c8-5c0s3n2 GPU Xid 13 Graphics Engine Exception|1289875|c8-5c0s3n2 c6-5c0s2n1 c8-5c0s3n3 c6-5c0s2n3 c6-5c0s2n0
+| titan    |2520889| 2015-10-07 18:29:51 | software | system | GPU XID                          | Node c6-5c0s0n0 GPU Xid 13 Graphics Engine Exception|1290394|c4-5c0s0n0 c6-5c0s0n1 c4-5c0s0n1 c6-5c0s0n0 c4-5c0s0n2
+| titan    |2521414| 2015-10-08 04:06:26 | software | system | GPU XID                          | Node c3-5c0s5n0 GPU Xid 13 Graphics Engine Exception|1290751|c3-5c0s5n0
+| titan    |2521735| 2015-10-09 03:10:43 | software | system | GPU XID                          | Node c10-0c2s6n1 GPU Xid 62 PMU communication error|1290883|c10-0c2s6n1
+| titan    |2521735| 2015-10-09 03:10:43 | hardware | system | GPU DBE                          | Node c10-0c2s6n1 GPU DBE on GPU 00 01 00|1290880|c10-0c2s6n1
+| titan    |2522306| 2015-10-09 07:57:20 | hardware | system | GPU DPR                          | Node c6-2c0s5n0 GPU DPR on Page 000000000008f6f4|1290886|c6-2c0s5n0
+| titan    |2515992| 2015-10-09 14:41:22 | hardware | system | GPU DPR                          | Node c14-7c2s3n0 GPU DPR on Page 000000000010d233|1290892|c14-7c2s3n0
+| titan    |2523899| 2015-10-10 05:50:38 | software | system | GPU XID                          | Node c11-4c1s3n2 GPU Xid 13 Graphics Engine Exception|1290910|c11-4c1s3n2
+| titan    |2519164| 2015-10-10 12:26:32 | software | system | GPU XID                          | Node c7-7c2s3n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1290919|c7-7c2s3n0
+| titan    |2519164| 2015-10-10 12:26:32 | hardware | system | GPU DBE                          | Node c7-7c2s3n0 GPU DBE on GPU 00 03 01|1290916|c7-7c2s3n0
+| titan    |2524677| 2015-10-11 10:18:56 | software | system | GPU XID                          | Node c8-1c2s5n2 GPU Xid 13 Graphics Engine Exception|1291111|c8-1c2s5n2
+| titan    |2524669| 2015-10-11 10:44:14 | software | system | GPU XID                          | Node c4-1c1s0n3 GPU Xid 13 Graphics Engine Exception|1291120|c4-1c1s0n3
+| titan    |2524733| 2015-10-11 19:09:17 | software | system | GPU XID                          | Node c10-0c1s0n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1291132|c10-0c1s0n0
+| titan    |2524733| 2015-10-11 19:09:17 | hardware | system | GPU DBE                          | Node c10-0c1s0n0 GPU DBE on GPU 00 00 00|1291129|c10-0c1s0n0
+| titan    |2524733| 2015-10-11 19:09:19 | hardware | system | GPU DPR                          | Node c10-0c1s0n0 GPU DPR on Page 00000000000027d2|1291324|c10-0c1s0n0
+| titan    |2526288| 2015-10-13 18:03:01 | software | system | GPU XID                          | Node c0-5c2s5n1 GPU Xid 48 Double Bit ECC Error|1295143|c0-5c2s5n1
+| titan    |2526288| 2015-10-13 18:03:01 | hardware | system | GPU DBE                          | Node c0-5c2s5n1 GPU DBE on GPU|1295146|c0-5c2s5n1
+| titan    |2527820| 2015-10-15 00:37:59 | software | system | GPU XID                          | Node c14-5c2s6n2 GPU Xid 13 Graphics Engine Exception|1295242|c14-5c2s6n2
+| titan    |2529184| 2015-10-17 00:15:21 | software | system | GPU XID                          | Node c2-1c1s2n1 GPU Xid 13 Graphics Engine Exception|1322353|c2-1c1s2n1
+| titan    |2525870| 2015-10-17 03:24:08 | hardware | system | GPU DPR                          | Node c14-6c2s3n3 GPU DPR on Page 000000000009d87d|1322410|c14-6c2s3n3
+| titan    |2529632| 2015-10-17 12:11:05 | software | system | GPU XID                          | Node c2-1c0s6n1 GPU Xid 13 Graphics Engine Exception|1322632|c2-1c0s6n0 c6-1c0s4n0 c4-1c0s4n0 c2-1c0s7n1 c2-1c0s6n1
+| titan    |2529635| 2015-10-17 12:18:24 | software | system | GPU XID                          | Node c2-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1323277|c2-1c0s6n0 c6-1c0s4n0 c4-1c0s4n0 c6-1c0s4n2 c6-1c0s4n3
+| titan    |2529636| 2015-10-17 12:24:21 | software | system | GPU XID                          | Node c4-1c0s4n0 GPU Xid 13 Graphics Engine Exception|1323652|c2-1c0s6n0 c6-1c0s4n0 c4-1c0s4n0 c6-1c0s4n2 c6-1c0s4n3
+| titan    |2532163| 2015-10-21 01:17:41 | software | system | GPU XID                          | Node c3-5c0s5n0 GPU Xid 13 Graphics Engine Exception|1325080|c3-5c0s5n0
+| titan    |2534132| 2015-10-21 20:33:40 | software | system | GPU XID                          | Node c11-6c2s3n0 GPU Xid 13 Graphics Engine Exception|1325104|c11-6c2s3n0
+| titan    |2530906| 2015-10-24 03:56:00 | hardware | system | GPU DPR                          | Node c4-2c2s0n3 GPU DPR on Page 0000000000097f7c|1326577|c4-2c2s0n3
+| titan    |2538832| 2015-10-28 21:56:41 | software | system | GPU XID                          | Node c14-5c2s6n2 GPU Xid 13 Graphics Engine Exception|1326841|c14-5c2s6n2
+| titan    |2537295| 2015-10-29 14:23:05 | software | system | GPU XID                          | Node c19-0c2s1n1 GPU Xid 62 PMU communication error|1326883|c19-0c2s1n1
+| titan    |2537295| 2015-10-29 14:23:05 | hardware | system | GPU DBE                          | Node c19-0c2s1n1 GPU DBE on GPU|1326880|c19-0c2s1n1
+| titan    |2542531| 2015-11-01 06:24:49 | hardware | system | GPU DPR                          | Node c6-3c1s3n0 GPU DPR on Page 0000000000070853|1349356|c6-3c1s3n0
+| titan    |2533018| 2015-11-02 08:05:24 | software | system | GPU BUS                          | Node c23-0c2s5n0 GPU 0000:02:00.0 off the bus|1349422|c23-0c2s5n0
+| titan    |2542281| 2015-11-02 09:12:30 | software | system | GPU BUS                          | Node c20-0c2s0n0 GPU 0000:02:00.0 off the bus|1349428|c20-0c2s0n0
+| titan    |2543527| 2015-11-02 21:45:57 | software | system | GPU XID                          | Node c8-1c1s0n0 GPU Xid 13 Graphics Engine Exception|1349761|c8-1c1s0n1 c8-1c0s0n0 c8-1c1s1n0 c8-1c1s1n1 c8-1c1s1n3 c8-1c1s0n0 c8-1c0s0n1
+| titan    |2543535| 2015-11-02 21:51:25 | software | system | GPU XID                          | Node c4-1c2s7n2 GPU Xid 13 Graphics Engine Exception|1349824|c4-1c2s7n3 c2-1c0s4n3 c2-1c0s5n0 c2-1c0s4n0 c4-1c2s7n2 c4-1c2s7n0 c2-1c0s4n1 c6-1c0s6n3 c4-1c2s6n1 c4-1c0s6n2 c4-1c0s6n3 c4-1c2s7n1 c4-1c0s5n0 c4-1c0s7n1 c2-1c0s5n1
+| titan    |2543536| 2015-11-02 21:54:12 | software | system | GPU XID                          | Node c4-1c0s7n1 GPU Xid 13 Graphics Engine Exception|1349959|c4-1c2s7n3 c2-1c0s4n3 c2-1c0s5n0 c2-1c0s4n0 c4-1c2s7n2 c4-1c2s7n0 c2-1c0s4n1 c6-1c0s6n3 c4-1c2s6n1 c4-1c0s6n2 c4-1c0s6n3 c4-1c2s7n1 c4-1c0s5n0 c4-1c0s7n1 c2-1c0s5n1
+| titan    |2542771| 2015-11-04 05:30:34 | software | system | GPU BUS                          | Node c19-0c2s4n0 GPU 0000:02:00.0 off the bus|1372807|c19-0c2s4n0
+| titan    |2544763| 2015-11-04 12:13:07 | software | system | GPU XID                          | Node c2-4c0s0n2 GPU Xid 43 GPU stopped processing|1373509|c6-0c2s2n0 c2-4c0s3n2 c2-0c2s2n0 c6-7c0s5n1 c2-4c0s0n2
+| titan    |2545094| 2015-11-04 15:43:19 | software | system | GPU XID                          | Node c4-0c2s2n1 GPU Xid 13 Graphics Engine Exception|1373881|c6-0c2s3n1 c2-0c2s3n0 c6-0c2s2n1 c2-1c1s2n1 c6-1c1s3n0 c2-1c1s2n0 c4-0c2s2n1 c2-0c2s3n1
+| titan    |2545271| 2015-11-04 18:28:42 | software | system | GPU XID                          | Node c4-5c2s6n2 GPU Xid 43 GPU stopped processing|1374127|c4-5c2s6n3 c2-5c1s2n2 c6-5c2s6n2 c4-5c1s2n1 c4-5c2s6n2 c4-5c1s2n3 c4-5c1s2n2
+| titan    |2545710| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c1s3|1374172|c6-4c1s3 c6-4c1s2 c6-4c1s1
+| titan    |2545712| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c1s0|1374205|c6-4c1s0
+| titan    |2545714| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c0s2|1374256|c6-4c0s2
+| titan    |2544791| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c1s5|1374148|c6-4c2s1 c6-4c1s0 c6-4c0s2 c6-4c1s5 c6-4c1s4 c6-4c0s7 c6-4c2s3 c6-4c0s3 c6-4c0s6 c6-4c2s2
+| titan    |2544112| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c2s7|1374298|c6-4c2s6 c6-4c2s7 c6-4c2s5 c6-4c2s4
+| titan    |2545717| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c0s5|1374262|c6-4c0s5 c6-4c0s4
+| titan    |2544957| 2015-11-05 09:26:46 | hardware | system | Module Failed                    | Module Failed c6-4c0s1|1374286|c6-4c0s1 c6-4c0s0
+| titan    |2542795| 2015-11-05 09:34:48 | software | system | Kernel Panic                     | xgc2:  Fatal exception|1374370|c6-4c2s1
+| titan    |2545821| 2015-11-05 13:31:27 | software | system | Kernel Panic                     | us3d-real:  Debug NMI|1374391|c6-4c2s1
+| titan    |2544113| 2015-11-05 13:31:31 | software | system | Kernel Panic                     | swapper/13:  Debug NMI|1374400|c6-4c2s1
+| titan    |2539820| 2015-11-07 19:42:23 | software | system | GPU XID                          | Node c19-0c2s4n0 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1377103|c19-0c2s4n0
+| titan    |2539820| 2015-11-07 19:42:23 | hardware | system | GPU DBE                          | Node c19-0c2s4n0 GPU DBE on GPU|1377100|c19-0c2s4n0
+| titan    |2545749| 2015-11-08 01:06:54 | software | system | GPU BUS                          | Node c11-3c2s0n1 GPU 0000:02:00.0 off the bus|1377151|c11-3c2s0n1
+| titan    |2547564| 2015-11-08 12:21:13 | software | system | GPU XID                          | Node c15-7c2s3n2 GPU Xid 43 GPU stopped processing|1381171|c15-7c2s3n2 c15-7c2s2n1 c1-0c1s5n0 c15-7c2s2n3 c15-7c2s2n2 c1-0c1s5n1 c15-7c2s3n3
+| titan    |2547571| 2015-11-08 13:19:10 | software | system | GPU XID                          | Node c3-0c1s5n0 GPU Xid 43 GPU stopped processing|1381192|c5-0c1s5n1 c5-0c1s5n0 c5-0c1s7n1 c3-0c1s5n0 c3-0c1s4n1
+| titan    |2549356| 2015-11-10 13:02:24 | software | system | GPU XID                          | Node c6-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1398465|c8-1c0s6n2 c6-1c0s7n1 c6-1c0s6n0 c6-1c0s6n2 c8-1c0s6n1 c8-1c0s6n3 c6-1c0s7n0 c8-1c0s7n0 c6-1c0s7n2 c6-1c0s6n3 c8-1c0s7n2 c8-1c0s7n3 c8-1c0s6n0 c6-1c0s7n3 c6-1c0s6n1
+| titan    |2549331| 2015-11-10 13:03:48 | software | system | GPU XID                          | Node c6-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1398555|c8-1c0s6n2 c6-1c0s7n1 c6-1c0s6n0 c6-1c0s6n2 c8-1c0s6n1 c8-1c0s6n3 c6-1c0s7n0 c8-1c0s7n0 c6-1c0s7n2 c6-1c0s6n3 c8-1c0s7n2 c8-1c0s7n3 c8-1c0s6n0 c6-1c0s7n3 c6-1c0s6n1
+| titan    |2549464| 2015-11-10 14:37:48 | software | system | GPU XID                          | Node c4-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1398859|c2-1c0s7n2 c4-1c0s6n1 c4-1c0s7n2 c2-1c0s7n1 c2-1c0s7n3 c4-1c0s7n3 c4-1c0s5n3 c4-1c0s6n0 c4-1c0s5n2 c4-1c0s6n2 c4-1c0s6n3 c4-1c0s5n0 c2-1c0s5n2 c4-1c0s7n1 c4-1c0s7n0
+| titan    |2549917| 2015-11-10 23:20:44 | software | system | GPU XID                          | Node c4-1c0s4n0 GPU Xid 13 Graphics Engine Exception|1408297|c2-1c0s4n3 c8-1c1s0n2 c4-1c0s4n2 c4-1c0s4n1 c6-1c1s0n2 c6-1c0s5n3 c6-1c0s4n0 c2-1c0s4n2 c6-1c0s4n3 c4-1c0s4n0 c6-1c0s4n1 c4-1c0s4n3 c2-1c0s4n0 c6-1c1s0n3 c6-1c0s4n2
+| titan    |2549925| 2015-11-10 23:39:44 | software | system | GPU XID                          | Node c8-1c0s4n1 GPU Xid 13 Graphics Engine Exception|1408432|c8-1c0s4n3 c6-1c0s4n0 c8-1c0s4n1 c8-1c0s4n2 c8-1c0s5n0 c6-1c0s4n2 c6-1c0s4n1 c8-1c0s5n2 c6-1c0s4n3 c8-1c0s5n1 c8-1c0s5n3
+| titan    |2547665| 2015-11-11 07:17:17 | hardware | system | GPU DPR                          | Node c21-5c1s1n1 GPU DPR on Page 00000000000f6f87|1391515|c21-5c1s1n1
+| titan    |2553059| 2015-11-13 12:29:56 | software | system | GPU XID                          | Node c8-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1408570|c8-1c0s6n1 c8-1c0s6n0
+| titan    |2553032| 2015-11-13 12:55:26 | software | system | GPU XID                          | Node c12-6c2s2n3 GPU Xid 13 Graphics Engine Exception|1408810|c12-6c2s2n3 c17-1c2s6n0
+| titan    |2554222| 2015-11-14 20:53:58 | software | system | GPU XID                          | Node c4-1c1s4n3 GPU Xid 13 Graphics Engine Exception|1424524|c4-1c1s4n3 c4-1c1s4n2
+| titan    |2554264| 2015-11-14 20:57:50 | software | system | GPU XID                          | Node c4-1c1s4n2 GPU Xid 13 Graphics Engine Exception|1424782|c4-1c1s4n3 c4-1c1s4n2
+| titan    |2552133| 2015-11-16 02:54:51 | software | system | GPU BUS                          | Node c23-2c0s6n1 GPU 0000:02:00.0 off the bus|1425046|c23-2c0s6n1
+| titan    |2552578| 2015-11-17 20:01:13 | software | system | GPU XID                          | Node c23-1c2s0n0 GPU Xid 62 PMU communication error|1425183|c23-1c2s0n0
+| titan    |2552578| 2015-11-17 20:01:13 | hardware | system | GPU DBE                          | Node c23-1c2s0n0 GPU DBE on GPU|1425180|c23-1c2s0n0
+| titan    |2554940| 2015-11-17 22:24:23 | hardware | system | GPU DPR                          | Node c18-1c2s1n0 GPU DPR on Page 000000000010f397|1425192|c18-1c2s1n0
+| titan    |2557158| 2015-11-18 04:07:52 | software | system | GPU XID                          | Node c7-4c1s7n0 GPU Xid 13 Graphics Engine Exception|1425201|c7-4c1s7n0
+| titan    |2557264| 2015-11-18 10:16:45 | software | system | GPU XID                          | Node c11-4c2s4n0 GPU Xid 43 GPU stopped processing|1425228|c11-4c2s4n0
+| titan    |2558926| 2015-11-19 13:48:47 | software | system | GPU XID                          | Node c3-5c0s5n0 GPU Xid 13 Graphics Engine Exception|1427697|c3-5c0s5n0
+| titan    |2559030| 2015-11-19 19:37:14 | software | system | GPU XID                          | Node c3-5c0s5n0 GPU Xid 13 Graphics Engine Exception|1427709|c3-5c0s5n0
+| titan    |2560375| 2015-11-20 18:13:37 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1427742|c12-1c0s3n3
+| titan    |2560375| 2015-11-20 18:13:37 | hardware | system | Machine Check Exception          | Node c12-1c0s3n3 MCE Threshold CPU 8|1427739|c12-1c0s3n3
+| titan    |2555051| 2015-11-22 07:32:48 | software | system | GPU XID                          | Node c18-0c1s6n1 GPU Xid 62 PMU communication error|1427754|c18-0c1s6n1
+| titan    |2555051| 2015-11-22 07:32:48 | hardware | system | GPU DBE                          | Node c18-0c1s6n1 GPU DBE on GPU|1427751|c18-0c1s6n1
+| titan    |2552579| 2015-11-23 13:25:40 | hardware | system | GPU DBE                          | Node c19-4c2s6n1 GPU DBE on GPU|1427757|c19-4c2s6n1
+| titan    |2552579| 2015-11-23 13:37:12 | software | system | GPU XID                          | Node c19-4c2s6n1 GPU Xid 62 PMU communication error|1427760|c19-4c2s6n1
+| titan    |2562788| 2015-11-24 01:54:44 | software | system | GPU XID                          | Node c9-7c0s7n2 GPU Xid 13 Graphics Engine Exception|1427763|c9-7c0s7n2 c22-2c0s1n1
+| titan    |2563490| 2015-11-24 11:21:44 | software | system | GPU XID                          | Node c11-6c2s3n0 GPU Xid 13 Graphics Engine Exception|1427832|c11-6c2s3n0
+| titan    |2562842| 2015-11-24 11:31:33 | software | system | GPU XID                          | Node c11-6c2s3n0 GPU Xid 13 Graphics Engine Exception|1427838|c11-6c2s3n0
+| titan    |2562169| 2015-11-25 12:47:03 | software | system | GPU BUS                          | Node c14-0c2s3n0 GPU 0000:02:00.0 off the bus|1427859|c14-0c2s3n0
+| titan    |2563523| 2015-11-27 05:37:00 | software | system | GPU XID                          | Node c20-4c2s0n2 GPU Xid 62 PMU communication error|1428069|c20-4c2s0n2
+| titan    |2563523| 2015-11-27 05:37:00 | hardware | system | GPU DBE                          | Node c20-4c2s0n2 GPU DBE on GPU|1428066|c20-4c2s0n2
+| titan    |2566997| 2015-11-27 14:34:39 | software | system | GPU XID                          | Node c13-1c2s5n0 GPU Xid 61 |1428129|c13-1c2s5n0
+| titan    |2566997| 2015-11-27 14:34:39 | hardware | system | GPU DBE                          | Node c13-1c2s5n0 GPU DBE on GPU|1428126|c13-1c2s5n0
+| titan    |2568493| 2015-11-29 22:14:23 | software | system | GPU XID                          | Node c3-5c0s5n0 GPU Xid 13 Graphics Engine Exception|1429104|c3-5c0s5n0
+| titan    |2568983| 2015-11-30 08:20:13 | software | system | GPU XID                          | Node c4-1c0s6n0 GPU Xid 13 Graphics Engine Exception|1429137|c4-1c0s6n1 c4-1c0s6n0 c4-1c0s7n3 c4-1c0s6n2 c4-1c0s7n0 c2-1c0s7n3 c4-1c0s7n2 c4-1c0s7n1
+| titan    |2568660| 2015-12-01 04:16:46 | software | system | GPU BUS                          | Node c20-7c2s4n1 GPU 0000:02:00.0 off the bus|1429635|c20-7c2s4n1
+| titan    |2569437| 2015-12-01 09:38:07 | hardware | system | GPU DPR                          | Node c19-4c2s6n1 GPU DPR on Page 0000000000167f8a|1429641|c19-4c2s6n1
+| titan    |2568842| 2015-12-01 09:41:36 | software | system | GPU XID                          | Node c21-5c2s1n2 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1429644|c20-4c2s0n2 c21-5c2s1n2 c19-4c2s6n1 c18-0c1s6n1
+| titan    |2568842| 2015-12-01 09:41:43 | hardware | system | GPU DPR                          | Node c20-4c2s0n2 GPU DPR on Page 00000000001662c0|1429692|c20-4c2s0n2 c21-5c2s1n2
+| titan    |2568842| 2015-12-01 09:41:53 | hardware | system | GPU DBE                          | Node c18-0c1s6n1 GPU DBE on GPU|1429701|c20-4c2s0n2 c21-5c2s1n2 c18-0c1s6n1
+| titan    |2569710| 2015-12-01 18:59:01 | software | system | GPU XID                          | Node c2-1c0s5n0 GPU Xid 43 GPU stopped processing|1430169|c2-1c0s5n0
+| titan    |2570650| 2015-12-02 04:33:20 | hardware | system | Machine Check Exception          | Node c9-3c2s1n1 Core 0 Machine Check Exception Bank 4 Status fe0a200080080813 Addr 00000002c9668f60 Socket 0|1430481|c9-3c2s1n1
+| titan    |2550556| 2015-12-02 13:07:20 | hardware | system | GPU DPR                          | Node c3-2c1s4n0 GPU DPR on Page 0000000000086652|1430484|c3-2c1s4n0
+| titan    |2572015| 2015-12-02 20:44:27 | software | system | GPU XID                          | Node c13-1c2s5n1 GPU Xid 62 PMU communication error|1430493|c13-1c2s5n1
+| titan    |2572015| 2015-12-02 20:44:27 | hardware | system | GPU DBE                          | Node c13-1c2s5n1 GPU DBE on GPU|1430490|c13-1c2s5n1
+| titan    |2572126| 2015-12-02 23:21:16 | software | system | GPU BUS                          | Node c7-0c2s6n0 GPU 0000:02:00.0 off the bus|1430496|c7-0c2s6n0
+| titan    |2571319| 2015-12-03 16:10:47 | software | system | GPU XID                          | Node c20-2c1s5n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1431174|c20-2c1s5n1
+| titan    |2571319| 2015-12-03 16:10:47 | hardware | system | GPU DBE                          | Node c20-2c1s5n1 GPU DBE on GPU|1431171|c20-2c1s5n1
+| titan    |2571319| 2015-12-03 16:10:55 | software | system | GPU BUS                          | Node c20-2c1s5n1 GPU 0000:02:00.0 off the bus|1431198|c20-2c1s5n1
+| titan    |2572285| 2015-12-04 01:47:29 | software | system | GPU XID                          | Node c24-5c2s4n0 GPU Xid 62 PMU communication error|1431384|c24-5c2s4n0
+| titan    |2572285| 2015-12-04 01:47:29 | hardware | system | GPU DBE                          | Node c24-5c2s4n0 GPU DBE on GPU|1431381|c24-5c2s4n0
+| titan    |2572285| 2015-12-04 01:49:44 | hardware | system | GPU DPR                          | Node c24-5c2s4n0 GPU DPR on Page 0000000000167793|1431387|c24-5c2s4n0
+| titan    |2572285| 2015-12-04 03:08:27 | hardware | system | Machine Check Exception          | Node c3-5c2s0n2 Core 0 Machine Check Exception Bank 4 Status fe112000f7080813 Addr 0000000142ff87e0 Socket 0|1431468|c3-5c2s0n2
+| titan    |2574337| 2015-12-04 18:58:18 | software | system | Kernel Panic                     | swapper/9:  Debug NMI|1437087|c3-5c2s0n2
+| titan    |2574679| 2015-12-06 05:32:08 | hardware | system | Voltage Fault                    | Voltage Fault Node c13-1c1s7n0|1437105|c13-1c1s7n0 c13-1c1s7n1
+| titan    |2574679| 2015-12-06 05:32:09 | hardware | system | SXM Power Off                    | c13-1c1s7n0 SXM Power Off|1437108|c13-1c1s7n0 c13-1c1s7n1
+| titan    |2574679| 2015-12-06 05:32:15 | hardware | system | Module Failed                    | Module Failed c13-1c1s7|1437117|c13-1c1s7
+| titan    |2574861| 2015-12-06 08:20:42 | hardware | system | GPU DBE                          | Node c19-1c2s6n0 GPU DBE on GPU|1437132|c19-1c2s6n0
+| titan    |2574861| 2015-12-06 08:20:54 | software | system | GPU XID                          | Node c19-1c2s6n0 GPU Xid 62 PMU communication error|1437135|c19-1c2s6n0
+| titan    |2576640| 2015-12-06 18:34:01 | hardware | system | Machine Check Exception          | Node c24-3c0s5n3 Core 0 Machine Check Exception Bank 4 Status fe5c200001080813 Addr 00000003f88354b0 Socket 0|1437138|c24-3c0s5n3
+| titan    |2575066| 2015-12-07 11:23:56 | hardware | system | GPU DPR                          | Node c20-7c0s6n0 GPU DPR on Page 000000000010e8a5|1437144|c20-7c0s6n0
+| titan    |2578013| 2015-12-07 21:33:56 | software | system | GPU XID                          | Node c2-0c1s4n1 GPU Xid 13 Graphics Engine Exception|1437195|c2-0c1s4n1 c20-0c2s1n3
+| titan    |2581041| 2015-12-10 11:00:55 | software | system | GPU XID                          | Node c4-1c1s6n0 GPU Xid 13 Graphics Engine Exception|1437291|c4-1c1s6n0
+| titan    |2581290| 2015-12-10 18:10:30 | software | system | GPU XID                          | Node c4-6c2s4n1 GPU Xid 62 PMU communication error|1437324|c4-6c2s4n1
+| titan    |2581290| 2015-12-10 18:10:30 | hardware | system | GPU DBE                          | Node c4-6c2s4n1 GPU DBE on GPU|1437321|c4-6c2s4n1
+| titan    |2580492| 2015-12-11 10:13:18 | hardware | system | Machine Check Exception          | Node c17-6c2s3n2 Core 8 Machine Check Exception Bank 4 Status f300000600190127 Addr 0000000000000000 Socket 0|1437381|c17-6c2s3n2
+| titan    |2583688| 2015-12-13 01:39:01 | software | system | GPU XID                          | Node c13-6c2s3n3 GPU Xid 13 Graphics Engine Exception|1437402|c13-6c2s3n3
+| titan    |2582208| 2015-12-14 08:52:54 | software | system | GPU XID                          | Node c13-0c2s3n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1437471|c13-0c2s3n1
+| titan    |2582208| 2015-12-14 08:52:54 | hardware | system | GPU DBE                          | Node c13-0c2s3n1 GPU DBE on GPU|1437468|c13-0c2s3n1
+| titan    |2582729| 2015-12-14 16:12:38 | software | system | GPU BUS                          | Node c24-7c2s4n1 GPU 0000:02:00.0 off the bus|1437525|c24-7c2s4n1
+| titan    |2585971| 2015-12-17 14:51:17 | software | system | GPU XID                          | Node c17-1c2s0n3 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1437963|c17-1c2s0n3
+| titan    |2585971| 2015-12-17 14:51:17 | hardware | system | GPU DBE                          | Node c17-1c2s0n3 GPU DBE on GPU|1437960|c17-1c2s0n3
+| titan    |2585971| 2015-12-17 14:51:26 | hardware | system | GPU DPR                          | Node c17-1c2s0n3 GPU DPR on Page 000000000000bec2|1438011|c17-1c2s0n3
+| titan    |2584764| 2015-12-18 02:12:40 | software | system | GPU BUS                          | Node c24-1c1s4n0 GPU 0000:02:00.0 off the bus|1438158|c24-1c1s4n0
+| titan    |2584764| 2015-12-18 05:39:34 | hardware | system | Machine Check Exception          | Node c7-7c0s2n0 Core 0 Machine Check Exception Bank 4 Status fe48210060080a13 Addr 0000000142661fa0 Socket 0|1438299|c19-3c0s7n2 c7-7c0s2n0
+| titan    |2588542| 2015-12-20 00:46:16 | hardware | system | Machine Check Exception          | Node c14-7c0s0n1 Core 0 Machine Check Exception Bank 4 Status fe00a00002080a13 Addr 000000023719ec50 Socket 0|1438614|c14-7c0s0n1
+| titan    |2585964| 2015-12-20 19:08:33 | software | system | GPU BUS                          | Node c19-0c1s5n1 GPU 0000:02:00.0 off the bus|1438623|c19-0c1s5n1
+| titan    |2587907| 2015-12-21 03:16:29 | software | system | GPU XID                          | Node c14-0c2s6n1 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1438743|c14-0c2s6n1
+| titan    |2587907| 2015-12-21 03:16:29 | hardware | system | GPU DBE                          | Node c14-0c2s6n1 GPU DBE on GPU|1438740|c14-0c2s6n1
+| titan    |2587907| 2015-12-21 03:16:46 | hardware | system | GPU DPR                          | Node c14-0c2s6n1 GPU DPR on Page 0000000000167786|1438866|c14-0c2s6n1
+| titan    |2590565| 2015-12-21 09:06:46 | software | system | GPU BUS                          | Node c2-0c1s5n2 GPU 0000:02:00.0 off the bus|1439490|c2-0c1s5n2
+| titan    |2590565| 2015-12-21 12:14:30 | hardware | system | Machine Check Exception          | Node c15-5c0s7n0 Core 8 Machine Check Exception Bank 4 Status f300000400190127 Addr 0000000000000000 Socket 0|1439616|c15-5c0s7n0
+| titan    |2591572| 2015-12-21 15:19:49 | software | system | GPU XID                          | Node c24-1c1s5n3 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1439625|c24-1c1s5n3
+| titan    |2591572| 2015-12-21 15:19:49 | hardware | system | GPU DBE                          | Node c24-1c1s5n3 GPU DBE on GPU|1439622|c24-1c1s5n3
+| titan    |2591572| 2015-12-21 15:19:51 | hardware | system | GPU DPR                          | Node c24-1c1s5n3 GPU DPR on Page 000000000000be34|1439673|c24-1c1s5n3
+| titan    |2591786| 2015-12-21 16:23:33 | software | system | GPU XID                          | Node c21-5c2s1n2 GPU Xid 45 Preemptive cleanup, probably due to previous errors (DBE)|1439685|c21-5c2s1n2
+| titan    |2591786| 2015-12-21 16:23:33 | hardware | system | GPU DBE                          | Node c21-5c2s1n2 GPU DBE on GPU|1439682|c21-5c2s1n2
+| titan    |2591786| 2015-12-21 16:23:33 | hardware | system | GPU DPR                          | Node c21-5c2s1n2 GPU DPR on Page 000000000000f7c6|1439733|c21-5c2s1n2
+| titan    |2585963| 2015-12-25 04:53:29 | hardware | system | Module Failed                    | Module Failed c10-4c1s0|1442417|c10-4c1s0
+| titan    |2594534| 2015-12-25 11:32:11 | software | system | GPU BUS                          | Node c20-4c2s5n1 GPU 0000:02:00.0 off the bus|1442425|c20-4c2s5n1
+| titan    |2584154| 2015-12-25 14:44:38 | software | system | GPU XID                          | Node c17-1c2s6n0 GPU Xid 13 Graphics Engine Exception|1442429|c17-1c2s6n0
+| titan    |2584163| 2015-12-25 14:50:16 | software | system | GPU XID                          | Node c17-1c2s6n0 GPU Xid 13 Graphics Engine Exception|1442437|c17-1c2s6n0
+| titan    |2586512| 2015-12-26 04:48:31 | hardware | system | GPU DPR                          | Node c18-0c1s7n3 GPU DPR on Page 00000000000f7814|1442815|c18-0c1s7n3
+| titan    |2586508| 2015-12-26 05:51:13 | hardware | system | GPU DPR                          | Node c10-5c2s0n2 GPU DPR on Page 000000000003ea3b|1442825|c10-5c2s0n2
+| titan    |2588038| 2015-12-27 00:10:20 | software | system | GPU XID                          | Node c21-3c2s0n1 GPU Xid 62 PMU communication error|1474631|c21-3c2s0n1
+| titan    |2588038| 2015-12-27 00:10:20 | hardware | system | GPU DBE                          | Node c21-3c2s0n1 GPU DBE on GPU|1474629|c21-3c2s0n1
+| titan    |2588038| 2015-12-27 03:58:37 | software | system | Kernel Panic                     | threshold_trigg:  Fatal exception|1474639|c21-1c2s2n2
+| titan    |2588038| 2015-12-27 03:58:37 | hardware | system | Machine Check Exception          | Node c21-1c2s2n2 MCE Threshold CPU 0|1474637|c21-1c2s2n2
+| titan    |2595688| 2015-12-27 04:50:09 | software | system | Kernel Panic                     | vorpal:  Fatal machine check on current CPU|1474641|c21-1c2s2n2
+| titan    |2595688| 2015-12-27 04:50:09 | hardware | system | Machine Check Exception          | Node c6-1c1s5n1 Machine Check Exception Bank 0 Status be80000000000135|1474645|c6-1c1s5n1
+| titan    |2587932| 2015-12-27 18:42:15 | software | system | GPU BUS                          | Node c23-1c2s5n0 GPU 0000:02:00.0 off the bus|1474635|c23-1c2s5n0
+| titan    |2594817| 2015-12-28 05:56:34 | hardware | system | GPU DBE                          | Node c22-6c1s7n1 GPU DBE on GPU|1474651|c22-6c1s7n1
+| titan    |2595890| 2015-12-28 08:31:37 | hardware | system | GPU DPR                          | Node c20-0c2s5n3 GPU DPR on Page 0000000000166469|1474653|c20-0c2s5n3
+| titan    |2597574| 2015-12-29 23:01:15 | hardware | system | GPU DPR                          | Node c5-2c0s6n3 GPU DPR on Page 00000000000c6ba0|1475016|c5-2c0s6n3
