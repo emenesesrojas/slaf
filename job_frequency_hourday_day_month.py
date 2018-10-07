@@ -32,38 +32,40 @@ def init_tables(event_day_year, event_week_daymonth,event_week_year, hour_table,
 		if i not in event_day_year.keys():
 			event_day_year[i] = 0
 	
-	#print(event_day_year)
-	event_week_daymonth[1] = 0
-	event_week_daymonth[2] = 0
-	event_week_daymonth[3] = 0
-	event_week_daymonth[4] = 0
-	event_week_daymonth[5] = 0
-	event_week_daymonth[6] = 0
-	event_week_daymonth[7] = 0
-	event_week_daymonth[8] = 0
-	event_week_daymonth[9] = 0
-	event_week_daymonth[10] = 0
-	event_week_daymonth[11] = 0
-	event_week_daymonth[12] = 0
-	event_week_daymonth[13] = 0
-	event_week_daymonth[14] = 0
-	event_week_daymonth[15] = 0
-	event_week_daymonth[16] = 0
-	event_week_daymonth[17] = 0
-	event_week_daymonth[18] = 0
-	event_week_daymonth[19] = 0
-	event_week_daymonth[20] = 0
-	event_week_daymonth[21] = 0
-	event_week_daymonth[22] = 0
-	event_week_daymonth[23] = 0
-	event_week_daymonth[24] = 0
-	event_week_daymonth[25] = 0
-	event_week_daymonth[26] = 0
-	event_week_daymonth[27] = 0
-	event_week_daymonth[28] = 0
-	event_week_daymonth[29] = 0
-	event_week_daymonth[30] = 0
-	event_week_daymonth[31] = 0
+	for i in range(1,32):
+		event_week_daymonth[i] = 0
+	
+	# event_week_daymonth[1] = 0
+	# event_week_daymonth[2] = 0
+	# event_week_daymonth[3] = 0
+	# event_week_daymonth[4] = 0
+	# event_week_daymonth[5] = 0
+	# event_week_daymonth[6] = 0
+	# event_week_daymonth[7] = 0
+	# event_week_daymonth[8] = 0
+	# event_week_daymonth[9] = 0
+	# event_week_daymonth[10] = 0
+	# event_week_daymonth[11] = 0
+	# event_week_daymonth[12] = 0
+	# event_week_daymonth[13] = 0
+	# event_week_daymonth[14] = 0
+	# event_week_daymonth[15] = 0
+	# event_week_daymonth[16] = 0
+	# event_week_daymonth[17] = 0
+	# event_week_daymonth[18] = 0
+	# event_week_daymonth[19] = 0
+	# event_week_daymonth[20] = 0
+	# event_week_daymonth[21] = 0
+	# event_week_daymonth[22] = 0
+	# event_week_daymonth[23] = 0
+	# event_week_daymonth[24] = 0
+	# event_week_daymonth[25] = 0
+	# event_week_daymonth[26] = 0
+	# event_week_daymonth[27] = 0
+	# event_week_daymonth[28] = 0
+	# event_week_daymonth[29] = 0
+	# event_week_daymonth[30] = 0
+	# event_week_daymonth[31] = 0
 	
 	hour_table['00'] = 0
 	hour_table['01'] = 0
@@ -108,65 +110,69 @@ def init_tables(event_day_year, event_week_daymonth,event_week_year, hour_table,
 	month_table['10'] = 0
 	month_table['11'] = 0
 	month_table['12'] = 0
-	
-	event_week_year[1] = 0
-	event_week_year[2] = 0
-	event_week_year[3] = 0
-	event_week_year[4] = 0
-	event_week_year[5] = 0
-	event_week_year[6] = 0
-	event_week_year[7] = 0
-	event_week_year[8] = 0
-	event_week_year[9] = 0
-	event_week_year[10] = 0
-	event_week_year[11] = 0
-	event_week_year[12] = 0
-	event_week_year[13] = 0
-	event_week_year[14] = 0
-	event_week_year[15] = 0
-	event_week_year[16] = 0
-	event_week_year[17] = 0
-	event_week_year[18] = 0
-	event_week_year[19] = 0
-	event_week_year[20] = 0
-	event_week_year[21] = 0
-	event_week_year[22] = 0
-	event_week_year[23] = 0
-	event_week_year[24] = 0
-	event_week_year[25] = 0
-	event_week_year[26] = 0
-	event_week_year[27] = 0
-	event_week_year[28] = 0
-	event_week_year[29] = 0
-	event_week_year[30] = 0
-	event_week_year[31] = 0
-	event_week_year[32] = 0
-	event_week_year[33] = 0
-	event_week_year[34] = 0
-	event_week_year[35] = 0
-	event_week_year[36] = 0
-	event_week_year[37] = 0
-	event_week_year[38] = 0
-	event_week_year[39] = 0
-	event_week_year[40] = 0
-	event_week_year[41] = 0
-	event_week_year[42] = 0
-	event_week_year[43] = 0
-	event_week_year[44] = 0
-	event_week_year[45] = 0
-	event_week_year[46] = 0
-	event_week_year[47] = 0
-	event_week_year[48] = 0
-	event_week_year[49] = 0
-	event_week_year[50] = 0
-	event_week_year[51] = 0
-	event_week_year[52] = 0
+
+	for i in range (1, 53):
+		event_week_year[i] = 0
+		
+	# event_week_year[1] = 0
+	# event_week_year[2] = 0
+	# event_week_year[3] = 0
+	# event_week_year[4] = 0
+	# event_week_year[5] = 0
+	# event_week_year[6] = 0
+	# event_week_year[7] = 0
+	# event_week_year[8] = 0
+	# event_week_year[9] = 0
+	# event_week_year[10] = 0
+	# event_week_year[11] = 0
+	# event_week_year[12] = 0
+	# event_week_year[13] = 0
+	# event_week_year[14] = 0
+	# event_week_year[15] = 0
+	# event_week_year[16] = 0
+	# event_week_year[17] = 0
+	# event_week_year[18] = 0
+	# event_week_year[19] = 0
+	# event_week_year[20] = 0
+	# event_week_year[21] = 0
+	# event_week_year[22] = 0
+	# event_week_year[23] = 0
+	# event_week_year[24] = 0
+	# event_week_year[25] = 0
+	# event_week_year[26] = 0
+	# event_week_year[27] = 0
+	# event_week_year[28] = 0
+	# event_week_year[29] = 0
+	# event_week_year[30] = 0
+	# event_week_year[31] = 0
+	# event_week_year[32] = 0
+	# event_week_year[33] = 0
+	# event_week_year[34] = 0
+	# event_week_year[35] = 0
+	# event_week_year[36] = 0
+	# event_week_year[37] = 0
+	# event_week_year[38] = 0
+	# event_week_year[39] = 0
+	# event_week_year[40] = 0
+	# event_week_year[41] = 0
+	# event_week_year[42] = 0
+	# event_week_year[43] = 0
+	# event_week_year[44] = 0
+	# event_week_year[45] = 0
+	# event_week_year[46] = 0
+	# event_week_year[47] = 0
+	# event_week_year[48] = 0
+	# event_week_year[49] = 0
+	# event_week_year[50] = 0
+	# event_week_year[51] = 0
+	# event_week_year[52] = 0
 
 def generate(dir_name, output_dir_name):
 	#""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
 	format = '%Y-%m-%d %H:%M:%S'
 	file_count = 0
 	job_count = 0
+	job_total_count = 0
 	hour_table = {}
 	day_table = {}
 	month_table = {}
@@ -204,10 +210,14 @@ def generate(dir_name, output_dir_name):
 		sys.stdout.flush()
 				
 		with open(file_name) as log:
+			
+			
 			day_year = int(datetime.datetime.strptime(year+"-"+month+"-"+day,"%Y-%m-%d").timetuple().tm_yday)
 			#print(day_year)
 			
 			for event in log:
+				job_total_count += 1
+				
 				columns = event.split()
 				if len(columns) < 6:
 					continue														# continue if empty event
@@ -243,11 +253,12 @@ def generate(dir_name, output_dir_name):
 						event_week_year[week] += 1
 	
 	
+	
 	# for save data of day year
 	output_file_name = output_dir_name + '/' + 'workload_day_year_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
 	output_file_txt.write('DAY DAY_YEAR_JOBS\n')
-	print(event_week_daymonth)
+	#print(event_week_daymonth)
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(365), event_day_year.values())))
 	output_file_txt.close()
 	
@@ -255,7 +266,7 @@ def generate(dir_name, output_dir_name):
 	output_file_name = output_dir_name + '/' + 'workload_day_month_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
 	output_file_txt.write('DAY DAY_MONTH_JOBS\n')
-	print(event_week_daymonth)
+	#print(event_week_daymonth)
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(31), event_week_daymonth.values())))
 	output_file_txt.close()
 	
@@ -339,6 +350,8 @@ def generate(dir_name, output_dir_name):
 	%d jobs analyzed \n \
 	%.3f seconds execution time" \
 	% (file_count, job_count, finishTime-startTime))
+	print("Total jobs year "+ year +": "+ str(job_total_count))
+	
 	
 	return
 

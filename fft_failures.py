@@ -21,30 +21,32 @@ import scipy.stats as ss
 from datetime import date, timedelta
 from scipy.fftpack import fft, ifft
 
-def init_tables(event_hour, event_day, event_week, event_month):
+def init_tables(event_total_hour_year,event_hour, event_day, event_week, event_month):
 	""" Initializes tables """
 	
-	for i in range(1, 26281):
+	for i in range(0, 48):
+		event_total_hour_year[i] = 0
+	
+	for i in range(1, 17520): #26281
 		event_hour[i] = 0
 	
 	for i in range(1,1096):
 		event_day[i] = 0
 	
 	
-	for i in range(1,157):
+	for i in range(1,104):
 		event_week[i] = 0
 		
 	for i in range(1,37):
 		event_month[i] = 0
 			
-def time_series(dir_name):
+def time_series(dir_name, outputFileName):
 	#""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
-	dayFormat = '%a_%b_%d_%Y'
-	format = '%Y-%m-%d %H:%M:%S'
 	file_count = 0
 	line_count = 0
 	count_event = 0
 	pathFileName = []
+	event_total_hour_year = {}
 	event_hour = {}
 	event_day = {}
 	event_week = {}
@@ -60,7 +62,7 @@ def time_series(dir_name):
 	
 	pathFileName = sorted(pathFileName)
 	
-	init_tables(event_hour, event_day, event_week,event_month)
+	init_tables(event_total_hour_year,event_hour, event_day, event_week,event_month)
 	
 	# going through all files in directory
 	for file_name in pathFileName:  
@@ -94,28 +96,31 @@ def time_series(dir_name):
 				week = datetime.date(year, month, day_month).isocalendar()[1]
 				
 				if file_count == 1:
-					pos_w = pos_m = pos_d =  0
+					pos_w = pos_m = pos_d = pos_thy =  0
 					pos_h = (day_year - 1) * 24
+					
 				if file_count == 2:
 					pos_d = 365
 					pos_w = 52
 					pos_m = 12
+					pos_thy = 25
 					pos_h = (365 + (day_year - 1)) * 24
 				if file_count == 3:
 					pos_d = 730
 					pos_w = 104
 					pos_m = 24
+					pos_thy = 50
 					pos_h = (730 + (day_year - 1)) * 24
 				
 				
 				# #print(str(hour_day))
+				pos_total_hour_year_array = pos_thy + int(hour_day) 	
+				if pos_total_hour_year_array in event_total_hour_year.keys():
+					event_total_hour_year[pos_total_hour_year_array] += 1
+					
 				pos_hour_array = pos_h + int(hour_day) 	
-				
 				if pos_hour_array in event_hour.keys():
 					event_hour[pos_hour_array] += 1
-					count_event += 1
-				else:
-					print("no encontrado")
 					
 				pos_day_array = pos_d + int(day_year) 				
 				if pos_day_array in event_day.keys():
@@ -130,33 +135,34 @@ def time_series(dir_name):
 					event_month[pos_month_array] += 1
 				
 				
-	#print(event_hour)
+	print(event_total_hour_year)
 	print(count_event)
 	
 	print("Line count: "+str(line_count))
 	
-	print("\nPrcessing %d year of 3"% file_count)	
+	print("\nPrcessing plots")	
 	
 	
 	#fig, ax = plt.subplots(4, 1,figsize=(8, 7))
 	
-	
+	#event = list(event_week.values())
 	#event = list(event_day.values())
 	event = list(event_hour.values())
+	#event = list(event_total_hour_year.values())
 	
 	
 	#normalization around zero
 	mw = np.mean(event)
 	event = event - mw
 
-	fig, ax = plt.subplots(4, 1)
+	fig, ax = plt.subplots(4, 1,figsize=(6, 5))
 
 	#############################################################
 	#FFT
 	#number of sample points
 	N = len(event)
 	#Sampling frequency of signal (time unit = year)
-	fs = 168
+	fs = 8760
 	#Period (in years) between each sample collected
 	T = 1/fs 
 	#create x-axis for time length of signal
@@ -198,25 +204,25 @@ def time_series(dir_name):
 	maxY = maxY[::-1]
 
 	ax[1].plot(xf[maxY[0]], nyf[maxY[0]], 'ro')
-	ax[1].text(xf[maxY[0]] * 1.04, nyf[maxY[0]] * 0.95, str(round(xf[maxY[0]],2)) + 'hz=' + str(round(1.0/xf[maxY[0]],2)) + 'years', fontsize=12)
+	ax[1].text(xf[maxY[0]] * 1.04, nyf[maxY[0]] * 0.95, str(round(xf[maxY[0]],2)) + 'hz=' + str(round(1.0/xf[maxY[0]],2)) + 'years', fontsize=7)
 	ax[1].plot(xf[maxY[1]], nyf[maxY[1]], 'go')
-	ax[1].text(xf[maxY[1]] * 1.04, nyf[maxY[1]] * 0.95, str(round(xf[maxY[1]],2)) + 'hz=' + str(round(1.0/xf[maxY[1]],2)) + 'years', fontsize=12) 
+	ax[1].text(xf[maxY[1]] * 1.04, nyf[maxY[1]] * 0.95, str(round(xf[maxY[1]],2)) + 'hz=' + str(round(1.0/xf[maxY[1]],2)) + 'years', fontsize=7) 
 	ax[1].plot(xf[maxY[2]], nyf[maxY[2]], 'bo') 
-	ax[1].text(xf[maxY[2]] * 1.04, nyf[maxY[2]] * 0.95, str(round(xf[maxY[2]],2)) + 'hz=' + str(round(1.0/xf[maxY[2]],2)) + 'years', fontsize=12)
+	ax[1].text(xf[maxY[2]] * 1.04, nyf[maxY[2]] * 0.95, str(round(xf[maxY[2]],2)) + 'hz=' + str(round(1.0/xf[maxY[2]],2)) + 'years', fontsize=7)
 	ax[1].set_xscale("log")
 	#----------------------------------------------------------
 
 	#Plot sinusoidals on top of time data
 	ax[2].plot(x, event, linewidth=0.9)
 
-	sin1 = 50 * np.cos(x*2.0*np.pi*xf[maxY[0]]/fs + phase_y[maxY[0]])
+	sin1 = nyf[maxY[0]] * np.cos(x*2.0*np.pi*xf[maxY[0]]/fs + phase_y[maxY[0]])
 	ax[2].plot(x, sin1, 'r',linewidth=0.2)
 
 
-	sin2 = 50 * np.cos(x*2.0*np.pi*xf[maxY[1]]/fs  + phase_y[maxY[1]])
+	sin2 = nyf[maxY[1]] * np.cos(x*2.0*np.pi*xf[maxY[1]]/fs  + phase_y[maxY[1]])
 	ax[2].plot(x, sin2, 'g',linewidth=0.2)
 
-	sin3 = 50 * np.cos(x*2.0*np.pi*xf[maxY[2]]/fs + phase_y[maxY[2]])
+	sin3 = nyf[maxY[2]] * np.cos(x*2.0*np.pi*xf[maxY[2]]/fs + phase_y[maxY[2]])
 	ax[2].plot(x, sin3, 'b',linewidth=0.2)
 	#ax[2].set_xscale("log")
 	
@@ -225,82 +231,18 @@ def time_series(dir_name):
 	ax[3].plot(x, sum_sin, 'r',linewidth=0.2)
 	#ax[3].set_xscale("log")
 	
-	plt.subplots_adjust(top=0.92, bottom=0.1, left=0.10, right=0.95, hspace=0.25, wspace=0.35)
-	plt.savefig("PLOT_FFT_ZERO.pdf")
+	plt.subplots_adjust(top=0.92, bottom=0.1, left=0.10, right=0.95, hspace=1, wspace=0.45)
+	plt.savefig(outputFileName)
 	plt.close('all')
 	
-	# #############################################################
-	# y = list(event_week.values())
-	# N = len(event_week)
-	# x = np.linspace(0.0, N, N)
-	# ax[0].plot(x, y, label = 'signal', linewidth=0.9)
-	# ax[0].grid()
-	# ax[0].set_xlabel('Weeks')
-	# ax[0].set_ylabel('Failure Count')
-	
-	# #############################################################
-	# #FFT
-	# #number of sample points
-	# N = len(event_week)
-	
-	# Fs = 52
-	# #frequency of signal (in days)
-	#	 T = 1/Fs
-	# #create x-axis for time length of signal
-	# x = np.linspace(0, N*T, N)
-	# #create array that corresponds to values in signal
-	# y = list(event_week.values())#df
-	# print(y)
-
-	# #perform FFT on signal
-	# yf = fft(y)
-	# #create new x-axis: frequency from signal
-	# xf = np.linspace(0.0, 1.0/(2.0*T), N//2)
-	# #plot results
-	# ax[1].plot(xf, 2.0/N * np.abs(yf[0:N//2]), label = 'signal', linewidth=0.9)
-	# ax[1].grid()
-	# ax[1].set_xlabel('Frequency (weeks)')
-	# ax[1].set_ylabel(r'Spectral Amplitude')
-	
-	# #############################################################
-	# y = list(event_day.values())
-	# N = len(event_day)
-	# x = np.linspace(0.0, N, N)
-	# ax[2].plot(x, y, label = 'signal', linewidth=0.9)
-	# ax[2].grid()
-	# ax[2].set_xlabel('Days')
-	# ax[2].set_ylabel('Failure Count')
-	
-	
-	# #############################################################
-	# y = list(event_day.values())#df
-	# N = len(event_day)
-	# Fs = 7
-	# T = 1/Fs
-	# x = np.linspace(0, N*T, N)
-	# print(y)
-
-	# yf = fft(y)
-	# xf = np.linspace(0.0, 1.0/(2.0*T), N//2)
-	# ax[3].plot(xf, 2.0/N * np.abs(yf[0:N//2]), label = 'signal', linewidth=0.9)
-	# ax[3].grid()
-	# ax[3].set_xlabel('	Frequency (days)')
-	# ax[3].set_ylabel(r'Spectral Amplitude')
-	
-	
-	
-	# plt.subplots_adjust(top=0.92, bottom=0.1, left=0.10, right=0.95, hspace=0.65, wspace=0.35)
-	# plt.savefig("PLOT_FFT.pdf")
-	# print("\nPlot in file: <PLOT_day_2015_2016.pdf>")
-
 	
 	return 
 	
 	
 if len(sys.argv) >= 2:
 	dirName = sys.argv[1]
-	outputFileName = "" #sys.argv[2]
-	time_series(dirName)
+	outputFileName = sys.argv[2]
+	time_series(dirName,outputFileName)
 else:
 	print ("ERROR, usage: %s <directory> <output file>" % sys.argv[0])
 	sys.exit(0)

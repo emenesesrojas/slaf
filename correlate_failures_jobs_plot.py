@@ -583,7 +583,14 @@ def time_series(dir_name1, dir_name2, dir_name3, output_dir_name):
 	
 	plt.clf()
 	fig = plt.figure()
-	fig, axs = plt.subplots(2,3,figsize=(14, 8))
+	fig, axs = plt.subplots(3,3,figsize=(14, 8))
+	
+	pearson_correlation_day_2014 = ss.stats.pearsonr(data_fail_day_2014, data_jobs_day_2014)
+	pearson_correlation_hour_2014 = ss.stats.pearsonr(data_fail_hour_2014, data_jobs_hour_2014)
+	pearson_correlation_month_2014 = ss.stats.pearsonr(data_fail_month_2014, data_jobs_month_2014)
+	#pearson_correlation_day_month_2014 = ss.stats.pearsonr(data_fail_day_month_2014, data_jobs_day_month_2014)
+	#pearson_correlation_day_year_2014 = ss.stats.pearsonr(data_fail_day_year_2014, data_jobs_day_year_2014)
+	
 	
 	pearson_correlation_day_2015 = ss.stats.pearsonr(data_fail_day_2015, data_jobs_day_2015)
 	pearson_correlation_hour_2015 = ss.stats.pearsonr(data_fail_hour_2015, data_jobs_hour_2015)
@@ -597,78 +604,189 @@ def time_series(dir_name1, dir_name2, dir_name3, output_dir_name):
 	pearson_correlation_day_month_2016 = ss.stats.pearsonr(data_fail_day_month_2016, data_jobs_day_month_2016)
 	pearson_correlation_day_year_2016 = ss.stats.pearsonr(data_fail_day_year_2016, data_jobs_day_year_2016)
 	
+	#correlate between years hour
+	print("----------------------correlate between years hour-------------------------------")
+	pearson_correlation_hour_jobs_2014_2015 = ss.stats.pearsonr(data_jobs_hour_2014, data_jobs_hour_2015)
+	print("PC hour jobs 2014 - 2015: " + str(pearson_correlation_hour_jobs_2014_2015[0]))
+	pearson_correlation_hour_fail_2014_2015 = ss.stats.pearsonr(data_fail_hour_2014, data_fail_hour_2015)
+	print("PC hour fails 2014 - 2015: " + str(pearson_correlation_hour_fail_2014_2015[0]))
+	print("----------------------")
+	
+	print("----------------------")
+	pearson_correlation_hour_jobs_2015_2016 = ss.stats.pearsonr(data_jobs_hour_2015, data_jobs_hour_2016)
+	print("PC hour jobs 2015 - 2016: " + str(pearson_correlation_hour_jobs_2015_2016[0]))
+	pearson_correlation_hour_fail_2015_2016 = ss.stats.pearsonr(data_fail_hour_2015, data_fail_hour_2016)
+	print("PC hour fails 2015 - 2016: " + str(pearson_correlation_hour_fail_2015_2016[0]))
+	print("----------------------")
+	
+	print("----------------------")
+	pearson_correlation_hour_jobs_2014_2016 = ss.stats.pearsonr(data_jobs_hour_2014, data_jobs_hour_2016)
+	print("PC hour jobs 2014 - 2016: " + str(pearson_correlation_hour_jobs_2014_2016[0]))
+	pearson_correlation_hour_fail_2014_2016 = ss.stats.pearsonr(data_fail_hour_2014, data_fail_hour_2016)
+	print("PC hour fails 2014 - 2016: " + str(pearson_correlation_hour_fail_2014_2016[0]))
+	print("----------------------")
+	
+	#correlate between years days
+	print("----------------------correlate between years days------------------------------")
+	pearson_correlation_day_jobs_2014_2015 = ss.stats.pearsonr(data_jobs_day_2014, data_jobs_day_2015)
+	print("PC day jobs 2014 - 2015: " + str(pearson_correlation_day_jobs_2014_2015[0]))
+	pearson_correlation_day_fail_2014_2015 = ss.stats.pearsonr(data_fail_day_2014, data_fail_day_2015)
+	print("PC day fails 2014 - 2015: " + str(pearson_correlation_day_fail_2014_2015[0]))
+	print("----------------------")
+	
+	print("----------------------")
+	pearson_correlation_day_jobs_2015_2016 = ss.stats.pearsonr(data_jobs_day_2015, data_jobs_day_2016)
+	print("PC day jobs 2015 - 2016: " + str(pearson_correlation_day_jobs_2015_2016[0]))
+	pearson_correlation_day_fail_2015_2016 = ss.stats.pearsonr(data_fail_day_2015, data_fail_day_2016)
+	print("PC day fails 2015 - 2016: " + str(pearson_correlation_day_fail_2015_2016[0]))
+	print("----------------------")
+	
+	print("----------------------")
+	pearson_correlation_day_jobs_2014_2016 = ss.stats.pearsonr(data_jobs_day_2014, data_jobs_day_2016)
+	print("PC day jobs 2014 - 2016: " + str(pearson_correlation_hour_jobs_2014_2016[0]))
+	pearson_correlation_day_fail_2014_2016 = ss.stats.pearsonr(data_fail_day_2014, data_fail_day_2016)
+	print("PC day fails 2014 - 2016: " + str(pearson_correlation_day_fail_2014_2016[0]))
+	print("----------------------")
+	
+	#correlate between years months
+	print("----------------------correlate between years months------------------------------")
+	pearson_correlation_month_jobs_2014_2015 = ss.stats.pearsonr(data_jobs_month_2014, data_jobs_month_2015)
+	print("PC month jobs 2014 - 2015: " + str(pearson_correlation_month_jobs_2014_2015[0]))
+	pearson_correlation_month_fail_2014_2015 = ss.stats.pearsonr(data_fail_month_2014, data_fail_month_2015)
+	print("PC month fails 2014 - 2015: " + str(pearson_correlation_month_fail_2014_2015[0]))
+	print("----------------------")
+	
+	print("----------------------")
+	pearson_correlation_month_jobs_2015_2016 = ss.stats.pearsonr(data_jobs_month_2015, data_jobs_month_2016)
+	print("PC month jobs 2015 - 2016: " + str(pearson_correlation_month_jobs_2015_2016[0]))
+	pearson_correlation_month_fail_2015_2016 = ss.stats.pearsonr(data_fail_month_2015, data_fail_month_2016)
+	print("PC month fails 2015 - 2016: " + str(pearson_correlation_month_fail_2015_2016[0]))
+	print("----------------------")
+	
+	print("----------------------")
+	pearson_correlation_month_jobs_2014_2016 = ss.stats.pearsonr(data_jobs_month_2014, data_jobs_month_2016)
+	print("PC month jobs 2014 - 2016: " + str(pearson_correlation_hour_jobs_2014_2016[0]))
+	pearson_correlation_month_fail_2014_2016 = ss.stats.pearsonr(data_fail_month_2014, data_fail_month_2016)
+	print("PC month fails 2014 - 2016: " + str(pearson_correlation_month_fail_2014_2016[0]))
+	print("----------------------")
+	
 	#linear regresion
-	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_month_2015,data_fail_month_2015)
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_month_2014,data_fail_month_2014)
 	
-	#MONTH 2015
-	ax = sns.regplot(x=data_jobs_month_2015, y=data_fail_month_2015, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[0,0]);
+	#MONTH 2014
+	ax = sns.regplot(x=data_jobs_month_2014, y=data_fail_month_2014, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[0,2]);
 	ax.legend()
-	axs[0,0].set_title('Correlation Workload-Failures by month 2015\n'+"PearC= "+str(round(pearson_correlation_month_2015[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
-	axs[0,0].set_ylabel('Failures')
-	axs[0,0].set_xlabel('Workload')
-	axs[0,0].tick_params(axis='y',labelsize=8)
-	axs[0,0].tick_params(axis='x',labelsize=8)
-	
-	#linear regresion
-	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_day_2015,data_fail_day_2015)
-	
-	#DAY 2015
-	ax = sns.regplot(x=data_jobs_day_2015, y=data_fail_day_2015, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[0,1])
-	ax.legend()
-	axs[0,1].set_title('Pearson correlation Workload-Failures by day 2015\n'+"PearC= "+str(round(pearson_correlation_day_2015[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
-	axs[0,1].set_ylabel('Failures')
-	axs[0,1].set_xlabel('Workload')
-	axs[0,1].tick_params(axis='y',labelsize=8)
-	axs[0,1].tick_params(axis='x',labelsize=8)
-	
-	#linear regresion
-	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_hour_2015,data_fail_hour_2015)
-	
-	#HOUR 2015
-	ax = sns.regplot(x=data_jobs_hour_2015, y=data_fail_hour_2015, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[0,2])
-	ax.legend()
-	axs[0,2].set_title('Pearson correlation Workload-Failures by hour 2015\n'+"PearC= "+str(round(pearson_correlation_hour_2015[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(p_value),fontsize = 8)
+	    
+	axs[0,2].set_title('Correlation Workload-Failures by month 2014\n'+"PearC= "+str(round(pearson_correlation_month_2014[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
 	axs[0,2].set_ylabel('Failures')
 	axs[0,2].set_xlabel('Workload')
 	axs[0,2].tick_params(axis='y',labelsize=8)
 	axs[0,2].tick_params(axis='x',labelsize=8)
 	
 	#linear regresion
-	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_month_2016,data_fail_month_2016)
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_day_2014,data_fail_day_2014)
 	
-	#MONTH 2016
-	ax = sns.regplot(x=data_jobs_month_2016, y=data_fail_month_2016, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[1,0])
+	#DAY 2014
+	ax = sns.regplot(x=data_jobs_day_2014, y=data_fail_day_2014, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[0,1])
 	ax.legend()
-	axs[1,0].set_title('Pearson correlation Workload-Failures by month 2016\n'+"PearC= "+str(round(pearson_correlation_month_2016[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(p_value),fontsize = 8)
-	axs[1,0].set_ylabel('Failures')
-	axs[1,0].set_xlabel('Workload')
-	axs[1,0].tick_params(axis='y',labelsize=8)
-	axs[1,0].tick_params(axis='x',labelsize=8)
+	axs[0,1].set_title('Pearson correlation Workload-Failures by day 2014\n'+"PearC= "+str(round(pearson_correlation_day_2014[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
+	axs[0,1].set_ylabel('Failures')
+	axs[0,1].set_xlabel('Workload')
+	axs[0,1].tick_params(axis='y',labelsize=8)
+	
+	axs[0,1].tick_params(axis='x',labelsize=8)
+	#linear regresion
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_hour_2014,data_fail_hour_2014)
+	
+	#HOUR 2014
+	ax = sns.regplot(x=data_jobs_hour_2014, y=data_fail_hour_2014, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[0,0])
+	ax.legend()
+	axs[0,0].set_title('Pearson correlation Workload-Failures by hour 2014\n'+"PearC= "+str(round(pearson_correlation_hour_2014[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(p_value),fontsize = 8)
+	axs[0,0].set_ylabel('Failures')
+	axs[0,0].set_xlabel('Workload')
+	axs[0,0].tick_params(axis='y',labelsize=8)
+	axs[0,0].tick_params(axis='x',labelsize=8)
+	
+	#######################################################################################
+	#######################################################################################
+	#2015
 	
 	#linear regresion
-	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_day_2016,data_fail_day_2016)
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_month_2015,data_fail_month_2015)
 	
-	#DAY 2016
-	ax = sns.regplot(x=data_jobs_day_2016, y=data_fail_day_2016, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[1,1])
+	#MONTH 2015
+	ax = sns.regplot(x=data_jobs_month_2015, y=data_fail_month_2015, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[1,2]);
 	ax.legend()
-	axs[1,1].set_title('Pearson correlation Workload-Failures by day 2016\n'+"PearC= "+str(round(pearson_correlation_day_2016[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
+	axs[1,2].set_title('Correlation Workload-Failures by month 2015\n'+"PearC= "+str(round(pearson_correlation_month_2015[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
+	axs[1,2].set_ylabel('Failures')
+	axs[1,2].set_xlabel('Workload')
+	axs[1,2].tick_params(axis='y',labelsize=8)
+	axs[1,2].tick_params(axis='x',labelsize=8)
+	
+	#linear regresion
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_day_2015,data_fail_day_2015)
+	
+	#DAY 2015
+	ax = sns.regplot(x=data_jobs_day_2015, y=data_fail_day_2015, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[1,1])
+	ax.legend()
+	axs[1,1].set_title('Pearson correlation Workload-Failures by day 2015\n'+"PearC= "+str(round(pearson_correlation_day_2015[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
 	axs[1,1].set_ylabel('Failures')
 	axs[1,1].set_xlabel('Workload')
 	axs[1,1].tick_params(axis='y',labelsize=8)
 	axs[1,1].tick_params(axis='x',labelsize=8)
 	
 	#linear regresion
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_hour_2015,data_fail_hour_2015)
+	
+	#HOUR 2015
+	ax = sns.regplot(x=data_jobs_hour_2015, y=data_fail_hour_2015, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[1,0])
+	ax.legend()
+	axs[1,0].set_title('Pearson correlation Workload-Failures by hour 2015\n'+"PearC= "+str(round(pearson_correlation_hour_2015[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(p_value),fontsize = 8)
+	axs[1,0].set_ylabel('Failures')
+	axs[1,0].set_xlabel('Workload')
+	axs[1,0].tick_params(axis='y',labelsize=8)
+	axs[1,0].tick_params(axis='x',labelsize=8)
+	
+	########################################################################################
+	########################################################################################
+	#2016
+	
+	#linear regresion
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_month_2016,data_fail_month_2016)
+	
+	#MONTH 2016
+	ax = sns.regplot(x=data_jobs_month_2016, y=data_fail_month_2016, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[2,2])
+	ax.legend()
+	axs[2,2].set_title('Pearson correlation Workload-Failures by month 2016\n'+"PearC= "+str(round(pearson_correlation_month_2016[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(p_value),fontsize = 8)
+	axs[2,2].set_ylabel('Failures')
+	axs[2,2].set_xlabel('Workload')
+	axs[2,2].tick_params(axis='y',labelsize=8)
+	axs[2,2].tick_params(axis='x',labelsize=8)
+	
+	#linear regresion
+	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_day_2016,data_fail_day_2016)
+	
+	#DAY 2016
+	ax = sns.regplot(x=data_jobs_day_2016, y=data_fail_day_2016, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[2,1])
+	ax.legend()
+	axs[2,1].set_title('Pearson correlation Workload-Failures by day 2016\n'+"PearC= "+str(round(pearson_correlation_day_2016[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
+	axs[2,1].set_ylabel('Failures')
+	axs[2,1].set_xlabel('Workload')
+	axs[2,1].tick_params(axis='y',labelsize=8)
+	axs[2,1].tick_params(axis='x',labelsize=8)
+	
+	#linear regresion
 	slope, intercept, r_value, p_value, std_err = ss.linregress(data_jobs_hour_2016,data_fail_hour_2016)
 	
 	#HOUR 2016
-	ax = sns.regplot(x=data_jobs_hour_2016, y=data_fail_hour_2016, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[1,2])
+	ax = sns.regplot(x=data_jobs_hour_2016, y=data_fail_hour_2016, line_kws={"color":"r","alpha":0.7,"lw":2, "label":"$y=%3.7s*x+%3.7s$"%(slope, intercept)},ax = axs[2,0])
 	ax.legend()
-	axs[1,2].set_title('Pearson correlation Workload-Failures by hour 2016\n'+"PearC= "+str(round(pearson_correlation_hour_2016[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
-	axs[1,2].set_ylabel('Failures')
-	axs[1,2].set_xlabel('Workload')
-	axs[1,2].tick_params(axis='y',labelsize=8)
-	axs[1,2].tick_params(axis='x',labelsize=8)
-	plt.subplots_adjust(top=0.92, bottom=0.08, left=0.1, right=0.95, hspace=0.30, wspace=0.20)
+	axs[2,0].set_title('Pearson correlation Workload-Failures by hour 2016\n'+"PearC= "+str(round(pearson_correlation_hour_2016[0],5))+" RS= "+str(round(r_value*2,5))+"-p="+str(round(p_value,5)),fontsize = 8)
+	axs[2,0].set_ylabel('Failures')
+	axs[2,0].set_xlabel('Workload')
+	axs[2,0].tick_params(axis='y',labelsize=8)
+	axs[2,0].tick_params(axis='x',labelsize=8)
+	plt.subplots_adjust(top=0.92, bottom=0.08, left=0.1, right=0.95, hspace=0.50, wspace=0.30)
 	
 	print("Plot in file: <"+output_dir_name+"Pearson_correlations.pdf>")	
 	plt.savefig(output_dir_name+"Pearson_correlations.pdf")

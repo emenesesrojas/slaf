@@ -77,7 +77,7 @@ def generate(dir_name, output_dir_name):
 	#""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
 	timeFormat = '%m/%d/%y %H:%M %p'
 	formatAlt = '%Y-%m-%d %H:%M:%S'
-	
+	job_total_count = 0
 	file_count = 0
 	line_count = 0
 	job_count = 0
@@ -120,9 +120,12 @@ def generate(dir_name, output_dir_name):
 		job_file_name = dir_name + file_name
 		
 		with open(job_file_name) as log:
+			
 			line_count = 0 
 			try:
 				for event in log:
+					job_total_count += 1
+					
 					line_count += 1
 					columns = event.split()
 					print ("Progress: %d%%, line: %d, file: %s"% (file_count/sizeList*100, line_count, file_name),end="\r") 
@@ -144,14 +147,15 @@ def generate(dir_name, output_dir_name):
 						month_table[month] += 1
 						hour_table[hour] += 1
 			except ValueError:
-				print(event)
+				print("//")
 				
-											
+	
+	
 	#week day
 	output_file_name = output_dir_name + '/' + 'workload_day_of_week_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
 	output_file_txt.write('DAY DAY_WEEK_JOBS\n')
-	print(day_table)
+	#print(day_table)
 	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(7), day_table.values())))
 	output_file_txt.close()
 	
@@ -242,7 +246,7 @@ def generate(dir_name, output_dir_name):
 	%d jobs analyzed \n \
 	%.3f seconds execution time" \
 	% (file_count, job_count, finishTime-startTime))
-	
+	print("Total jobs year "+ year +": "+ str(job_total_count))
 	return
 
 ### MAIN CODE ###

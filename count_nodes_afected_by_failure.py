@@ -25,7 +25,7 @@ from datetime import date, timedelta
 import seaborn as sns
 from datetime import date, timedelta, datetime as dt
 import calendar as cl
-import squarify
+#import squarify
 import matplotlib.patches as mpatches
 import matplotlib.gridspec as gridspec
 
@@ -59,6 +59,9 @@ def f_cabinets(dir_name):
 	failures_node_affected_soft = []
 	failures_node_affected_hard = []
 	failures_node_affected = []
+	ftotal = []
+	fsoft = []
+	fhard = []
 	hardware_failures_clasification = {}
 	software_failures_clasification = {}
 	
@@ -66,7 +69,10 @@ def f_cabinets(dir_name):
 		failures_node_affected.append(0)
 		failures_node_affected_hard.append(0)
 		failures_node_affected_soft.append(0)
-
+		ftotal.append(0)
+		fhard.append(0)
+		fsoft.append(0)
+		
 	year_text = ""
 	format = '%Y-%m-%d %H:%M:%S'
 	
@@ -144,48 +150,78 @@ def f_cabinets(dir_name):
 				#count nodes by category				
 				if (t == 1):
 					failures_node_affected[0] += 1
+					ftotal[0] += 1
 					if category == "hardware":
 						failures_node_affected_hard[0] += 1
+						fhard[0] += 1
 					if category == "software":
 						failures_node_affected_soft[0] += 1
+						fsoft[0] += 1
 						
 				if (t == 2):
 					failures_node_affected[1] += 1
+					ftotal[1] += 1
 					if category == "hardware":
 						failures_node_affected_hard[1] += 1
+						fhard[1] += 1
 					if category == "software":
 						failures_node_affected_soft[1] += 1
+						fsoft[1] += 1
 						
 				if (t == 3):
 					failures_node_affected[2] += 1
+					ftotal[2] += 1
 					if category == "hardware":
 						failures_node_affected_hard[2] += 1
+						fhard[2] += 1
 					if category == "software":
 						failures_node_affected_soft[2] += 1
-						
+						fsoft[2] += 1
 				if (t == 4):
 					failures_node_affected[3] += 1
+					ftotal[3] += 1
 					if category == "hardware":
 						failures_node_affected_hard[3] += 1
+						fhard[3] += 1
 					if category == "software":
 						failures_node_affected_soft[3] += 1
+						fsoft[3] += 1
 						
 				if (t > 4):
 					failures_node_affected[4] += 1
+					ftotal[4] += 1
 					if category == "hardware":
 						failures_node_affected_hard[4] += 1
+						fhard[4] += 1
 					if category == "software":
 						failures_node_affected_soft[4] += 1
+						fsoft[4] += 1
+			#print(hardware_failures_clasification)
 			
-			print(hardware_failures_clasification)
+			#print(software_failures_clasification)
 			
-			print(software_failures_clasification)
-					
+			print("Year: "+ year)	
+			
 			print("Total: "+str(failures_node_affected))
 			print("Hard: "+str(failures_node_affected_hard))
 			print("Soft: "+str(failures_node_affected_soft))
+			print("............")
+			print("Total year: "+str(ftotal))
+			print("Hard year: "+str(fhard))
+			print("Soft year: "+str(fsoft))
+			
+			ftotal.clear()
+			fhard.clear()
+			fsoft.clear()
+			
+			for i in range(5):
+				ftotal.append(0)
+				fhard.append(0)
+				fsoft.append(0)
+			
 			
 			print(str(count_nodes))
+			print("----------------------------------------------")
 			count_nodes = 0
 		
 	#################################################################
@@ -220,37 +256,38 @@ def f_cabinets(dir_name):
 	
 	#############################################################################################
 	#PLOT TREEMAP
-	plt.clf()
-	fig = plt.figure(figsize=(8,8))
+	print("Treemap plot is comment because it need squarify")
+	# plt.clf()
+	# fig = plt.figure(figsize=(8,8))
 	
 	
-	labels_data = ["GPU DBE\n"+str(hardware_failures_clasification["GPU"]["GPU DBE"]),"GPU DPR\n"+str(hardware_failures_clasification["GPU"]["GPU DPR"]),"Machine Check Exception\n"+str(hardware_failures_clasification["Processor"]["Machine Check Exception"]),"GPU BUS\n"+str(software_failures_clasification["GPU"]["GPU BUS"]),"GPU XID\n"+str(software_failures_clasification["GPU"]["GPU XID"]),"Other Failures\n"+str(software_failures_clasification["Memory"]["Kernel Panic"]+software_failures_clasification["Memory"]["RDMA Failure"]+software_failures_clasification["Memory"]["LBUG"]+hardware_failures_clasification["Blade"]["Voltage Fault"]+hardware_failures_clasification["Blade"]["Module Failed"])]
-	sizes_data = [hardware_failures_clasification["GPU"]["GPU DBE"], hardware_failures_clasification["GPU"]["GPU DPR"],hardware_failures_clasification["Processor"]["Machine Check Exception"],software_failures_clasification["GPU"]["GPU BUS"],software_failures_clasification["GPU"]["GPU XID"],software_failures_clasification["Memory"]["Kernel Panic"]+software_failures_clasification["Memory"]["RDMA Failure"]+software_failures_clasification["Memory"]["LBUG"]+hardware_failures_clasification["Blade"]["Voltage Fault"]+hardware_failures_clasification["Blade"]["Module Failed"]]
+	# labels_data = ["GPU DBE\n"+str(hardware_failures_clasification["GPU"]["GPU DBE"]),"GPU DPR\n"+str(hardware_failures_clasification["GPU"]["GPU DPR"]),"Machine Check Exception\n"+str(hardware_failures_clasification["Processor"]["Machine Check Exception"]),"GPU BUS\n"+str(software_failures_clasification["GPU"]["GPU BUS"]),"GPU XID\n"+str(software_failures_clasification["GPU"]["GPU XID"]),"Other Failures\n"+str(software_failures_clasification["Memory"]["Kernel Panic"]+software_failures_clasification["Memory"]["RDMA Failure"]+software_failures_clasification["Memory"]["LBUG"]+hardware_failures_clasification["Blade"]["Voltage Fault"]+hardware_failures_clasification["Blade"]["Module Failed"])]
+	# sizes_data = [hardware_failures_clasification["GPU"]["GPU DBE"], hardware_failures_clasification["GPU"]["GPU DPR"],hardware_failures_clasification["Processor"]["Machine Check Exception"],software_failures_clasification["GPU"]["GPU BUS"],software_failures_clasification["GPU"]["GPU XID"],software_failures_clasification["Memory"]["Kernel Panic"]+software_failures_clasification["Memory"]["RDMA Failure"]+software_failures_clasification["Memory"]["LBUG"]+hardware_failures_clasification["Blade"]["Voltage Fault"]+hardware_failures_clasification["Blade"]["Module Failed"]]
 
-	c = [(230/255, 16/255, 16/255),(1, 173/255, 153/255),(1, 92/255, 51/255)]
-	c2 = [(102/255, 179/255, 1),(51/255, 51/255, 1)]
-	c3 = [(1, 1, 0)]
+	# c = [(230/255, 16/255, 16/255),(1, 173/255, 153/255),(1, 92/255, 51/255)]
+	# c2 = [(102/255, 179/255, 1),(51/255, 51/255, 1)]
+	# c3 = [(1, 1, 0)]
 	
-	c = c + c2 + c3
+	# c = c + c2 + c3
 	
-	squarify.plot(label=labels_data,sizes=sizes_data, color = c, alpha=.6)
-	plt.title("Failures",fontsize=12,fontweight="bold")
+	# squarify.plot(label=labels_data,sizes=sizes_data, color = c, alpha=.6)
+	# plt.title("Failures",fontsize=12,fontweight="bold")
 	
-	h1 = mpatches.Patch(color=(237/255, 16/255, 16/255))
-	h2 = mpatches.Patch(color=(1, 173/255, 153/255), label='Hardware')
-	h3 = mpatches.Patch(color=(1, 92/255, 51/255))
-	l = mpatches.Patch(color='white',label='-------------')
-	#s1 = mpatches.Patch(color=)
-	s2 = mpatches.Patch(color=(102/255, 179/255, 1), label='Software')
-	s3 = mpatches.Patch(color=(51/255, 51/255, 1))
-	plt.legend(handles=[h1,h2,h3,l,s2,s3],loc=9, ncol=1,bbox_to_anchor=(1.15, 0.5),edgecolor="black")
+	# h1 = mpatches.Patch(color=(237/255, 16/255, 16/255))
+	# h2 = mpatches.Patch(color=(1, 173/255, 153/255), label='Hardware')
+	# h3 = mpatches.Patch(color=(1, 92/255, 51/255))
+	# l = mpatches.Patch(color='white',label='-------------')
+	# #s1 = mpatches.Patch(color=)
+	# s2 = mpatches.Patch(color=(102/255, 179/255, 1), label='Software')
+	# s3 = mpatches.Patch(color=(51/255, 51/255, 1))
+	# plt.legend(handles=[h1,h2,h3,l,s2,s3],loc=9, ncol=1,bbox_to_anchor=(1.15, 0.5),edgecolor="black")
 
-	# #Remove our axes and display the plot
-	plt.axis('off')
-	fig.tight_layout(pad=9)
+	# # #Remove our axes and display the plot
+	# plt.axis('off')
+	# fig.tight_layout(pad=9)
 	
-	plt.savefig("PLOT_Treemap_" + year_text +".pdf")
-	print("\nPlot in file: <PLOT_Treemap_"+ year_text +".pdf>")
+	# plt.savefig("PLOT_Treemap_" + year_text +".pdf")
+	# print("\nPlot in file: <PLOT_Treemap_"+ year_text +".pdf>")
 	
 	# ##############################################################################
 	return 
