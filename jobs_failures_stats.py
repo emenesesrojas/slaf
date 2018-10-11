@@ -48,7 +48,7 @@ def failureJob(fileName, dirName, outputFileName, year):
 	fail_found = 0
 	jobs = {}
 	jobs_time_execution = {}
-	
+	count_ommited = 0
 	jobs_nodes_req = {}
 	jobs_node_affected = {}
 	jobs_node_failure = []
@@ -58,6 +58,7 @@ def failureJob(fileName, dirName, outputFileName, year):
 	cancelled_jobs = 0
 	DaysToSearch = []
 	type_of_failure = []
+	type_of_failure_11 = []
 	type_of_failure_40 = []
 	type_of_failure_100 = []
 	type_of_failure_600 = []
@@ -188,7 +189,7 @@ def failureJob(fileName, dirName, outputFileName, year):
 						print("File error")
 						continue				
 					#Progress of excecution
-					print ("Progress: %d%%, Failure Analized: %d, Failure found: %d, Count missing ID: %d, Search on: %s "% (count/lines*100, count,fail_found, missing, jobFileName),end="\r")
+					print ("Progress: %d%%, Failure Analized: %d, Failure found: %d, Count missing ID: %d, Search on: %s "% (count/lines*100, count,fail_found, missing, fecha),end="\r")
 					with open(jobFileName) as log:
 						if flag == False:
 							for event in log:
@@ -201,11 +202,11 @@ def failureJob(fileName, dirName, outputFileName, year):
 								
 								if len(columns) < 6 or eventType != 'job':# continue if empty event # continue if not job event
 									continue														
-								if jobid == objid and columns[4] == 'JOBEND':  
+								if jobid == objid and (columns[4] == 'JOBEND' or  columns[4] == 'JOBCANCEL'):  
 									hour_time_job.append(hour)
 									###########################################################				
 									columns_check = event.split()
-									if "2016" in dirName:
+									if "STARTTIME" in event:
 										for item in columns_check:
 											if  "REQUESTEDTC" in item.strip():
 												#task_req
@@ -235,10 +236,10 @@ def failureJob(fileName, dirName, outputFileName, year):
 												
 											if "STARTTIME" in item:
 												#start_time
-												columns[14] = item[10:]		#STARTTIME									
+												start_time = item[10:]		#STARTTIME									
 											if "COMPLETETIME" in item:	
 												#completion_time
-												columns[15] = item[13:]		#COMPLETETIME
+												complete_time = item[13:]		#COMPLETETIME
 												#print("complete time: "+str(columns[15]))
 											if "TASKPERNODE" in item:
 												#tasks_per_node
@@ -246,25 +247,30 @@ def failureJob(fileName, dirName, outputFileName, year):
 											else:
 												columns[25] = 0
 												#continue
-												
-									try:
-										dispatch_time = int(columns[13])
-									except ValueError:
-										dispatch_time = 0
-										print("\nAsigned value 0 to dispatch_time")
-									
-									try:
-										start_time = int(columns[14]) 
-									except ValueError:
-										start_time = 0
-										print("\nAsigned value 0 to start_time")
+									else:			
+										try:
+											
+											wallclock_req = int(columns[9])
+											dispatch_time = int(columns[13])
+											start_time = columns[14]
+											complete_time = columns[15]
+										except ValueError:
+											dispatch_time = 0
+											print("\nAsigned value 0 to dispatch_time")
 										
-									if(dispatch_time == 0):
-										if(start_time == 0):
-											cancelled_jobs = cancelled_jobs + 1
-											continue
-										else:
-											dispatch_time = start_time
+									# try:
+										# start_time = int(columns[14]) 
+									# except ValueError:
+										# start_time = 0
+										# print("\nAsigned value 0 to start_time")
+										
+									# if(dispatch_time == 0):
+										# if(start_time == 0):
+											# cancelled_jobs = cancelled_jobs + 1
+											# print("dddddddddddddddddddddddd")
+											# continue
+										# else:
+											# dispatch_time = start_time
 											
 									# checking number of requested nodes
 									try:
@@ -300,28 +306,34 @@ def failureJob(fileName, dirName, outputFileName, year):
 									except ValueError:
 										submit_time = 0
 										print("\nAsigned value 0 to submit_time")
-									
-									wait_time = (dispatch_time - submit_time)/60.0					# transforming wait time into minutes
+									wait_time = 0
+									#wait_time = (dispatch_time - submit_time)/60.0					# transforming wait time into minutes
 									#print("Wait time: "+str(wait_time))
-									try:
-										completion_time = int(columns[15])
+									# try:
+										# completion_time = int(columns[15])
+									# except ValueError:
+										# completion_time = 0
+										# print("\nAsigned value 0 to completetion_time")
+									
+									# if(start_time == 0):
+									# execution_time = (completion_time - dispatch_time)/60.0
+									# else:
+									try:	
+										execution_time = (int(complete_time) - int(start_time)) / 60 # transforming execution time into minutes
 									except ValueError:
-										completion_time = 0
-										print("\nAsigned value 0 to completetion_time")
+										print("Value error.  Value ommited: "+ str(count_ommited))
+										count_ommited += 1
+
 									
-									if(start_time == 0):
-										execution_time = (completion_time - dispatch_time)/60.0
-									else:
-										execution_time = (completion_time - start_time)/60.0			# transforming execution time into minutes
 									
-									# if int(execution_time) == 0:
-										# print("\nentro\nID:"+ jobid + "---star t:"+columns[14]+"node req: "+str(nodes_req)+" / node failed: "+ str(len(nodes)))
-										# print("\nentro\nID:"+ jobid + "---complete t:"+columns[15])
-										# print("Execution: "+ str(execution_time))
-										# print("Execution R: "+ str(int(execution_time)))
-										# print("/////////////////////////////////////")
-										# #sys.exit()
-									
+								# if int(execution_time) == 0:
+									# print("\nentro\nID:"+ jobid + "---star t:"+columns[14]+"node req: "+str(nodes_req)+" / node failed: "+ str(len(nodes)))
+									# print("\nentro\nID:"+ jobid + "---complete t:"+columns[15])
+									# print("Execution: "+ str(execution_time))
+									# print("Execution R: "+ str(int(execution_time)))
+									# print("/////////////////////////////////////")
+									# #sys.exit()
+								
 									#COUNT NODES REQ BY JOBS
 									if nodes_req == 1:
 										jobs_node_req_count[0] += 1
@@ -362,8 +374,11 @@ def failureJob(fileName, dirName, outputFileName, year):
 										#get the number
 										match = re.search(r"GPU Xid (\d+)", text)
 										description = match.group(0)
-									#if int(execution_time) == 0:
-									#	type_of_failure.append(failure_type +" / "+description)
+									if int(execution_time) == 0:
+										type_of_failure.append(failure_type +" / "+description)
+									
+									if int(execution_time) == 11:
+										type_of_failure_11.append(failure_type +" / "+description)
 									
 									if int(execution_time) in jobs_time_execution:
 										jobs_time_execution[int(execution_time)] += 1
@@ -511,7 +526,6 @@ def failureJob(fileName, dirName, outputFileName, year):
 		# stop timer
 		finishTime = time.clock()
 
-		suma = 0
 		for i in range(34):
 			job_hours_x_6[i][0] = job_hours[i][0] + job_hours[i][1] + job_hours[i][2] + job_hours[i][3] + job_hours[i][4] + job_hours[i][5]
 			job_hours_x_6[i][1] = job_hours[i][6] + job_hours[i][7] + job_hours[i][8] + job_hours[i][9] + job_hours[i][10] + job_hours[i][11]
@@ -553,7 +567,14 @@ def failureJob(fileName, dirName, outputFileName, year):
 		print(data4)
 		###########################################################################################
 		###########################################################################################
+			
+		if "2015" in dirName:
+			data_total_jobs = [95099, 23393, 14805, 9969, 6811, 5940, 5104, 5040, 3306, 2574, 3104, 3038, 4551, 2676, 1910, 1892, 1902, 2052, 1750, 11080, 9966, 8527, 46386, 50559, 2386, 3102, 1405, 1943, 3546, 282, 321, 269, 210, 9408]
+			show_bar_count = [95099, 23393, 14805, 9969, 6811, "", "", "", "", "", "", "", "", "", "", "", "", "", "", 11080, "", "", 46386, 50559, "", "", "", "", "", "", "", "", "", 9408]
 		
+		if "2016" in dirName:
+			data_total_jobs = [109763, 26277, 15057, 10175, 7714, 6565, 5043, 4563, 3532, 3000, 3772, 3073, 6433, 5059, 3045, 2682, 1904, 1547, 1637, 16286, 13510, 13664, 97863, 61350, 2223, 2679, 1838, 1923, 3403, 236, 207, 251, 172, 4768]
+			show_bar_count = [109763, 26277, 15057, 10175, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 16286, "", "", 97863, 61350, "", "", "", "", "", "", "", "", "", 4768]
 		#PLOT THE DATA 
 		fig = plt.figure()
 		fig, axs = plt.subplots(2,2,figsize=(8, 5))
@@ -585,10 +606,10 @@ def failureJob(fileName, dirName, outputFileName, year):
 		#axs[0,0].legend(edgecolor="black",prop={'size': 7})
 		
 		#execution time with job hour
-		axs[1,0].bar(range(0,34,1), data1,  color=['cyan'],width=.5, label = "0-5 hours")
-		axs[1,0].bar(range(0,34,1), data2, bottom=data1,color=['green'],width=.5, label = "6-11 hours")
-		axs[1,0].bar(range(0,34,1), data3, bottom=np.array(data1) + np.array(data2),color=['blue'],width=.5, label = "12-17 hours")
-		axs[1,0].bar(range(0,34,1), data4, bottom=np.array(data1) + np.array(data2) + np.array(data3),color=['red'],width=.5, label = "18-23 hours")
+		axs[1,0].bar(range(0,34,1), data1,  color=['cyan'],width=.5, label = "0-5 hours", edgecolor = "black", linewidth = 0.1)
+		axs[1,0].bar(range(0,34,1), data2, bottom=data1,color=['green'],width=.5, label = "6-11 hours", edgecolor = "black", linewidth = 0.1)
+		axs[1,0].bar(range(0,34,1), data3, bottom=np.array(data1) + np.array(data2),color=['magenta'],width=.5, label = "12-17 hours", edgecolor = "black", linewidth = 0.1)
+		axs[1,0].bar(range(0,34,1), data4, bottom=np.array(data1) + np.array(data2) + np.array(data3),color=['red'],width=.5, label = "18-23 hours", edgecolor = "black", linewidth = 0.1)
 		
 		axs[1,0].tick_params(axis = 'x',  labelsize = 6.3)
 		axs[1,0].tick_params(axis = 'y',  labelsize = 7)
@@ -600,8 +621,48 @@ def failureJob(fileName, dirName, outputFileName, year):
 		axs[1,0].set_xticks([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])
 		axs[1,0].legend(edgecolor="black",prop={'size': 5})
 		
+		##################################################################
 		
-		#axs[0,0].set_ylim([1,max(jobs_time_execution)])
+		barWidth = 0.35
+		r = np.arange(0,34,1)
+		r1 = [x - 0.2 + barWidth for x in r]
+		r2 = [x + 0.007 + barWidth for x in r]
+	
+		axs[1,1].set_xlabel('Execution Time (Minutes)')
+		axs[1,1].set_title('')
+		ax = plt.gca()
+		#axs[1,1].bar(r1,data,width=barWidth, label="Failed Jobs",color=['blue'], align="edge")
+		axs[1,1].bar(r1, data1, width=barWidth, color=['cyan'], label = "0-5 hours", edgecolor = "black", linewidth = 0.1)
+		axs[1,1].bar(r1, data2, width=barWidth, bottom=data1,color=['green'], label = "6-11 hours", edgecolor = "black", linewidth = 0.1)
+		axs[1,1].bar(r1, data3, width=barWidth, bottom=np.array(data1) + np.array(data2),color=['magenta'],label = "12-17 hours", edgecolor = "black", linewidth = 0.1)
+		axs[1,1].bar(r1, data4, width=barWidth, bottom=np.array(data1) + np.array(data2) + np.array(data3),color=['red'], label = "18-23 hours", edgecolor = "black", linewidth = 0.1)
+		#axs[1,1].legend(edgecolor="black", prop={'size': 5})
+		axs[1,1].set_xlim(-1,35, auto=False)
+		
+		axs[1,1].tick_params(axis = 'x',  labelsize = 6.3)
+		axs[1,1].set_ylim([1,max(data)+10])
+		axs[1,1].set_ylabel('Failed Jobs')
+		axs[1,1].tick_params(axis = 'y', labelsize = 7)
+		
+		axs2 = axs[1,1].twinx()
+		axs2.bar(r2,data_total_jobs,width=barWidth, label="Total Jobs",color=['blue'], align="edge")
+		axs2.set_ylim([1,max(data_total_jobs)+5000])
+		axs2.set_ylabel('Total Jobs',color='tab:blue' )
+		axs2.tick_params(axis = 'y',  labelsize = 7, labelcolor='tab:blue')
+		axs2.legend(edgecolor="black", prop={'size': 5})
+		
+		
+		for i in range(len(r2)):
+			try:
+				axs2.text(x = r2[i] , y = show_bar_count[i]+1000, s = show_bar_count[i], size = 3)
+			except:
+				print("")
+		#axs2.legend(edgecolor="black",prop={'size': 8},bbox_to_anchor=(0,1.02,1,0.2), loc="lower center", borderaxespad=0, ncol=2)
+		
+		axs[1,1].set_xlim(-1,35, auto=False)
+		axs[1,1].set_xticklabels(['0','','2','','4','','6','','8','','10','','12','','14','','16','','18','','20+','','40+','','100+','','200+','','300+','','400+','','500+','','600+'],rotation = 45)
+		axs[1,1].set_xticks([0.32,1.32,2.32,3.32,4.32,5.32,6.32,7.32,8.32,9.32,10.32,11.32,12.32,13.32,14.32,15.32,16.32,17.32,18.32,19.32,20.32,21.32,22.32,23.32,24.32,25.32,26.32,27.32,28.32,29.32,30.32,31.32,32.32,33.32,34.32])
+		#axs[1,1].legend(edgecolor="black",prop={'size': 8},bbox_to_anchor=(0,1.02,1,0.2), loc="lower center", borderaxespad=0, ncol=2)
 		
 		###########################################################################################
 		###########################################################################################
@@ -636,7 +697,7 @@ def failureJob(fileName, dirName, outputFileName, year):
 		axs[0,1].set_xticks([0.3,1.3,2.3,3.3,4.3,5.3,6.3,7.3,8.3,9.3,10.3,11.3,12.3,13.3,14.3,15.3,16.3,17.3,18.3,19.3,20.3,21.3,22.3,23.3,24.3,25.3,26.3,27.3,28.3,29.3,30.3,31.3,32.3,33.3,34.3])
 		axs[0,1].legend(edgecolor="black",prop={'size': 8},bbox_to_anchor=(0,1.02,1,0.2), loc="lower center", borderaxespad=0, ncol=2)
 		
-		plt.subplots_adjust(top=0.92, bottom=0.2, left=0.1, right=0.95, hspace=0.35, wspace=0.25)
+		plt.subplots_adjust(top=0.92, bottom=0.2, left=0.05, right=0.90, hspace=0.50, wspace=0.3)
 		plt.savefig("PLOT_count_jobs_by_time_execution_"+year+".pdf")
 		print("\nPLOT_count_jobs_by_time_execution_"+year+".pdf>")
 		
@@ -680,6 +741,10 @@ def failureJob(fileName, dirName, outputFileName, year):
 		for c in type_of_failure:
 			print(c)
 		print("----------------------------")
+		print("Failures range 11")
+		for c in type_of_failure_11:
+			print(c)
+		print("----------------------------")
 		print("Failures range 40+")
 		for c in type_of_failure_40:
 			print(c)
@@ -694,7 +759,21 @@ def failureJob(fileName, dirName, outputFileName, year):
 	
 		print("----------------------------")
 		print(job_hours)
-	
+		print("----------------------------")
+		
+		print("failed nodes")
+		print(jobs_node_affected)
+		for c in jobs_node_affected:
+			print(jobs_node_affected[c])
+		print("----------------------------")
+		
+		
+		print("requested nodes")
+		print(jobs_nodes_req)
+		for c in jobs_nodes_req:
+			print(jobs_nodes_req[c])
+		print("----------------------------")
+		
 	return
 
 ### MAIN CODE ###
