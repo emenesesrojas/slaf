@@ -11,6 +11,7 @@ import re
 # import datetime
 import time
 import os
+import math as mt
 # import glob
 # import matplotlib as mpl
 # mpl.use('Agg')
@@ -25,9 +26,33 @@ import os
 ### FUNCTIONS ###
 
 
-def init_tables(hour_table, day_table, month_table):
+def init_tables(hour_table_jobs_all_run, hour_table, day_table, month_table):
 	""" Initializes tables """
 		
+	hour_table_jobs_all_run[0] = 0
+	hour_table_jobs_all_run[1] = 0
+	hour_table_jobs_all_run[2] = 0
+	hour_table_jobs_all_run[3] = 0
+	hour_table_jobs_all_run[4] = 0
+	hour_table_jobs_all_run[5] = 0
+	hour_table_jobs_all_run[6] = 0
+	hour_table_jobs_all_run[7] = 0
+	hour_table_jobs_all_run[8] = 0
+	hour_table_jobs_all_run[9] = 0
+	hour_table_jobs_all_run[10] = 0
+	hour_table_jobs_all_run[11] = 0
+	hour_table_jobs_all_run[12] = 0
+	hour_table_jobs_all_run[13] = 0
+	hour_table_jobs_all_run[14] = 0
+	hour_table_jobs_all_run[15] = 0
+	hour_table_jobs_all_run[16] = 0
+	hour_table_jobs_all_run[17] = 0
+	hour_table_jobs_all_run[18] = 0
+	hour_table_jobs_all_run[19] = 0
+	hour_table_jobs_all_run[20] = 0
+	hour_table_jobs_all_run[21] = 0
+	hour_table_jobs_all_run[22] = 0
+	hour_table_jobs_all_run[23] = 0
 	hour_table['00'] = 0
 	hour_table['01'] = 0
 	hour_table['02'] = 0
@@ -85,9 +110,10 @@ def generate(dir_name, output_dir_name):
 	day_table = {}
 	month_table = {}
 	pathFileName = []
+	hour_table_jobs_all_run = {}
 	
 	
-	init_tables(hour_table,day_table,month_table)
+	init_tables(hour_table_jobs_all_run,hour_table,day_table,month_table)
 
 	# start timer
 	startTime = time.clock()
@@ -138,10 +164,61 @@ def generate(dir_name, output_dir_name):
 					if eventType != 'job':
 						continue
 					hour = columns[0].strip()[:2]
+					end_hour = int(hour)
 					objid = columns[3]
 					objEvent = columns[4]
 					
 					if len(columns) > 3 and objEvent == 'JOBEND':
+				
+						##############################################################################
+						##############################################################################
+						##############################################################################
+						##############################################################################
+						
+						start_time = columns[14]
+						complete_time = columns[15]
+
+						# total job execution time
+						total_time_hours = mt.ceil((int(complete_time) - int(start_time)) / 60 /60)
+										
+						#adjust hours < 0 and hour > 23
+						if total_time_hours > 48:
+							continue
+							
+						print("___________________________________________________________")
+						print("ID: "+objid + " Month: " + month+" Day:"+day)
+						print("total hours: " + str(total_time_hours))
+						print("end hour: " + str(end_hour))
+								
+						
+						r = end_hour - total_time_hours
+						if r <= 0:
+							if r == 0: x = 1
+							else: x = 0
+							for i in range(x, end_hour+1):
+								hour_table_jobs_all_run[i] += 1
+								print("Current day - 0..end hour:  " + str(i))
+							
+							#for negative numbers
+							x = 24 - (total_time_hours - (end_hour+1))
+							if x < 0: x = 0
+								
+							for i in range(x, 24):
+								hour_table_jobs_all_run[i] += 1
+								print("day before - start hour.. 23:  " + str(i))
+						else:
+							for i in range((end_hour - total_time_hours)+1, end_hour+1):
+								hour_table_jobs_all_run[i] += 1
+								print("same day - start hour.. 23:  " + str(i))
+						print("___________________________________________________________")
+							
+						#sys.exit()	
+						
+						##############################################################################
+						##############################################################################
+						##############################################################################
+						##############################################################################
+					
 				
 						day_table[day_of_week] += 1
 						month_table[month] += 1
@@ -152,7 +229,7 @@ def generate(dir_name, output_dir_name):
 	
 	
 	#week day
-	output_file_name = output_dir_name + '/' + 'workload_day_of_week_distribution_'+year+'.txt'
+	output_file_name = output_dir_name + '/' + 'workload_day_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
 	output_file_txt.write('DAY DAY_WEEK_JOBS\n')
 	#print(day_table)
@@ -170,71 +247,8 @@ def generate(dir_name, output_dir_name):
 	output_file_name = output_dir_name + '/' + 'workload_hour_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
 	output_file_txt.write('HOUR HOUR_JOBS\n')
-	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(24), hour_table.values())))
+	output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(24), hour_table_jobs_all_run.values())))
 	output_file_txt.close()
-	
-	# print ("\r                                                           ",) 
-	# # creating output file
-	# print ("Generating workload graphic by hours: Graphic 1 of 3") 
-	
-	# #plt.style.use('seaborn-whitegrid')
-	# fig = plt.figure()
-	# fig, axs = plt.subplots(2, 3,figsize=(13, 7))
-	
-	
-	# data = [hour_table['00'],hour_table['01'],hour_table['02'],hour_table['03'],hour_table['04'],hour_table['05'],hour_table['06'],hour_table['07'],hour_table['08'],hour_table['09'],hour_table['10'],hour_table['11'],hour_table['12'],hour_table['13'],hour_table['14'],hour_table['15'],hour_table['16'],hour_table['17'],hour_table['18'],hour_table['19'],hour_table['20'],hour_table['21'],hour_table['22'],hour_table['23']]
-	# axs[1,2].set_xticks(np.arange(1,25,1))
-	# axs[1,2].bar(range(1,25,1), data, color=['blue'])	
-	# axs[1,2].set_xlabel('Hour')
-	# axs[1,2].set_ylabel('Number of Jobs')
-	# axs[1,2].set_title('Jobs by Hour ' + year)
-	# plt.legend(framealpha=1,shadow=True, borderpad = 1, fancybox=True)
-	# plt.xticks([2.4,6.4,10.4,14.4,18.4,22.4], ['2','6','10','14','18','22'])
-	# #for save data
-	# output_file_name = output_dir_name + '/' + 'workload_hour_distribution_'+year+'.txt'
-	# output_file_txt = open(output_file_name, 'w')
-	# output_file_txt.write('HOUR HOUR_JOBS\n')
-	# output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(24), data)))
-	# output_file_txt.close()
-	# ################################################################################################################
-	
-	# print ("Generating workload graphic by day: Graphic 2 of 3")
-	# data = [day_table['Monday'],day_table['Tuesday'],day_table['Wednesday'],day_table['Thursday'],day_table['Friday'],day_table['Saturday'],day_table['Sunday']]
-	# m = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-	# list_names = []
-	# for i in m:
-		# list_names.append(i[:2])
-		
-	# axs[1,1].set_xticklabels(list_names)	
-	# axs[1,1].set_xticks(np.arange(1,8, 1))
-	# axs[1,1].bar(range(1,8,1), data,color=['blue'])
-	# axs[1,1].set_xlabel('Day')
-	# axs[1,1].set_ylabel('Number of Jobs')
-	# axs[1,1].set_title('Jobs by Day ' + year)
-	# #for save data
-	# output_file_name = output_dir_name + '/' + 'workload_day_distribution_'+year+'.txt'
-	# output_file_txt = open(output_file_name, 'w')
-	# output_file_txt.write('DAY DAY_JOBS\n')
-	# output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(7), data)))
-	# output_file_txt.close()
-	
-	# #################################################################################################################
-	# print ("Generating workload graphic by month: Graphic 3 of 3")
-	# data = [month_table['01'],month_table['02'],month_table['03'],month_table['04'],month_table['05'],month_table['06'],month_table['07'],month_table['08'],month_table['09'],month_table['10'],month_table['11'],month_table['12']]
-	# axs[1,0].set_xticks(np.arange(1,13, 1))
-	# axs[1,0].bar(range(1,13,1), data,color=['blue'])
-	# axs[1,0].set_xlabel('Month')
-	# axs[1,0].set_ylabel('Number of Jobs')
-	# axs[1,0].set_title('Jobs by Month ' + year)
-	# # for save data
-	# output_file_name = output_dir_name + '/' + 'workload_month_distribution_'+year+'.txt'
-	# output_file_txt = open(output_file_name, 'w')
-	# output_file_txt.write('MONTH MONTH_JOBS\n')
-	# output_file_txt.write('\n'.join(map(lambda x,y: str(x) + ' ' + str(y), range(12), data)))
-	# output_file_txt.close()
-	
-	# #save all the plots
-	# plt.savefig("PLOT_Jobs_frequency_by_hourday_day_month_"+year+".pdf")
 	
 
 	# stop timer

@@ -140,40 +140,48 @@ plt.plot(data, y, 'g-', linewidth=1.5, label="Data")
 ################################################
 #Exponential plot
 loc,scale=ss.expon.fit(data)
+
 y = ss.expon.cdf(data, loc, scale)
 
 D, P = ss.kstest(data, lambda x : y)
 
-plt.plot(data, y,linestyle='-.',color="0.30", linewidth=0.9, label="Exponential - KS: "+str(round(D, 3)))
-print("Exponential CS D Value: " + str(D) + " - P value: " + str(P))
+plt.plot(data, y,linestyle='-.',color="0.30", linewidth=0.9, label="Exponential - KS D="+str(round(D, 3)))
+print("Exponential KS D Value: " + str(D) + " - P value: " + str(P))
 
 ################################################
 
 #lognormal plot
 logdata = np.log(data)
-estimated_mu, estimated_sigma = ss.norm.fit(logdata)
-scale = estimated_mu
-s = estimated_sigma 
-y = (1+scipy.special.erf((np.log(data)-scale)/(np.sqrt(2)*s)))/2 #ss.lognorm.cdf(data, s, scale) 
+#estimated_mu, estimated_sigma, scale = ss.norm.fit(logdata)
+shape, loc, scale = ss.lognorm.fit(data,floc=0)
+
+#scale = estimated_mu
+#s = estimated_sigma 
+#y = (1+scipy.special.erf((np.log(data)-scale)/(np.sqrt(2)*s)))/2 #ss.lognorm.cdf(data, s, scale) 
+y  = ss.lognorm.cdf(data, shape, loc, scale) 
 
 D, P = ss.kstest(data, lambda x : y)
 
-plt.plot(data, y, linestyle =':', color= "0.30", linewidth=1.2, label="Lognormal - KS: "+str(round(D, 3))) 
-print("Lognormal CS D Value: " + str(D) + " - P value: " + str(P) )
+plt.plot(data, y, linestyle =':', color= "0.30", linewidth=1.2, label="Lognormal - KS D="+str(round(D, 3))) 
+print("Lognormal KS D Value: " + str(D) + " - P value: " + str(P) )
 #################################################
 #Weibull
 
 shape, loc, scale = ss.weibull_min.fit(data, floc=0)
 wei = ss.weibull_min(shape, loc, scale) # shape, loc, scale - creates weibull object
-x = np.linspace(np.min(data), np.max(data), len(data))
+#x = np.linspace(np.min(data), np.max(data), len(data))
 
-D, P = ss.kstest(x, lambda x : wei.cdf(x))
-plt.plot(x, wei.cdf(x),'b--',linewidth=0.9, label="Weibull - KS: "+str(round(D, 3)))
+D, P = ss.kstest(data, lambda x : wei.cdf(data))
+
+plt.plot(data, wei.cdf(data),'b--',linewidth=0.9, label="Weibull - KS D="+str(round(D, 3)))
 plt.legend(edgecolor="black",prop={'size': 8})
 
 
-print("Weibull CS D Value: " + str(D) + " - P value: " + str(P) )
+print("Weibull KS D Value: " + str(D) + " - P value: " + str(P) )
 print("---------------------------------------------------------------------------------------")
+
+# print(data)
+# print(wei.cdf(data))
 #################################################
 plt.xlabel('Time Between Failures (seconds)')
 plt.ylabel('Cumulative Probability')

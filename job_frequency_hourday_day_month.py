@@ -19,13 +19,14 @@ import numpy as np
 from math import *
 import calendar as cl
 import datetime
+import math as mt
 
 from datetime import date, timedelta, datetime as dt
 
 ### FUNCTIONS ###
 
 
-def init_tables(event_day_year, event_week_daymonth,event_week_year, hour_table, day_table, month_table):
+def init_tables(hour_table_jobs_all_run,event_day_year, event_week_daymonth,event_week_year, hour_table, day_table, month_table):
 	""" Initializes tables """
 	
 	for i in range(365):
@@ -35,62 +36,58 @@ def init_tables(event_day_year, event_week_daymonth,event_week_year, hour_table,
 	for i in range(1,32):
 		event_week_daymonth[i] = 0
 	
-	# event_week_daymonth[1] = 0
-	# event_week_daymonth[2] = 0
-	# event_week_daymonth[3] = 0
-	# event_week_daymonth[4] = 0
-	# event_week_daymonth[5] = 0
-	# event_week_daymonth[6] = 0
-	# event_week_daymonth[7] = 0
-	# event_week_daymonth[8] = 0
-	# event_week_daymonth[9] = 0
-	# event_week_daymonth[10] = 0
-	# event_week_daymonth[11] = 0
-	# event_week_daymonth[12] = 0
-	# event_week_daymonth[13] = 0
-	# event_week_daymonth[14] = 0
-	# event_week_daymonth[15] = 0
-	# event_week_daymonth[16] = 0
-	# event_week_daymonth[17] = 0
-	# event_week_daymonth[18] = 0
-	# event_week_daymonth[19] = 0
-	# event_week_daymonth[20] = 0
-	# event_week_daymonth[21] = 0
-	# event_week_daymonth[22] = 0
-	# event_week_daymonth[23] = 0
-	# event_week_daymonth[24] = 0
-	# event_week_daymonth[25] = 0
-	# event_week_daymonth[26] = 0
-	# event_week_daymonth[27] = 0
-	# event_week_daymonth[28] = 0
-	# event_week_daymonth[29] = 0
-	# event_week_daymonth[30] = 0
-	# event_week_daymonth[31] = 0
+	hour_table_jobs_all_run[0] = 0
+	hour_table_jobs_all_run[1] = 0
+	hour_table_jobs_all_run[2] = 0
+	hour_table_jobs_all_run[3] = 0
+	hour_table_jobs_all_run[4] = 0
+	hour_table_jobs_all_run[5] = 0
+	hour_table_jobs_all_run[6] = 0
+	hour_table_jobs_all_run[7] = 0
+	hour_table_jobs_all_run[8] = 0
+	hour_table_jobs_all_run[9] = 0
+	hour_table_jobs_all_run[10] = 0
+	hour_table_jobs_all_run[11] = 0
+	hour_table_jobs_all_run[12] = 0
+	hour_table_jobs_all_run[13] = 0
+	hour_table_jobs_all_run[14] = 0
+	hour_table_jobs_all_run[15] = 0
+	hour_table_jobs_all_run[16] = 0
+	hour_table_jobs_all_run[17] = 0
+	hour_table_jobs_all_run[18] = 0
+	hour_table_jobs_all_run[19] = 0
+	hour_table_jobs_all_run[20] = 0
+	hour_table_jobs_all_run[21] = 0
+	hour_table_jobs_all_run[22] = 0
+	hour_table_jobs_all_run[23] = 0
 	
-	hour_table['00'] = 0
-	hour_table['01'] = 0
-	hour_table['02'] = 0
-	hour_table['03'] = 0
-	hour_table['04'] = 0
-	hour_table['05'] = 0
-	hour_table['06'] = 0
-	hour_table['07'] = 0
-	hour_table['08'] = 0
-	hour_table['09'] = 0
-	hour_table['10'] = 0
-	hour_table['11'] = 0
-	hour_table['12'] = 0
-	hour_table['13'] = 0
-	hour_table['14'] = 0
-	hour_table['15'] = 0
-	hour_table['16'] = 0
-	hour_table['17'] = 0
-	hour_table['18'] = 0
-	hour_table['19'] = 0
-	hour_table['20'] = 0
-	hour_table['21'] = 0
-	hour_table['22'] = 0
-	hour_table['23'] = 0
+	
+	
+	hour_table['00']  = 0
+	hour_table['01']  = 0
+	hour_table['02']  = 0
+	hour_table['03']  = 0
+	hour_table['04']  = 0
+	hour_table['05']  = 0
+	hour_table['06']  = 0
+	hour_table['07']  = 0
+	hour_table['08']  = 0
+	hour_table['09']  = 0
+	hour_table['10']  = 0
+	hour_table['11']  = 0
+	hour_table['12']  = 0
+	hour_table['13']  = 0
+	hour_table['14']  = 0
+	hour_table['15']  = 0
+	hour_table['16']  = 0
+	hour_table['17']  = 0
+	hour_table['18']  = 0
+	hour_table['19']  = 0
+	hour_table['20']  = 0
+	hour_table['21']  = 0
+	hour_table['22']  = 0
+	hour_table['23']  = 0
+	
 	day_table['Monday'] = 0
 	day_table['Tuesday'] = 0
 	day_table['Wednesday'] = 0
@@ -114,66 +111,15 @@ def init_tables(event_day_year, event_week_daymonth,event_week_year, hour_table,
 	for i in range (1, 53):
 		event_week_year[i] = 0
 		
-	# event_week_year[1] = 0
-	# event_week_year[2] = 0
-	# event_week_year[3] = 0
-	# event_week_year[4] = 0
-	# event_week_year[5] = 0
-	# event_week_year[6] = 0
-	# event_week_year[7] = 0
-	# event_week_year[8] = 0
-	# event_week_year[9] = 0
-	# event_week_year[10] = 0
-	# event_week_year[11] = 0
-	# event_week_year[12] = 0
-	# event_week_year[13] = 0
-	# event_week_year[14] = 0
-	# event_week_year[15] = 0
-	# event_week_year[16] = 0
-	# event_week_year[17] = 0
-	# event_week_year[18] = 0
-	# event_week_year[19] = 0
-	# event_week_year[20] = 0
-	# event_week_year[21] = 0
-	# event_week_year[22] = 0
-	# event_week_year[23] = 0
-	# event_week_year[24] = 0
-	# event_week_year[25] = 0
-	# event_week_year[26] = 0
-	# event_week_year[27] = 0
-	# event_week_year[28] = 0
-	# event_week_year[29] = 0
-	# event_week_year[30] = 0
-	# event_week_year[31] = 0
-	# event_week_year[32] = 0
-	# event_week_year[33] = 0
-	# event_week_year[34] = 0
-	# event_week_year[35] = 0
-	# event_week_year[36] = 0
-	# event_week_year[37] = 0
-	# event_week_year[38] = 0
-	# event_week_year[39] = 0
-	# event_week_year[40] = 0
-	# event_week_year[41] = 0
-	# event_week_year[42] = 0
-	# event_week_year[43] = 0
-	# event_week_year[44] = 0
-	# event_week_year[45] = 0
-	# event_week_year[46] = 0
-	# event_week_year[47] = 0
-	# event_week_year[48] = 0
-	# event_week_year[49] = 0
-	# event_week_year[50] = 0
-	# event_week_year[51] = 0
-	# event_week_year[52] = 0
-
 def generate(dir_name, output_dir_name):
 	#""" Reads a failure log file and correlates job IDs with MOAB log files in the directory """
 	format = '%Y-%m-%d %H:%M:%S'
 	file_count = 0
 	job_count = 0
 	job_total_count = 0
+	error_count = 0
 	hour_table = {}
+	hour_table_jobs_all_run = {}
 	day_table = {}
 	month_table = {}
 	pathFileName = []
@@ -183,7 +129,7 @@ def generate(dir_name, output_dir_name):
 	event_day_year = {}
 	
 	
-	init_tables(event_day_year, event_week_daymonth, event_week_year, hour_table,day_table,month_table)
+	init_tables(hour_table_jobs_all_run, event_day_year, event_week_daymonth, event_week_year, hour_table,day_table,month_table)
 
 	# start timer
 	startTime = time.clock()
@@ -210,7 +156,10 @@ def generate(dir_name, output_dir_name):
 		sys.stdout.flush()
 				
 		with open(file_name) as log:
+			log_search_job_start  = log
+			log_search_job_start.seek(0)
 			
+			id_start = ""
 			
 			day_year = int(datetime.datetime.strptime(year+"-"+month+"-"+day,"%Y-%m-%d").timetuple().tm_yday)
 			#print(day_year)
@@ -236,6 +185,73 @@ def generate(dir_name, output_dir_name):
 					job_count = job_count + 1
 					job_time = columns[0]
 					hour = job_time.split(':')[0]
+					end_hour = int(hour)
+					
+					##############################################################################
+					##############################################################################
+					##############################################################################
+					##############################################################################
+					
+					#for extract times 
+					columns_check = event.split()
+					if "STARTTIME" in event:
+						for item in columns_check:	
+							if "STARTTIME" in item:
+								#start_time
+								start_time = item[10:]		#STARTTIME									
+							if "COMPLETETIME" in item:
+								complete_time = item[13:]
+					else:
+							start_time = columns[14]
+							complete_time = columns[15]
+						
+					try:
+						# total job execution time
+						total_time_hours = mt.ceil((int(complete_time) - int(start_time)) / 60 /60)
+					except ValueError:
+						error_count += 1
+						continue					
+						
+						
+					#adjust hours < 0 and hour > 23
+					if total_time_hours > 48:
+						continue
+						
+					print("___________________________________________________________")
+					print("ID: "+objid + " Month: " + month+" Day:"+day)
+					print("total hours: " + str(total_time_hours))
+					print("end hour: " + str(end_hour))
+							
+					
+					r = end_hour - total_time_hours
+					if r <= 0:
+						#for negative numbers
+						x = 24 - (total_time_hours - (end_hour+1))
+						if x < 0: x = 0	
+						for i in range(x, 24):
+							hour_table_jobs_all_run[i] += 1
+							print("day before - start hour.. 23:  " + str(i))
+							
+						#--------------------------------------------------------------------------------------------------
+						
+						if r == 0: x = 1
+						else: x = 0
+						for i in range(x, end_hour+1):
+							hour_table_jobs_all_run[i] += 1
+							print("Current day - 0..end hour:  " + str(i))
+					else:
+						for i in range((end_hour - total_time_hours)+1, end_hour+1):
+							hour_table_jobs_all_run[i] += 1
+							print("same day - start hour.. 23:  " + str(i))
+					print("___________________________________________________________")
+						
+					#sys.exit()	
+					
+					##############################################################################
+					##############################################################################
+					##############################################################################
+					##############################################################################
+					
 					
 					hour_table[hour] = hour_table[hour] + 1
 					day_table[day_of_week] = day_table[day_of_week] + 1
@@ -286,7 +302,9 @@ def generate(dir_name, output_dir_name):
 	fig, axs = plt.subplots(2, 3,figsize=(13, 7))
 	
 	
-	data = [hour_table['00'],hour_table['01'],hour_table['02'],hour_table['03'],hour_table['04'],hour_table['05'],hour_table['06'],hour_table['07'],hour_table['08'],hour_table['09'],hour_table['10'],hour_table['11'],hour_table['12'],hour_table['13'],hour_table['14'],hour_table['15'],hour_table['16'],hour_table['17'],hour_table['18'],hour_table['19'],hour_table['20'],hour_table['21'],hour_table['22'],hour_table['23']]
+	#data = [hour_table['00'],hour_table['01'],hour_table['02'],hour_table['03'],hour_table['04'],hour_table['05'],hour_table['06'],hour_table['07'],hour_table['08'],hour_table['09'],hour_table['10'],hour_table['11'],hour_table['12'],hour_table['13'],hour_table['14'],hour_table['15'],hour_table['16'],hour_table['17'],hour_table['18'],hour_table['19'],hour_table['20'],hour_table['21'],hour_table['22'],hour_table['23']]
+	data = [hour_table_jobs_all_run[0],hour_table_jobs_all_run[1],hour_table_jobs_all_run[2],hour_table_jobs_all_run[3],hour_table_jobs_all_run[4],hour_table_jobs_all_run[5],hour_table_jobs_all_run[6],hour_table_jobs_all_run[7],hour_table_jobs_all_run[8],hour_table_jobs_all_run[9],hour_table_jobs_all_run[10],hour_table_jobs_all_run[11],hour_table_jobs_all_run[12],hour_table_jobs_all_run[13],hour_table_jobs_all_run[14],hour_table_jobs_all_run[15],hour_table_jobs_all_run[16],hour_table_jobs_all_run[17],hour_table_jobs_all_run[18],hour_table_jobs_all_run[19],hour_table_jobs_all_run[20],hour_table_jobs_all_run[21],hour_table_jobs_all_run[22],hour_table_jobs_all_run[23]]
+
 	axs[1,2].set_xticks(np.arange(1,25,1))
 	axs[1,2].bar(range(1,25,1), data, color=['blue'])	
 	axs[1,2].set_xlabel('Hour')
@@ -295,6 +313,7 @@ def generate(dir_name, output_dir_name):
 	plt.legend(framealpha=1,shadow=True, borderpad = 1, fancybox=True)
 	plt.xticks([2.4,6.4,10.4,14.4,18.4,22.4], ['2','6','10','14','18','22'])
 	#for save data
+	
 	output_file_name = output_dir_name + '/' + 'workload_hour_distribution_'+year+'.txt'
 	output_file_txt = open(output_file_name, 'w')
 	output_file_txt.write('HOUR HOUR_JOBS\n')
@@ -351,6 +370,7 @@ def generate(dir_name, output_dir_name):
 	%.3f seconds execution time" \
 	% (file_count, job_count, finishTime-startTime))
 	print("Total jobs year "+ year +": "+ str(job_total_count))
+	print("Error count: "+str(error_count))
 	
 	
 	return
